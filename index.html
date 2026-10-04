@@ -29,9 +29,12 @@
 </head>
 <body class="bg-black text-slate-50 font-sans antialiased relative min-h-screen overflow-x-hidden">
 
-    <!-- Ambient Background Gradients for 3D/Deep Space Vibe -->
-    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px] pointer-events-none"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/10 blur-[120px] pointer-events-none"></div>
+    <!-- AI / Programming Cyber-Grid Background -->
+    <div class="fixed inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+    
+    <!-- Ambient Background Gradients for Deep Space Vibe -->
+    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-900/10 blur-[120px] pointer-events-none z-0"></div>
 
     <div class="max-w-5xl mx-auto px-6 py-16 md:py-24 relative z-10">
 
@@ -97,7 +100,6 @@
                     <p class="text-sm text-slate-400 mb-6 max-w-md">Decoupled FinTech engine handling async ETL pipelines and real-time behavioral risk analytics.</p>
                 </div>
                 
-                <!-- CLICKABLE VIDEO/IMAGE PLACEHOLDER -->
                 <a href="https://capital-guard-five.vercel.app/" target="_blank" class="block w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all cursor-pointer">
                     <video src="video.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"></video>
                 </a>
@@ -105,7 +107,7 @@
                 <div class="text-xs text-slate-500 font-medium">Node.js • PostgreSQL • Indexed DB</div>
             </div>
 
-            <!-- Card 2: Node.js Core (Spans 1 col, 2 rows) -->
+            <!-- Card 2: Node.js Core (Spans 1 col, 2 rows) - SHORTENED TEXT -->
             <div class="md:col-span-1 md:row-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xl font-semibold">Node.js Core</h2>
@@ -116,22 +118,22 @@
                     <!-- PR 1 -->
                     <div class="border-b border-white/5 pb-4">
                         <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
-                        <a href="https://github.com/nodejs/node/pull/64238" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64238 - util: allow single-line format when break length is infinite</a>
+                        <a href="https://github.com/nodejs/node/pull/64238" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64238 - util: single-line format fix</a>
                     </div>
                     <!-- PR 2 -->
                     <div class="border-b border-white/5 pb-4">
                         <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
-                        <a href="https://github.com/nodejs/node/pull/64397" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64397 - fs: return Buffer from mkdtemp when prefix is a Buffer</a>
+                        <a href="https://github.com/nodejs/node/pull/64397" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64397 - fs: mkdtemp Buffer returns</a>
                     </div>
                     <!-- PR 3 -->
                     <div class="border-b border-white/5 pb-4">
                         <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
-                        <a href="https://github.com/nodejs/node/pull/64188" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64188 - doc: fix typo in node-config-schema.json</a>
+                        <a href="https://github.com/nodejs/node/pull/64188" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64188 - doc: config-schema typo</a>
                     </div>
                     <!-- PR 4 -->
                     <div class="pt-2">
                         <span class="inline-block px-2 py-0.5 bg-purple-500/20 text-purple-400 text-[10px] rounded mb-2 border border-purple-500/30">OPEN</span>
-                        <a href="https://github.com/nodejs/node/pull/64341" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors">#64341 - fs: accept all valid utf8 values in fast paths</a>
+                        <a href="https://github.com/nodejs/node/pull/64341" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors">#64341 - fs: utf8 fast paths</a>
                     </div>
                 </div>
 
@@ -145,11 +147,9 @@
             <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between">
                 <h2 class="text-lg font-semibold mb-6">Engineering Deep Dives</h2>
                 
-                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="block w-full aspect-video bg-black/40 rounded-xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden group cursor-pointer hover:border-white/20 transition-all">
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:bg-red-500/80 transition-all z-10">
-                        <i data-lucide="play" class="w-4 h-4 ml-0.5"></i>
-                    </div>
-                </a>
+                <div class="w-full aspect-video bg-black/40 rounded-xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden">
+                    <iframe class="w-full h-full object-cover pointer-events-auto" src="https://www.youtube.com/embed/srYlP0NRmmo?autoplay=1&mute=1&loop=1&playlist=srYlP0NRmmo" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                </div>
                 
                 <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors mt-auto">Watch on YouTube ↗</a>
             </div>
@@ -173,12 +173,10 @@
         </div>
     </div>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-    </script>
+    <!-- Script tags ordered correctly -->
     <script src="script.js"></script>
     <script>
+        // Initialize Lucide Icons
         lucide.createIcons();
     </script>
 </body>
