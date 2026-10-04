@@ -27,7 +27,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-950 text-slate-50 font-sans antialiased relative min-h-screen overflow-x-hidden">
+<body class="bg-black text-slate-50 font-sans antialiased relative min-h-screen overflow-x-hidden">
 
     <!-- Ambient Background Gradients for 3D/Deep Space Vibe -->
     <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px] pointer-events-none"></div>
@@ -98,12 +98,8 @@
                 </div>
                 
                 <!-- CLICKABLE VIDEO/IMAGE PLACEHOLDER -->
-                <!-- Replace href with your raw video link or add a <video> tag inside this <a> block -->
-                <a href="https://capital-guard-five.vercel.app/" target="_blank" class="block w-full h-48 md:h-64 bg-black/40 rounded-2xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden group-hover:border-white/20 transition-all cursor-pointer">
-                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:bg-white/20 transition-all z-10">
-                        <i data-lucide="play" class="w-5 h-5 ml-1"></i>
-                    </div>
-                    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-500 to-transparent"></div>
+                <a href="https://capital-guard-five.vercel.app/" target="_blank" class="block w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all cursor-pointer">
+                    <video src="video.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"></video>
                 </a>
 
                 <div class="text-xs text-slate-500 font-medium">Node.js • PostgreSQL • Indexed DB</div>
@@ -179,6 +175,10 @@
 
     <script>
         // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+    <script>
         lucide.createIcons();
     </script>
 </body>
