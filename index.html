@@ -88,7 +88,7 @@
         <p class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Selected Systems & Contributions</p>
 
         <!-- 3. BENTO GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
 
             <!-- Card 1: CapitalGuard (Spans 2 columns, Row 1) -->
             <div class="md:col-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between group h-full">
@@ -100,11 +100,12 @@
                     <p class="text-sm text-slate-400 mb-6 max-w-md">Decoupled FinTech engine handling async ETL pipelines and real-time behavioral risk analytics.</p>
                 </div>
                 
-                <a href="https://capital-guard-five.vercel.app/" target="_blank" class="block w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all cursor-pointer">
-                    <video src="video.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"></video>
-                </a>
+                <!-- Video block: Replaced <a> with <div>, added 'controls', removed 'autoplay' & 'muted' -->
+                <div class="w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all">
+                    <video src="video.mp4" controls class="w-full h-full object-cover"></video>
+                </div>
 
-                <div class="text-xs text-slate-500 font-medium">Node.js • PostgreSQL • Indexed DB</div>
+                <div class="text-xs text-slate-500 font-medium">Node.js • FullStack development • Indexed DB</div>
             </div>
 
             <!-- Card 2: Node.js Core (Spans 1 col, 2 rows) -->
@@ -139,19 +140,28 @@
                 </div>
             </div>
 
-            <!-- Card 3: X / Telemetry (Spans 2 columns, Row 2) -->
-            <div class="md:col-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
+            <!-- Card 3: YouTube (Spans 1 column, Row 2) -->
+            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
+                <h2 class="text-lg font-semibold mb-6">Engineering Deep Dives</h2>
+                <div class="w-full aspect-video bg-black/40 rounded-xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden">
+                    <iframe class="w-full h-full object-cover rounded-xl" src="https://www.youtube.com/embed/srYlP0NRmmo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors mt-auto">Watch on YouTube ↗</a>
+            </div>
+
+            <!-- Card 4: X / Telemetry (Spans 1 column, Row 2) -->
+            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h2 class="text-lg font-semibold flex items-center gap-2">
                         <i data-lucide="twitter" class="w-4 h-4"></i> Real-Time Logs on X
                     </h2>
                 </div>
                 <p class="text-sm text-slate-300 mb-8 leading-relaxed">
-                    I post daily about Node.js internals, backend scaling, and low-level system design. Drop a follow for raw engineering postmortems and architectural breakdowns.
+                    I post daily about Node.js internals, backend scaling, and low-level system design. Drop a follow for raw engineering postmortems.
                 </p>
                 <div class="flex justify-between items-center mt-auto border-t border-white/5 pt-4">
                     <span class="text-xs text-slate-500">Active Daily</span>
-                    <a href="https://x.com/DeeepNode" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors">Read the feed on X ↗</a>
+                    <a href="https://x.com/DeeepNode" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors">Read feed ↗</a>
                 </div>
             </div>
 
