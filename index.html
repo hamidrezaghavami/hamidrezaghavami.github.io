@@ -1,422 +1,185 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Backend Engineer</title>
-    <!-- Tailwind CSS for modern structure -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Premium Sans-Serif Typeface (Inter) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Hamid Reza Ghavami | DeepNode</title>
     
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    <!-- Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        slate: { 950: '#0b0f19' }
+                    }
+                }
+            }
         }
-        /* Custom Ambient Mouse Glow Overlay - Visibility Increased */
-        #ambient-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            /* Boosted opacity for higher visibility */
-            background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255,255,255,0.08), transparent 80%);
-            transition: background 0.1s ease;
-        }
-        /* Click interaction micro-ripple - Visibility Increased */
-        body:active #ambient-glow {
-            /* Boosted opacity */
-            background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255,255,255,0.15), transparent 80%);
-        }
-    </style>
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="text-[#f5f5f5] min-h-screen relative overflow-x-hidden selection:bg-white selection:text-black">
+<body class="bg-slate-950 text-slate-50 font-sans antialiased relative min-h-screen overflow-x-hidden">
 
-    <!-- Ambient Tracking Element -->
-    <div id="ambient-glow"></div>
+    <!-- Ambient Background Gradients for 3D/Deep Space Vibe -->
+    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/10 blur-[120px] pointer-events-none"></div>
 
-    <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 flex flex-col min-h-screen justify-between">
-        
-        <!-- HEADER / NAVIGATION -->
-        <header class="w-full py-8 flex justify-between items-center border-b border-neutral-900/40">
-            <div class="text-xs font-medium tracking-[0.2em] text-neutral-400">Portfolio</div>
-            <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
-                <a href="#work" class="text-xs font-medium tracking-[0.2em] text-white hover:text-white transition-colors">WORK</a>
-                <a href="#open-source" class="text-xs font-medium tracking-[0.2em] text-neutral-400 hover:text-white transition-colors">OPEN SOURCE</a>
-            </nav>
-            <div>
-                <!-- Static mailto CONNECT button -->
-                <a href="mailto:hamidr.ghavami@gmail.com" class="text-xs font-medium tracking-[0.15em] border border-neutral-800 bg-neutral-950 px-4 py-2 rounded hover:bg-white hover:text-black transition-all duration-300">CONNECT</a>
+    <div class="max-w-5xl mx-auto px-6 py-16 md:py-24 relative z-10">
+
+        <!-- 1. HERO SECTION -->
+        <header class="mb-12">
+            <div class="flex items-center justify-between mb-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span class="font-semibold text-sm tracking-wide">DeepNode</span>
+                </div>
+                <div class="text-xs px-3 py-1 bg-white/5 border border-white/10 rounded-full text-slate-400">
+                    System Operational
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
+                High-Performance <br class="hidden md:block" /> Backend Systems.
+            </h1>
+
+            <!-- Social Dock -->
+            <div class="flex flex-wrap gap-4">
+                <a href="https://github.com/hamidrezaghavami" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
+                    <i data-lucide="github" class="w-4 h-4"></i><span>GitHub ↗</span>
+                </a>
+                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
+                    <i data-lucide="youtube" class="w-4 h-4"></i><span>YouTube ↗</span>
+                </a>
+                <a href="https://x.com/DeeepNode" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
+                    <i data-lucide="twitter" class="w-4 h-4"></i><span>X ↗</span>
+                </a>
+                <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i><span>LinkedIn ↗</span>
+                </a>
             </div>
         </header>
 
-        <!-- MAIN LANDING / HERO SECTION -->
-        <main class="flex-grow flex flex-col justify-center items-center text-center py-24">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-2 leading-none flex flex-col gap-2">
-                <span>Backend Engineer</span>
-            </h1>
-            <p class="text-xs sm:text-sm text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-6">
-                An engineer focused on designing resilient systems, refactoring complex codebases,<br class="hidden sm:block">
-                and diagnosing critical bugs to reliably handle high-volume user scale.
-            </p>
-
-            <!-- Inline Social Media Icons Row -->
-            <div class="flex items-center gap-6 mt-8 relative z-20">
-                <!-- GitHub -->
-                <a href="https://www.github.com/hamidrezaghavami" target="_blank" aria-label="GitHub" class="text-neutral-400 hover:text-white transition-colors duration-300">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.48.01-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.479C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                </a>
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" aria-label="LinkedIn" class="text-neutral-400 hover:text-white transition-colors duration-300">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-            </div>
-        </main>
-
-        <!-- SELECTED WORK SECTION -->
-        <section id="work" class="py-16 scroll-mt-12 relative z-20">
-            <div class="text-xs font-medium tracking-[0.15em] text-neutral-400 mb-8">Selected Work</div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Card 1: Iron-Clad-Ledger -->
-                <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col justify-between hover:border-neutral-800 transition-all duration-300">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] tracking-wider text-neutral-500 font-mono">Nov 2025 - Dec 2025</span>
-                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.5M4.5 21V10.5M3 21h18M12 10.5h.008v.008H12V10.5z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">
-                            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" class="hover:underline flex items-center gap-2">
-                                Iron-Clad-Ledger
-                                <svg class="w-3 h-3 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">A robust, double-entry banking ledger engineered with strict ACID transactional guarantees, concurrent data-safety, and precise financial integrity.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">PostgreSQL</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">PL/pgSQL</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Docker</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Prisma ORM</span>
-                    </div>
-                </div>
-
-                <!-- Card 2: CapitalGuard -->
-                <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col justify-between hover:border-neutral-800 transition-all duration-300">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] tracking-wider text-neutral-500 font-mono">May 2026 - May 2026</span>
-                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">
-                            <a href="https://capital-guard-five.vercel.app/" target="_blank" class="hover:underline flex items-center gap-2">
-                                CapitalGuard
-                                <svg class="w-3 h-3 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">A high-integrity backend security and monitoring service designed to track, validate, and protect financial data streams from anomalies.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Node.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Express.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">IndexedDB</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Full Stack Architecture</span>
-                    </div>
-                </div>
-
-                <!-- Card 3: FlashSale -->
-                <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col justify-between hover:border-neutral-800 transition-all duration-300">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] tracking-wider text-neutral-500 font-mono">Jul 2026 - Jul 2026</span>
-                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">
-                            <a href="https://github.com/hamidrezaghavami/FlashSale" target="_blank" class="hover:underline flex items-center gap-2">
-                                FlashSale
-                                <svg class="w-3 h-3 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">A high throughput order ingestion system using Nginx, Docker, and Kafka to absorb massive traffic spikes and protect the database.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Docker</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Node.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Express.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Kafka</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Nginx</span>
-                    </div>
-                </div>
-
-                <!-- Card 4: Voltex -->
-                <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col justify-between hover:border-neutral-800 transition-all duration-300">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] tracking-wider text-neutral-500 font-mono">Jun 2026 - Jul 2026</span>
-                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25v-4.5m13.5 4.5v-4.5m-9 9h4.5m-4.5-13.5h4.5m-6 3h7.5c.621 0 1.125.504 1.125 1.125v7.5c0 .621-.504 1.125-1.125 1.125h-7.5A1.125 1.125 0 0 1 6 15.375v-7.5C6 7.254 6.504 6.75 7.125 6.75z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">
-                            <a href="https://github.com/hamidrezaghavami/Voltex" target="_blank" class="hover:underline flex items-center gap-2">
-                                Voltex
-                                <svg class="w-3 h-3 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">Voltex is a containerized, high performance backend infrastructure designed to simulate a production grade API gateway and caching layer.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Docker</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Node.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Express.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Prisma ORM</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Nginx</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Redis</span>
-                    </div>
-                </div>
-
-                <!-- Card 5: NexusQueue -->
-                <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col justify-between hover:border-neutral-800 transition-all duration-300">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] tracking-wider text-neutral-500 font-mono">Jul 2026 - Aug 2026</span>
-                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm0 5.25h.007v.008H3.75V12zm0 5.25h.007v.008H3.75v-.008z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">
-                            <a href="https://github.com/hamidrezaghavami/NexusQueue" target="_blank" class="hover:underline flex items-center gap-2">
-                                NexusQueue
-                                <svg class="w-3 h-3 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">A hybrid, high-throughput in-memory background job processing engine.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Docker</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Node.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">PostgreSQL</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Jest/k6-load-testing</span>
-                    </div>
-                </div>
-
-                <!-- Card 6: RevertEngine -->
-                 <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col justify-between hover:border-neutral-800 transition-all duration-300">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] tracking-wider text-neutral-500 font-mono">Aug 2026 - Aug 2026</span>
-                             <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">
-                            <a href="https://github.com/hamidrezaghavami/RevertEngine" target="_blank" class="hover:underline flex items-center gap-2">
-                                RevertEngine
-                                 <svg class="w-3 h-3 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">A high-performance, real-time Undo/Redo state management service built with Node.js and Stack Data Structures.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Node.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Express.js</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Redis</span>
-                        <span class="text-[10px] font-mono bg-neutral-900 px-2 py-1 rounded text-neutral-300">Data Structures</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <!-- OPEN SOURCE CONTRIBUTIONS SECTION -->
-        <section id="open-source" class="py-16 border-t border-neutral-900/60 relative z-20">
-            <div class="flex items-center justify-between mb-8">
-                <div>
-                    <div class="text-xs font-medium tracking-[0.15em] text-neutral-400">Open Source Contributions</div>
-                    <p class="text-[11px] text-neutral-500 font-mono mt-1">Active contributor to Node.js core</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 flex items-center gap-1.5">
-                        <svg class="w-3 h-3 text-neutral-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                        nodejs/node
-                    </span>
-                </div>
-            </div>
-            
-            <div class="space-y-4">
-                <!-- PR 1: Merged (PR #64238) -->
-                <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-neutral-800 transition-all duration-300">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-3 mb-3">
-                            <!-- GitHub Merged Badge -->
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-950/60 text-purple-400 border border-purple-800/50 font-medium">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v9m0 0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM6 6a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm0 0v12m0 0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"/></svg>
-                                MERGED
-                            </span>
-                            <span class="text-[10px] font-mono text-neutral-500">nodejs/node #64238</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">
-                            <a href="https://github.com/nodejs/node/pull/64238" target="_blank" class="hover:underline inline-flex items-center gap-2">
-                                util: allow single-line format when break length is infinite
-                                <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed">Optimization for Node.js <code class="text-[11px] font-mono bg-neutral-900 px-1.5 py-0.5 rounded text-neutral-300">util.inspect()</code> formatting logic to respect single-line output formatting when breakLength is set to Infinity.</p>                    
-                    </div>
-                </div>
-
-                <!-- PR 2: Merged (PR #64397) -->
-                 <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-neutral-800 transition-all duration-300">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-3 mb-3">
-                            <!-- GitHub Merged Badge -->
-                             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-950/60 text-purple-400 border border-purple-800/50 font-medium">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v9m0 0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM6 6a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm0 0v12m0 0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"/></svg>
-                                MERGED
-                            </span>
-                            <span class="text-[10px] font-mono text-neutral-500">nodejs/node #64397</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">
-                            <a href="https://github.com/nodejs/node/pull/64397" target="_blank" class="hover:underline inline-flex items-center gap-2">
-                                fs: return Buffer from mkdtemp when prefix is a Buffer
-                                <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                            </a>
-                        </h3>
-                        <p class="text-xs text-neutral-400 leading-relaxed">Core Node.js <code class="text-[11px] font-mono bg-neutral-900 px-1.5 py-0.5 rounded text-neutral-300">fs</code> module fix ensuring return type consistency by returning a Buffer when <code class="text-[11px] font-mono bg-neutral-900 px-1.5 py-0.5 rounded text-neutral-300">mkdtemp</code> receives a Buffer prefix.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- PR 3: Merged (PR #64188) -->
-            <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-neutral-800 transition-all duration-300">
-                <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-3">
-                        <!-- GitHub Merged Badge -->
-                         <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-950/60 text-purple-400 border border-purple-800/50 font-medium">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v9m0 0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM6 6a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm0 0v12m0 0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"/></svg>
-                            MERGED
-                        </span>
-                        <span class="text-[10px] font-mono text-neutral-500">nodejs/node #64188</span>
-                    </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">
-                        <a href="https://github.com/nodejs/node/pull/64188" target="_blank" class="hover:underline inline-flex items-center gap-2">
-                            doc: fix typo in node-config-schema.json
-                            <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                        </a>
-                    </h3>
-                    <p class="text-xs text-neutral-400 leading-relaxed">Fixes a schema typo in Node.js core <code class="text-[11px] font-mono bg-neutral-900 px-1.5 py-0.5 rounded text-neutral-300">node-config-schema.json</code> to maintain accurate configuration specifications.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PR 3: Open (PR #64341) -->
-         <div class="bg-neutral-950 border border-neutral-900/80 rounded-lg p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-neutral-800 transition-all duration-300">
-            <div class="flex-1">
-                <div class="flex items-center gap-3 mb-3">
-                    <!-- GitHub Open PR Badge -->
-                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 font-medium">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        OPEN
-                    </span>
-                    <span class="text-[10px] font-mono text-neutral-500">nodejs/node #64341</span>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-2">
-                    <a href="https://github.com/nodejs/node/pull/64341" target="_blank" class="hover:underline inline-flex items-center gap-2">
-                        fs: accept all valid utf8 values in fast paths
-                        <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
-                    </a>
+        <!-- 2. NEWSLETTER BAR -->
+        <div class="w-full bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+                <h3 class="font-medium text-slate-200 flex items-center gap-2 mb-1">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full"></span> Architecture Dispatch
                 </h3>
-                <p class="text-xs text-neutral-400 leading-relaxed">Introduces an <code class="text-[11px] font-mono bg-neutral-900 px-1.5 py-0.5 rounded text-neutral-300">isUtf8Encoding</code> helper to ensure <code class="text-[11px] font-mono bg-neutral-900 px-1.5 py-0.5 rounded text-neutral-300">fs</code> methods utilize optimized C++ fast paths across all valid UTF-8 string casing variations.</p>
+                <p class="text-sm text-slate-400">Systems breakdowns and telemetry analysis delivered directly.</p>
+            </div>
+            <div class="flex w-full md:w-auto gap-2">
+                <input type="email" placeholder="engineer@domain.com" class="w-full md:w-64 px-4 py-2 bg-black/50 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-slate-500 text-slate-200">
+                <button class="px-6 py-2 bg-white text-black font-medium text-sm rounded-xl hover:bg-slate-200 transition-colors">Subscribe</button>
             </div>
         </div>
 
-        <!-- TECHNOLOGY STACK SECTION -->
-        <section class="py-16 border-t border-neutral-900/60 relative z-20">
-            <div class="text-xs font-medium tracking-[0.15em] text-neutral-400 mb-8">Technology Stack</div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Box 1: Backend & Core -->
-                <div class="bg-neutral-950 border border-neutral-900/60 rounded-lg p-6">
-                    <div class="text-[11px] font-medium tracking-widest text-neutral-500 uppercase mb-4">01. Backend & Core</div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">JavaScript</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Node.js</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Express.js</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">RESTful APIs</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">OOP</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Data Structures</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">WebSocket</span>
+        <p class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Selected Systems & Contributions</p>
+
+        <!-- 3. BENTO GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Card 1: CapitalGuard (Spans 2 columns) -->
+            <div class="md:col-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-xl font-semibold">CapitalGuard</h2>
+                        <a href="https://capital-guard-five.vercel.app/" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors">View System ↗</a>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-6 max-w-md">Decoupled FinTech engine handling async ETL pipelines and real-time behavioral risk analytics.</p>
+                </div>
+                
+                <!-- CLICKABLE VIDEO/IMAGE PLACEHOLDER -->
+                <!-- Replace href with your raw video link or add a <video> tag inside this <a> block -->
+                <a href="https://capital-guard-five.vercel.app/" target="_blank" class="block w-full h-48 md:h-64 bg-black/40 rounded-2xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden group-hover:border-white/20 transition-all cursor-pointer">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:bg-white/20 transition-all z-10">
+                        <i data-lucide="play" class="w-5 h-5 ml-1"></i>
+                    </div>
+                    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-500 to-transparent"></div>
+                </a>
+
+                <div class="text-xs text-slate-500 font-medium">Node.js • PostgreSQL • Indexed DB</div>
+            </div>
+
+            <!-- Card 2: Node.js Core (Spans 1 col, 2 rows) -->
+            <div class="md:col-span-1 md:row-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold">Node.js Core</h2>
+                    <span class="px-2 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-bold rounded-full border border-emerald-500/20 tracking-wider">UPSTREAM</span>
+                </div>
+                
+                <div class="flex-1 space-y-4">
+                    <!-- PR 1 -->
+                    <div class="border-b border-white/5 pb-4">
+                        <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
+                        <a href="https://github.com/nodejs/node/pull/64238" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64238 - util: allow single-line format when break length is infinite</a>
+                    </div>
+                    <!-- PR 2 -->
+                    <div class="border-b border-white/5 pb-4">
+                        <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
+                        <a href="https://github.com/nodejs/node/pull/64397" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64397 - fs: return Buffer from mkdtemp when prefix is a Buffer</a>
+                    </div>
+                    <!-- PR 3 -->
+                    <div class="border-b border-white/5 pb-4">
+                        <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
+                        <a href="https://github.com/nodejs/node/pull/64188" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64188 - doc: fix typo in node-config-schema.json</a>
+                    </div>
+                    <!-- PR 4 -->
+                    <div class="pt-2">
+                        <span class="inline-block px-2 py-0.5 bg-purple-500/20 text-purple-400 text-[10px] rounded mb-2 border border-purple-500/30">OPEN</span>
+                        <a href="https://github.com/nodejs/node/pull/64341" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors">#64341 - fs: accept all valid utf8 values in fast paths</a>
                     </div>
                 </div>
 
-                <!-- Box 2: Infrastructure & Tools -->
-                <div class="bg-neutral-950 border border-neutral-900/60 rounded-lg p-6">
-                    <div class="text-[11px] font-medium tracking-widest text-neutral-500 uppercase mb-4">02. Infrastructure & Tools</div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Git</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">GitHub</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Ubuntu Linux</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Jest</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">k6-load-testing</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Postman</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Docker</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Grafana</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Prometheus</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Zipkin</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">CI/CD</span>
-                    </div>
-                </div>
-
-                <!-- Box 3: Data & Security -->
-                <div class="bg-neutral-950 border border-neutral-900/60 rounded-lg p-6">
-                    <div class="text-[11px] font-medium tracking-widest text-neutral-500 uppercase mb-4">03. Data & Security</div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">PostgreSQL</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Redis</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Prisma ORM</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">IndexedDB</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">JWT</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">OAuth2</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Passport.js</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Nginx</span>
-                        <span class="text-xs bg-neutral-900/50 border border-neutral-900 text-neutral-300 px-3 py-1.5 rounded-md">Apache Kafka</span>
-                    </div>
+                <div class="mt-8 flex justify-between items-center text-xs text-slate-500">
+                    <span class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> Active Contributor</span>
+                    <a href="https://github.com/nodejs/node/pulls?q=is%:pr+author%3Ahamidrezaghavami" target="_blank" class="hover:text-slate-300">github/node ↗</a>
                 </div>
             </div>
-        </section>
 
-        <!-- FOOTER -->
-        <footer class="w-full py-12 text-center border-t border-neutral-900/40 relative z-20">
-            <p class="text-[9px] tracking-[0.2em] text-neutral-600 font-mono">© 2026 SYSTEM_ARCHITECT. ALL RIGHTS RESERVED.</p>
-        </footer>
+            <!-- Card 3: YouTube (Square) -->
+            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between">
+                <h2 class="text-lg font-semibold mb-6">Engineering Deep Dives</h2>
+                
+                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="block w-full aspect-video bg-black/40 rounded-xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden group cursor-pointer hover:border-white/20 transition-all">
+                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:bg-red-500/80 transition-all z-10">
+                        <i data-lucide="play" class="w-4 h-4 ml-0.5"></i>
+                    </div>
+                </a>
+                
+                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors mt-auto">Watch on YouTube ↗</a>
+            </div>
 
+            <!-- Card 4: X / Telemetry (Wide) -->
+            <div class="md:col-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-2">
+                        <i data-lucide="twitter" class="w-4 h-4"></i> Real-Time Logs on X
+                    </h2>
+                </div>
+                <p class="text-sm text-slate-300 mb-8 leading-relaxed">
+                    I post daily about Node.js internals, backend scaling, and low-level system design. Drop a follow for raw engineering postmortems and architectural breakdowns.
+                </p>
+                <div class="flex justify-between items-center mt-auto border-t border-white/5 pt-4">
+                    <span class="text-xs text-slate-500">Active Daily</span>
+                    <a href="https://x.com/DeeepNode" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors">Read the feed on X ↗</a>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <!-- AMBIENT INTERACTION LOGIC -->
     <script>
-        const body = document.body;
-        const glowElement = document.getElementById('ambient-glow');
-
-        // 1. Mouse Tracking Gradient
-        window.addEventListener('mousemove', (e) => {
-            glowElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-            glowElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-        });
-
-        // 2. Dynamic Scroll Background Shift
-        window.addEventListener('scroll', () => {
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            if (maxScroll <= 0) return;
-            
-            const scrollPercent = window.scrollY / maxScroll;
-            
-            // Interpolate color smoothly from absolute deep charcoal (#050505) to pitch-black (#000000)
-            if (scrollPercent > 0.4) {
-                body.style.backgroundColor = '#010101';
-            } else {
-                body.style.backgroundColor = '#050505';
-            }
-        });
+        // Initialize Lucide Icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
