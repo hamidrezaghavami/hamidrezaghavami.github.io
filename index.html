@@ -88,21 +88,19 @@
         <p class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Selected Systems & Contributions</p>
 
         <!-- 3. BENTO GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <!-- Card 1: CapitalGuard (Spans 2 columns, Row 1) -->
             <div class="md:col-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between group h-full">
                 <div>
                     <div class="flex justify-between items-start mb-4">
                         <h2 class="text-xl font-semibold">CapitalGuard</h2>
-                        <div class="w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all">
-                            <video src="video.mp4" controls class="w-full h-full object-cover"></video>
-                        </div>
+                        <a href="https://capital-guard-five.vercel.app/" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors">View System ↗</a>
                     </div>
                     <p class="text-sm text-slate-400 mb-6 max-w-md">Decoupled FinTech engine handling async ETL pipelines and real-time behavioral risk analytics.</p>
                 </div>
                 
-                <!-- Video block: Replaced <a> with <div>, added 'controls', removed 'autoplay' & 'muted' -->
+                <!-- Video block: Single copy, properly placed -->
                 <div class="w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all">
                     <video src="video.mp4" controls class="w-full h-full object-cover"></video>
                 </div>
@@ -179,7 +177,5 @@
             lucide.createIcons();
         });
     </script>
-</body>
-</html>
 </body>
 </html>
