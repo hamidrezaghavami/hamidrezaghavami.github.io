@@ -1,164 +1,741 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamid Reza Ghavami | DeepNode</title>
-    
-    <!-- Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        slate: { 950: '#0b0f19' }
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HamidReza Ghavami - Portfolio</title>
+  <meta name="description" content="HamidReza Ghavami - Backend Engineer & Node.js Core Contributor.">
+
+  <!-- Inter & Geist fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['Geist Mono', 'monospace'],
+          },
+          colors: {
+            border: "hsl(var(--border))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            muted: {
+              DEFAULT: "hsl(var(--muted))",
+              foreground: "hsl(var(--muted-foreground))",
+            },
+            card: {
+              DEFAULT: "hsl(var(--card))",
+              foreground: "hsl(var(--card-foreground))",
+            },
+          },
         }
-    </script>
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 240 10% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+      --border: 240 5.9% 90%;
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 46.1%;
+    }
+
+    .dark {
+      --background: 240 10% 3.9%;
+      --foreground: 0 0% 98%;
+      --card: 240 10% 3.9%;
+      --card-foreground: 0 0% 98%;
+      --border: 240 3.7% 15.9%;
+      --muted: 240 3.7% 15.9%;
+      --muted-foreground: 240 5% 64.9%;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-feature-settings: "rlig" 1, "calt" 1;
+    }
+
+    .dock-icon {
+      transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .dock-icon:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+  </style>
 </head>
-<body class="bg-black text-slate-50 font-sans antialiased relative min-h-screen overflow-x-hidden">
 
-    <!-- AI / Programming Cyber-Grid Background -->
-    <div class="fixed inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
-    
-    <!-- Ambient Background Gradients for Deep Space Vibe -->
-    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-900/10 blur-[120px] pointer-events-none z-0"></div>
+<body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-12 sm:py-20 px-6 relative selection:bg-neutral-800 selection:text-white">
 
-    <div class="max-w-5xl mx-auto px-6 py-16 md:py-24 relative z-10">
+    <!-- TOP PAGE FLICKERING GRID BANNER -->
+  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-36 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_15%,transparent_95%)] z-0">
+    <canvas class="flickering-grid-canvas w-full h-full"></canvas>
+  </div>
 
-        <!-- 1. HERO SECTION -->
-        <header class="mb-12">
-            <div class="flex items-center justify-between mb-16">
-                <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span class="font-semibold text-sm tracking-wide">DeepNode</span>
-                </div>
-                <div class="text-xs px-3 py-1 bg-white/5 border border-white/10 rounded-full text-slate-400">
-                    System Operational
-                </div>
-            </div>
+  <!-- HERO SECTION -->
+  <section id="hero" class="space-y-6">
+    <div class="flex items-center justify-between gap-4">
+      <div class="flex flex-col space-y-1.5 flex-1">
+        <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground flex items-center gap-2">
+          Hi, I'm HamidReza <span class="inline-block origin-[70%_70%]">👋</span>
+        </h1>
+        <p class="text-muted-foreground text-base sm:text-lg pt-1 leading-relaxed">
+          Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.
+        </p>
+      </div>
 
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
-                High-Performance <br class="hidden md:block" /> Backend Systems.
-            </h1>
+      <!-- Avatar Badge -->
+      <div class="relative flex shrink-0 overflow-hidden rounded-full size-24 sm:size-28 border border-border shadow-sm">
+        <img src="./image.jpg" alt="HamidReza Ghavami" class="aspect-square h-full w-full object-cover">
+      </div>
+    </div>
+  </section>
 
-            <!-- Social Dock -->
-            <div class="flex flex-wrap gap-4">
-                <a href="https://github.com/hamidrezaghavami" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                    <span>GitHub ↗</span>
-                </a>
-                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M2.5 7.1C2.5 7.1 2 9.5 2 12c0 2.5.5 4.9.5 4.9.3 1.1 1.2 2 2.3 2.3 2.5.5 7.2.5 7.2.5s4.7 0 7.2-.5c1.1-.3 2-1.2 2.3-2.3.5-2.4.5-4.9.5-4.9s0-2.4-.5-4.9c-.3-1.1-1.2-2-2.3-2.3-2.5-.5-7.2-.5-7.2-.5s-4.7 0-7.2.5c-1.1.3-2 1.2-2.3 2.3z"/><path d="M9.5 8.5l6 3.5-6 3.5v-7z"/></svg>
-                    <span>YouTube ↗</span>
-                </a>
-                <a href="https://x.com/DeeepNode" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-                    <span>X ↗</span>
-                </a>
-                <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" class="flex items-center space-x-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all text-sm text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    <span>LinkedIn ↗</span>
-                </a>
-            </div>
-        </header>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="mt-14 space-y-3">
+    <h2 class="text-xl font-bold tracking-tight text-foreground">About</h2>
+    <div class="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-3">
+      <p>
+        I'm a backend engineer dedicated to robust system architectures, microservices, and database guarantees where it's mathematically impossible to lose state or capital.
+      </p>
+      <p>
+        Beyond building applications, I contribute directly to open source runtime internals at <strong class="text-foreground">Node.js core</strong> and craft financial preservation engines.
+      </p>
+    </div>
+  </section>
 
-        <p class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">Selected Systems & Contributions</p>
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="mt-14 space-y-4">
+    <h2 class="text-xl font-bold tracking-tight text-foreground">Education</h2>
 
-        <!-- 3. BENTO GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!-- Card 1: CapitalGuard (Spans 2 columns, Row 1) -->
-            <div class="md:col-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between group h-full">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-xl font-semibold">CapitalGuard</h2>
-                        <a href="https://capital-guard-five.vercel.app/" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors">View System ↗</a>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-6 max-w-md">Decoupled FinTech engine handling async ETL pipelines and real-time behavioral risk analytics.</p>
-                </div>
-                
-                <div class="w-full h-48 md:h-64 bg-black rounded-2xl border border-white/5 mb-6 relative overflow-hidden group-hover:border-white/20 transition-all">
-                    <video src="video.mp4" controls class="w-full h-full object-cover"></video>
-                </div>
-
-                <div class="text-xs text-slate-500 font-medium">Node.js • FullStack development • Indexed DB</div>
-            </div>
-
-            <!-- Card 2: Node.js Core (Spans 1 col, 2 rows) -->
-            <div class="md:col-span-1 md:row-span-2 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col h-full">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-semibold">Node.js Core</h2>
-                    <span class="px-2 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-bold rounded-full border border-emerald-500/20 tracking-wider">UPSTREAM</span>
-                </div>
-                
-                <div class="flex-1 space-y-4">
-                    <div class="border-b border-white/5 pb-4">
-                        <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
-                        <a href="https://github.com/nodejs/node/pull/64238" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64238 - util: single-line format fix</a>
-                    </div>
-                    <div class="border-b border-white/5 pb-4">
-                        <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
-                        <a href="https://github.com/nodejs/node/pull/64397" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64397 - fs: mkdtemp Buffer returns</a>
-                    </div>
-                    <div class="border-b border-white/5 pb-4">
-                        <span class="inline-block px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] rounded mb-2 border border-emerald-500/30">MERGED</span>
-                        <a href="https://github.com/nodejs/node/pull/64188" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors mb-1">#64188 - doc: config-schema typo</a>
-                    </div>
-                    <div class="pt-2">
-                        <span class="inline-block px-2 py-0.5 bg-purple-500/20 text-purple-400 text-[10px] rounded mb-2 border border-purple-500/30">OPEN</span>
-                        <a href="https://github.com/nodejs/node/pull/64341" target="_blank" class="block text-sm font-medium text-slate-200 hover:text-white transition-colors">#64341 - fs: utf8 fast paths</a>
-                    </div>
-                </div>
-
-                <div class="mt-8 flex justify-between items-center text-xs text-slate-500">
-                    <span class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> Active Contributor</span>
-                    <a href="https://github.com/nodejs/node/pulls?q=is%3Apr+author%3Ahamidrezaghavami" target="_blank" class="hover:text-slate-300 transition-colors">github/node ↗</a>
-                </div>
-            </div>
-
-            <!-- Card 3: YouTube (Spans 1 column, Row 2) -->
-            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
-                <h2 class="text-lg font-semibold mb-6">DeepNode</h2>
-                <div class="w-full aspect-video bg-black/40 rounded-xl border border-white/5 flex items-center justify-center mb-6 relative overflow-hidden">
-                    <iframe class="w-full h-full object-cover rounded-xl" src="https://www.youtube.com/embed/srYlP0NRmmo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" class="text-xs text-slate-400 hover:text-white transition-colors mt-auto">Watch on YouTube ↗</a>
-            </div>
-
-            <!-- Card 4: X / Telemetry (Spans 1 column, Row 2) -->
-            <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between h-full">
-                <div class="flex justify-between items-start mb-4">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-                        Real-Time Logs on X
-                    </h2>
-                </div>
-                <div class="w-full flex-1 overflow-y-auto min-h-0 mb-4 flex justify-center rounded-xl">
-                    <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none">
-                        <a href="https://twitter.com/DeeepNode/status/2003824451314753725"></a>
-                    </blockquote>
-                </div>
-                <div class="flex justify-between items-center mt-auto border-t border-white/5 pt-4 shrink-0">
-                    <span class="text-xs text-slate-500">Active Daily</span>
-                    <a href="https://x.com/DeeepNode" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-400 hover:text-white transition-colors">Read feed ↗</a>
-                </div>
-            </div>
-
+    <a href="https://www.altinbas.edu.tr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
+      <!-- Circular University Logo Badge -->
+      <div class="relative flex shrink-0 overflow-hidden rounded-full size-12 border border-border bg-card p-1 shadow-sm items-center justify-center">
+        <div class="flex size-full items-center justify-center rounded-full bg-white overflow-hidden p-1">
+          <img src="./uni.webp" alt="Altınbaş Üniversitesi" class="size-full object-contain">
         </div>
+      </div>
+
+      <!-- University & Degree Info (No Dates) -->
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none group-hover:underline">
+            Altınbaş Üniversitesi
+          </h3>
+          <svg class="size-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+        </div>
+        <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+          Bachelor of Science - BS, Computer Engineering
+        </p>
+      </div>
+    </a>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="mt-14 space-y-3">
+    <h2 class="text-xl font-bold tracking-tight text-foreground">Skills</h2>
+    <div class="flex flex-wrap gap-2">
+      
+      <!-- JavaScript -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="size-4 rounded-[2px]">
+        JavaScript
+      </span>
+
+      <!-- Node.js -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-4">
+        Node.js
+      </span>
+
+      <!-- Express.js -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express.js" class="size-4 dark:invert">
+        Express.js
+      </span>
+
+      <!-- PostgreSQL -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="size-4">
+        PostgreSQL
+      </span>
+
+      <!-- Prisma ORM -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" alt="Prisma ORM" class="size-4 dark:invert">
+        Prisma ORM
+      </span>
+
+      <!-- Passport.js -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-emerald-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+        Passport.js
+      </span>
+
+      <!-- Docker -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" class="size-4">
+        Docker
+      </span>
+
+      <!-- Ubuntu Linux -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu Linux" class="size-4">
+        Ubuntu Linux
+      </span>
+
+      <!-- Redis -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis" class="size-4">
+        Redis
+      </span>
+
+      <!-- ACID Systems -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-sky-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+        ACID Systems
+      </span>
+
+      <!-- Data Structure & Algorithms -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Data Structure &amp; Algorithms
+      </span>
+
+      <!-- NginX -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" alt="NginX" class="size-4">
+        NginX
+      </span>
+
+      <!-- OOP -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        OOP
+      </span>
+
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS SECTION -->
+  <section id="projects" class="mt-14 space-y-8">
+    <div class="flex flex-col items-center justify-center space-y-3 text-center">
+      <div class="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-xs font-medium tracking-tight">
+        My Projects
+      </div>
+      <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Featured Work</h2>
+      <p class="text-muted-foreground text-sm sm:text-base max-w-[500px]">
+        A live full-stack financial platform and an atomic ledger database system.
+      </p>
     </div>
 
-    <!-- Load your 3D background -->
-    <script src="script.js"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <!-- Project 1: CapitalGuard -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
+        <!-- Video Header (Autoplay + Cache-Busted + Click to Pause/Play) -->
+        <div 
+          class="relative h-44 w-full overflow-hidden bg-neutral-950 group cursor-pointer" 
+          onclick="if (this.querySelector('video').paused) { this.querySelector('video').play(); this.querySelector('.play-overlay').style.opacity = '0'; } else { this.querySelector('video').pause(); this.querySelector('.play-overlay').style.opacity = '1'; }"
+        >
+          <video 
+            src="./video.mp4?v=2" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0';"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1';"
+            class="w-full h-full object-cover pointer-events-none"
+          ></video>
+
+          <!-- Play/Pause Indicator Overlay (Automatically hides when playing) -->
+          <div class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+            <div class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+              <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+
+          <!-- Top Action Badges -->
+          <div class="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
+            <a href="https://capital-guard-five.vercel.app" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </a>
+            <a href="https://github.com/hamidrezaghavami/CapitalGuard" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
+          <div class="space-y-1.5">
+            <a href="https://capital-guard-five.vercel.app" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
+              <h3 class="font-bold tracking-tight text-base text-foreground">CapitalGuard</h3>
+              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <span class="text-xs text-muted-foreground block">May 2026 - Oct 2026</span>
+            <p class="text-xs text-muted-foreground leading-relaxed pt-1">
+              A minimalist fintech engine prioritizing capital preservation through mathematical rigor. Generates institutional-grade "Invisible P&amp;L" by adjusting standard trade results for global inflation with real-time risk gauges.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Node.js</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Express.js</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">REST API</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Fintech Engine</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Full-Stack</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Iron-Clad-Ledger -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
+        <!-- Visual Terminal Mockup with Pinned Source Badge -->
+        <div class="relative h-44 w-full bg-neutral-950 p-4 flex flex-col justify-between font-mono text-xs select-none">
+          <!-- Top Right Action Badge (Source) -->
+          <div class="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5">
+            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-sans font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Source
+            </a>
+          </div>
+
+          <!-- Terminal Window Dots -->
+          <div class="flex items-center justify-between text-neutral-400">
+            <div class="flex gap-1.5">
+              <span class="size-2 rounded-full bg-rose-500/80"></span>
+              <span class="size-2 rounded-full bg-amber-500/80"></span>
+              <span class="size-2 rounded-full bg-emerald-500/80"></span>
+            </div>
+          </div>
+
+          <!-- Terminal Output -->
+    <div class="space-y-1 my-auto text-[10px] sm:text-[11px]">
+      <div class="text-neutral-400 truncate">
+        <span class="text-sky-400">$</span> ledger transfer --amt 15000.00 --from A --to B
+      </div>
+      <div class="flex items-center gap-1.5 text-neutral-500">
+        <span>├── 🔒 Acquired: SERIALIZABLE</span>
+        <span class="text-emerald-400 font-medium">[OK]</span>
+      </div>
+      <div class="flex items-center gap-1.5 text-neutral-500">
+        <span>├── 🔍 Invariant Check: &Delta; = 0.00</span>
+        <span class="text-purple-400 font-medium">[PASS]</span>
+      </div>
+      <!-- Transfer graphic -->
+      <div class="my-1 pl-3 py-1 border-l border-neutral-800 text-[10px] text-neutral-400 font-mono flex items-center gap-2">
+        <span class="text-rose-400/90">[Acc_A]</span>
+        <span class="text-neutral-600">&rarr; 15000.00 USD &rarr;</span>
+        <span class="text-emerald-400/90">[Acc_B]</span>
+      </div>
+      <div class="text-emerald-400 text-[10px] font-medium pl-1">
+        &bull; Transaction committed: balance preserved
+      </div>
+    </div>
+
+        <!-- Content Section -->
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
+          <div class="space-y-1.5">
+            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
+              <h3 class="font-bold tracking-tight text-base text-foreground">Iron-Clad-Ledger</h3>
+              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <span class="text-xs text-muted-foreground block">Nov 2025 - Jan 2026</span>
+            <p class="text-xs text-muted-foreground leading-relaxed pt-1">
+              Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Node.js</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">PostgreSQL</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Prisma</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Docker</span>
+            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">CLI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTRIBUTIONS SECTION -->
+  <section id="contributions" class="mt-14 space-y-6">
+    <h2 class="text-xl font-bold tracking-tight text-foreground">Node.js Core Contributions</h2>
+
+    <div class="flex flex-col space-y-6">
+
+      <!-- PR 1: #64238 -->
+      <div class="flex items-start gap-4 group cursor-pointer select-none" onclick="this.querySelector('.pr-desc').classList.toggle('hidden'); this.querySelector('.pr-chev').classList.toggle('rotate-90');">
+        <div class="relative flex shrink-0 overflow-hidden rounded-full size-12 border border-border bg-card p-1 shadow-sm items-center justify-center">
+          <div class="flex size-full items-center justify-center rounded-full bg-emerald-500/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-6">
+          </div>
+        </div>
+
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                  nodejs/node #64238
+                </h3>
+                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+              </div>
+              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+                util: single-line format fix
+              </p>
+            </div>
+
+            <div class="flex flex-col items-end shrink-0 text-right">
+              <span class="text-xs sm:text-sm text-muted-foreground tabular-nums">
+                Merged &bull; Sep 2026
+              </span>
+              <a href="https://github.com/nodejs/node/pull/64238" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+                View PR ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Fixed edge-case single-line formatting logic in core utility inspection methods.
+          </div>
+        </div>
+      </div>
+
+      <!-- PR 2: #64397 -->
+      <div class="flex items-start gap-4 group cursor-pointer select-none" onclick="this.querySelector('.pr-desc').classList.toggle('hidden'); this.querySelector('.pr-chev').classList.toggle('rotate-90');">
+        <div class="relative flex shrink-0 overflow-hidden rounded-full size-12 border border-border bg-card p-1 shadow-sm items-center justify-center">
+          <div class="flex size-full items-center justify-center rounded-full bg-emerald-500/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-6">
+          </div>
+        </div>
+
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                  nodejs/node #64397
+                </h3>
+                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+              </div>
+              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+                fs: mkdtemp Buffer returns
+              </p>
+            </div>
+
+            <div class="flex flex-col items-end shrink-0 text-right">
+              <span class="text-xs sm:text-sm text-muted-foreground tabular-nums">
+                Merged &bull; Sep 2026
+              </span>
+              <a href="https://github.com/nodejs/node/pull/64397" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+                View PR ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Ensured proper Buffer return values in filesystem <code class="text-foreground">mkdtemp</code> operations. Linked with merged co-authored commit <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> alongside core maintainer <strong class="text-foreground">@aduh95</strong>.
+          </div>
+        </div>
+      </div>
+
+      <!-- PR 3: #64188 -->
+      <div class="flex items-start gap-4 group cursor-pointer select-none" onclick="this.querySelector('.pr-desc').classList.toggle('hidden'); this.querySelector('.pr-chev').classList.toggle('rotate-90');">
+        <div class="relative flex shrink-0 overflow-hidden rounded-full size-12 border border-border bg-card p-1 shadow-sm items-center justify-center">
+          <div class="flex size-full items-center justify-center rounded-full bg-emerald-500/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-6">
+          </div>
+        </div>
+
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                  nodejs/node #64188
+                </h3>
+                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+              </div>
+              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+                doc: config-schema typo
+              </p>
+            </div>
+
+            <div class="flex flex-col items-end shrink-0 text-right">
+              <span class="text-xs sm:text-sm text-muted-foreground tabular-nums">
+                Merged &bull; Sep 2026
+              </span>
+              <a href="https://github.com/nodejs/node/pull/64188" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+                View PR ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Corrected configuration schema documentation typing to accurately reflect runtime behavior.
+          </div>
+        </div>
+      </div>
+
+      <!-- PR 4: #64341 -->
+      <div class="flex items-start gap-4 group cursor-pointer select-none" onclick="this.querySelector('.pr-desc').classList.toggle('hidden'); this.querySelector('.pr-chev').classList.toggle('rotate-90');">
+        <div class="relative flex shrink-0 overflow-hidden rounded-full size-12 border border-border bg-card p-1 shadow-sm items-center justify-center">
+          <div class="flex size-full items-center justify-center rounded-full bg-emerald-500/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-6">
+          </div>
+        </div>
+
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                  nodejs/node #64341
+                </h3>
+                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+              </div>
+              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+                fs: utf8 fast paths
+              </p>
+            </div>
+
+            <div class="flex flex-col items-end shrink-0 text-right">
+              <span class="text-xs sm:text-sm text-emerald-500 font-medium tabular-nums">
+                Open &bull; In Review
+              </span>
+              <a href="https://github.com/nodejs/node/pull/64341" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+                View PR ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Fast-path optimization for filesystem UTF-8 string encoding resolutions in core I/O operations.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="mt-20 mb-28">
+    <div class="relative rounded-2xl border border-border bg-card px-6 py-12 sm:py-14 text-center shadow-sm">
+      
+      <!-- Overlapping Top Pill Badge -->
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20 rounded-xl bg-foreground text-background px-4 py-1 text-xs sm:text-sm font-medium tracking-tight shadow-sm ring-4 ring-background">
+        Contact
+      </div>
+
+      <!-- Inner Padded Pixel-Matrix Header -->
+      <div class="pointer-events-none absolute inset-x-1.5 top-1.5 h-32 overflow-hidden rounded-t-xl [mask-image:radial-gradient(ellipse_85%_90%_at_50%_0%,#000_25%,transparent_100%)]">
+        <canvas id="flickering-grid" class="w-full h-full"></canvas>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 space-y-3 max-w-[540px] mx-auto pt-2">
+        <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">
+          Get in Touch
+        </h2>
+        <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
+          Want to chat? Just shoot me a dm 
+          <a href="https://x.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on twitter</a> 
+          and I'll respond whenever I can. I will ignore all soliciting.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIXED FLOATING DOCK (Magic UI Fisheye Magnification) -->
+  <div class="fixed inset-x-0 bottom-6 z-50 pointer-events-none flex justify-center px-4">
+    <nav id="magic-dock" class="pointer-events-auto flex items-center gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50">
+      
+      <!-- Home -->
+      <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <svg class="w-[45%] h-[45%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </a>
+
+      <!-- Divider -->
+      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0"></div>
+
+      <!-- GitHub -->
+      <a href="https://github.com/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <svg class="w-[45%] h-[45%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <svg class="w-[45%] h-[45%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 1 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.39 9.74v-8.37H5.07v8.37h2.78z"/>
+        </svg>
+      </a>
+
+      <!-- X / Twitter -->
+      <a href="https://x.com/hamidrghavami" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <svg class="w-[45%] h-[45%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <svg class="w-[45%] h-[45%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+
+      <!-- Divider -->
+      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0"></div>
+
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <!-- Sun (Shown in Dark Mode) -->
+        <svg class="w-[45%] h-[45%] hidden dark:block pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon (Shown in Light Mode) -->
+        <svg class="w-[45%] h-[45%] block dark:hidden pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+    </nav>
+  </div>
+
+  <!-- COMBINED SCRIPT: Theme Toggle + Dock Fisheye + FlickeringGrid Canvas -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Theme Toggle
+      const toggleBtn = document.getElementById("theme-toggle");
+      const htmlEl = document.documentElement;
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          htmlEl.classList.toggle("dark");
+        });
+      }
+
+      // 2. Magic UI Dock Fisheye Magnification
+      const dock = document.getElementById("magic-dock");
+      if (dock) {
+        const items = dock.querySelectorAll(".dock-item");
+        const baseSize = 40;
+        const maxScaleSize = 60;
+        const distanceLimit = 135;
+
+        dock.addEventListener("mousemove", (e) => {
+          items.forEach((item) => {
+            const rect = item.getBoundingClientRect();
+            const itemCenterX = rect.left + rect.width / 2;
+            const dist = Math.abs(e.clientX - itemCenterX);
+
+            let size = baseSize;
+            if (dist < distanceLimit) {
+              const ratio = Math.cos((dist / distanceLimit) * (Math.PI / 2));
+              size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
+            }
+
+            item.style.width = `${size}px`;
+            item.style.height = `${size}px`;
+            item.style.transition = "width 0.04s ease-out, height 0.04s ease-out";
+          });
+        });
+
+        dock.addEventListener("mouseleave", () => {
+          items.forEach((item) => {
+            item.style.transition = "width 0.25s cubic-bezier(0.22, 1, 0.36, 1), height 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
+            item.style.width = `${baseSize}px`;
+            item.style.height = `${baseSize}px`;
+          });
+        });
+      }
+
+      // 3. Multi-Canvas Magic UI FlickeringGrid (Top Banner + Contact Card)
+      const canvases = document.querySelectorAll("#flickering-grid, .flickering-grid-canvas");
+      canvases.forEach((canvas) => {
+        const ctx = canvas.getContext("2d");
+        const squareSize = 2.5;
+        const gridGap = 2.5;
+        const flickerChance = 0.025;
+        const maxOpacity = 0.24;
+
+        let cols = 0;
+        let rows = 0;
+        let squares = new Float32Array(0);
+
+        const setupCanvas = () => {
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.scale(dpr, dpr);
+
+          cols = Math.floor(rect.width / (squareSize + gridGap));
+          rows = Math.floor(rect.height / (squareSize + gridGap));
+          squares = new Float32Array(cols * rows);
+
+          for (let i = 0; i < squares.length; i++) {
+            squares[i] = Math.pow(Math.random(), 1.6) * maxOpacity;
+          }
+        };
+
+        const draw = () => {
+          const rect = canvas.getBoundingClientRect();
+          ctx.clearRect(0, 0, rect.width, rect.height);
+
+          const isDark = document.documentElement.classList.contains("dark");
+          const rgb = isDark ? "255, 255, 255" : "0, 0, 0";
+
+          for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+              const idx = i * rows + j;
+              if (Math.random() < flickerChance) {
+                squares[idx] = Math.pow(Math.random(), 1.6) * maxOpacity;
+              }
+              ctx.fillStyle = `rgba(${rgb}, ${squares[idx]})`;
+              ctx.fillRect(
+                i * (squareSize + gridGap),
+                j * (squareSize + gridGap),
+                squareSize,
+                squareSize
+              );
+            }
+          }
+          requestAnimationFrame(draw);
+        };
+
+        setupCanvas();
+        draw();
+        window.addEventListener("resize", setupCanvas);
+      });
+    });
+  </script>
+
 </body>
 </html>
