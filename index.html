@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,18 +68,30 @@
       font-feature-settings: "rlig" 1, "calt" 1;
     }
 
-    .dock-icon {
-      transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+    @keyframes magicBlurFade {
+      0% {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(-8px);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0);
+      }
     }
-    .dock-icon:hover {
-      transform: translateY(-3px) scale(1.1);
+
+    .blur-fade-item {
+      opacity: 0;
+      animation: magicBlurFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform, opacity, filter;
     }
   </style>
 </head>
 
 <body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-12 sm:py-20 px-6 relative selection:bg-neutral-800 selection:text-white">
 
-    <!-- TOP PAGE FLICKERING GRID BANNER -->
+  <!-- TOP PAGE FLICKERING GRID BANNER -->
   <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-36 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_15%,transparent_95%)] z-0">
     <canvas class="flickering-grid-canvas w-full h-full"></canvas>
   </div>
@@ -89,9 +101,9 @@
     <div class="flex items-center justify-between gap-4">
       <div class="flex flex-col space-y-1.5 flex-1">
         <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground flex items-center gap-2">
-          Hi, I'm HamidReza <span class="inline-block origin-[70%_70%]">👋</span>
+          <span data-i18n="hero_greeting">Hi, I'm HamidReza</span> <span class="inline-block origin-[70%_70%]"></span>
         </h1>
-        <p class="text-muted-foreground text-base sm:text-lg pt-1 leading-relaxed">
+        <p data-i18n="hero_sub" class="text-muted-foreground text-base sm:text-lg pt-1 leading-relaxed">
           Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.
         </p>
       </div>
@@ -105,20 +117,20 @@
 
   <!-- ABOUT SECTION -->
   <section id="about" class="mt-14 space-y-3">
-    <h2 class="text-xl font-bold tracking-tight text-foreground">About</h2>
+    <h2 data-i18n="about_title" class="text-xl font-bold tracking-tight text-foreground">About</h2>
     <div class="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-3">
-      <p>
-        I'm a backend engineer dedicated to robust system architectures, microservices, and database guarantees where it's mathematically impossible to lose state or capital.
+      <p data-i18n="about_p1">
+        Great backend engineering takes both technical precision and creative thinking. I approach software with a founder's mindset—helping businesses and engineering teams squash critical bugs, clean up slow architectures, and build fast, dependable backends.
       </p>
-      <p>
-        Beyond building applications, I contribute directly to open source runtime internals at <strong class="text-foreground">Node.js core</strong> and craft financial preservation engines.
+      <p data-i18n="about_p2">
+        From contributing bug fixes to <strong class="text-foreground">Node.js core</strong> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.
       </p>
     </div>
   </section>
 
   <!-- EDUCATION SECTION -->
   <section id="education" class="mt-14 space-y-4">
-    <h2 class="text-xl font-bold tracking-tight text-foreground">Education</h2>
+    <h2 data-i18n="edu_title" class="text-xl font-bold tracking-tight text-foreground">Education</h2>
 
     <a href="https://www.altinbas.edu.tr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
       <!-- Circular University Logo Badge -->
@@ -136,7 +148,7 @@
           </h3>
           <svg class="size-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
         </div>
-        <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+        <p data-i18n="edu_degree" class="text-xs sm:text-sm text-muted-foreground mt-1">
           Bachelor of Science - BS, Computer Engineering
         </p>
       </div>
@@ -145,7 +157,7 @@
 
   <!-- SKILLS SECTION -->
   <section id="skills" class="mt-14 space-y-3">
-    <h2 class="text-xl font-bold tracking-tight text-foreground">Skills</h2>
+    <h2 data-i18n="skills_title" class="text-xl font-bold tracking-tight text-foreground">Skills</h2>
     <div class="flex flex-wrap gap-2">
       
       <!-- JavaScript -->
@@ -205,13 +217,13 @@
       <!-- ACID Systems -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <svg class="size-4 text-sky-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-        ACID Systems
+        <span data-i18n="skill_acid">ACID Systems</span>
       </span>
 
       <!-- Data Structure & Algorithms -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <svg class="size-4 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        Data Structure &amp; Algorithms
+        <span data-i18n="skill_dsa">Data Structure &amp; Algorithms</span>
       </span>
 
       <!-- NginX -->
@@ -232,11 +244,11 @@
   <!-- FEATURED PROJECTS SECTION -->
   <section id="projects" class="mt-14 space-y-8">
     <div class="flex flex-col items-center justify-center space-y-3 text-center">
-      <div class="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-xs font-medium tracking-tight">
+      <div data-i18n="proj_badge" class="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-xs font-medium tracking-tight">
         My Projects
       </div>
-      <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Featured Work</h2>
-      <p class="text-muted-foreground text-sm sm:text-base max-w-[500px]">
+      <h2 data-i18n="proj_title" class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Featured Work</h2>
+      <p data-i18n="proj_sub" class="text-muted-foreground text-sm sm:text-base max-w-[500px]">
         A live full-stack financial platform and an atomic ledger database system.
       </p>
     </div>
@@ -274,12 +286,12 @@
             <a href="https://capital-guard-five.vercel.app" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              Website
+              <span data-i18n="btn_website">Website</span>
             </a>
             <a href="https://github.com/hamidrezaghavami/CapitalGuard" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              Source
+              <span data-i18n="btn_source_1">Source</span>
             </a>
           </div>
         </div>
@@ -291,18 +303,18 @@
               <h3 class="font-bold tracking-tight text-base text-foreground">CapitalGuard</h3>
               <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
-            <span class="text-xs text-muted-foreground block">May 2026 - Oct 2026</span>
-            <p class="text-xs text-muted-foreground leading-relaxed pt-1">
+            <span data-i18n="cg_date" class="text-xs text-muted-foreground block">May 2026 - Oct 2026</span>
+            <p data-i18n="cg_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
               A minimalist fintech engine prioritizing capital preservation through mathematical rigor. Generates institutional-grade "Invisible P&amp;L" by adjusting standard trade results for global inflation with real-time risk gauges.
             </p>
           </div>
 
           <div class="flex flex-wrap gap-1.5 pt-2">
-            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Node.js</span>
-            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Express.js</span>
-            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">REST API</span>
-            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Fintech Engine</span>
-            <span class="inline-flex items-center rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">Full-Stack</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Node.js</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Express.js</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">REST API</span>
+            <span data-i18n="cg_tag" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Fintech Engine</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
           </div>
         </div>
       </div>
@@ -323,7 +335,7 @@
             <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 font-sans text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              Source
+              <span data-i18n="btn_source_2">Source</span>
             </a>
           </div>
 
@@ -366,19 +378,19 @@
                 <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
             </div>
-            <time class="font-sans text-xs text-muted-foreground block">Nov 2025 - Jan 2026</time>
-            <p class="text-xs text-muted-foreground leading-relaxed pt-1">
+            <time data-i18n="icl_date" class="font-sans text-xs text-muted-foreground block">Nov 2025 - Jan 2026</time>
+            <p data-i18n="icl_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
               Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.
             </p>
           </div>
 
           <!-- Tech Stack Pills -->
-          <div class="mt-4 flex flex-wrap gap-1">
-            <span class="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">Node.js</span>
-            <span class="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">PostgreSQL</span>
-            <span class="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">Prisma</span>
-            <span class="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">Docker</span>
-            <span class="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">CLI</span>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Node.js</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">PostgreSQL</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Prisma</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Docker</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">CLI</span>
           </div>
         </div>
       </div>
@@ -388,7 +400,7 @@
 
   <!-- CONTRIBUTIONS SECTION -->
   <section id="contributions" class="mt-14 space-y-6">
-    <h2 class="text-xl font-bold tracking-tight text-foreground">Node.js Core Contributions</h2>
+    <h2 data-i18n="contrib_title" class="text-xl font-bold tracking-tight text-foreground">Node.js Core Contributions</h2>
 
     <div class="flex flex-col space-y-6">
 
@@ -409,22 +421,22 @@
                 </h3>
                 <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
-              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+              <p data-i18n="pr1_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 util: single-line format fix
               </p>
             </div>
 
             <div class="flex flex-col items-end shrink-0 text-right">
-              <span class="text-xs sm:text-sm text-muted-foreground tabular-nums">
+              <span data-i18n="pr_merged_1" class="text-xs sm:text-sm text-muted-foreground tabular-nums">
                 Merged &bull; Sep 2026
               </span>
-              <a href="https://github.com/nodejs/node/pull/64238" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+              <a data-i18n="view_pr_1" href="https://github.com/nodejs/node/pull/64238" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
                 View PR ↗
               </a>
             </div>
           </div>
 
-          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <div data-i18n="pr1_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Fixed edge-case single-line formatting logic in core utility inspection methods.
           </div>
         </div>
@@ -447,22 +459,22 @@
                 </h3>
                 <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
-              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+              <p data-i18n="pr2_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 fs: mkdtemp Buffer returns
               </p>
             </div>
 
             <div class="flex flex-col items-end shrink-0 text-right">
-              <span class="text-xs sm:text-sm text-muted-foreground tabular-nums">
+              <span data-i18n="pr_merged_2" class="text-xs sm:text-sm text-muted-foreground tabular-nums">
                 Merged &bull; Sep 2026
               </span>
-              <a href="https://github.com/nodejs/node/pull/64397" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+              <a data-i18n="view_pr_2" href="https://github.com/nodejs/node/pull/64397" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
                 View PR ↗
               </a>
             </div>
           </div>
 
-          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <div data-i18n="pr2_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Ensured proper Buffer return values in filesystem <code class="text-foreground">mkdtemp</code> operations. Linked with merged co-authored commit <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> alongside core maintainer <strong class="text-foreground">@aduh95</strong>.
           </div>
         </div>
@@ -485,22 +497,22 @@
                 </h3>
                 <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
-              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+              <p data-i18n="pr3_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 doc: config-schema typo
               </p>
             </div>
 
             <div class="flex flex-col items-end shrink-0 text-right">
-              <span class="text-xs sm:text-sm text-muted-foreground tabular-nums">
+              <span data-i18n="pr_merged_3" class="text-xs sm:text-sm text-muted-foreground tabular-nums">
                 Merged &bull; Sep 2026
               </span>
-              <a href="https://github.com/nodejs/node/pull/64188" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+              <a data-i18n="view_pr_3" href="https://github.com/nodejs/node/pull/64188" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
                 View PR ↗
               </a>
             </div>
           </div>
 
-          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <div data-i18n="pr3_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Corrected configuration schema documentation typing to accurately reflect runtime behavior.
           </div>
         </div>
@@ -523,22 +535,22 @@
                 </h3>
                 <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
-              <p class="text-xs sm:text-sm text-muted-foreground mt-1">
+              <p data-i18n="pr4_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 fs: utf8 fast paths
               </p>
             </div>
 
             <div class="flex flex-col items-end shrink-0 text-right">
-              <span class="text-xs sm:text-sm text-emerald-500 font-medium tabular-nums">
+              <span data-i18n="pr_open" class="text-xs sm:text-sm text-emerald-500 font-medium tabular-nums">
                 Open &bull; In Review
               </span>
-              <a href="https://github.com/nodejs/node/pull/64341" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
+              <a data-i18n="view_pr_4" href="https://github.com/nodejs/node/pull/64341" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="mt-1 inline-flex items-center gap-0.5 text-xs text-foreground font-medium underline underline-offset-4 hover:opacity-80">
                 View PR ↗
               </a>
             </div>
           </div>
 
-          <div class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <div data-i18n="pr4_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Fast-path optimization for filesystem UTF-8 string encoding resolutions in core I/O operations.
           </div>
         </div>
@@ -552,7 +564,7 @@
     <div class="relative rounded-2xl border border-border bg-card px-6 py-12 sm:py-14 text-center shadow-sm">
       
       <!-- Overlapping Top Pill Badge -->
-      <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20 rounded-xl bg-foreground text-background px-4 py-1 text-xs sm:text-sm font-medium tracking-tight shadow-sm ring-4 ring-background">
+      <div data-i18n="contact_badge" class="absolute -top-4 left-1/2 -translate-x-1/2 z-20 rounded-xl bg-foreground text-background px-4 py-1 text-xs sm:text-sm font-medium tracking-tight shadow-sm ring-4 ring-background">
         Contact
       </div>
 
@@ -563,12 +575,12 @@
 
       <!-- Content -->
       <div class="relative z-10 space-y-3 max-w-[540px] mx-auto pt-2">
-        <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">
+        <h2 data-i18n="contact_title" class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">
           Get in Touch
         </h2>
-        <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
+        <p data-i18n="contact_desc" class="text-muted-foreground text-sm sm:text-base leading-relaxed">
           Want to chat? Just shoot me a dm 
-          <a href="https://x.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on twitter</a> 
+          <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on LinkedIn</a> 
           and I'll respond whenever I can. I will ignore all soliciting.
         </p>
       </div>
@@ -576,7 +588,7 @@
     </div>
   </section>
 
-  <!-- FIXED FLOATING DOCK (Magic UI Fisheye Magnification) -->
+  <!-- FIXED FLOATING DOCK (Magic UI Fisheye Magnification + Instant EN/TR Switcher) -->
   <div class="fixed inset-x-0 bottom-6 z-50 pointer-events-none flex justify-center px-4">
     <nav id="magic-dock" class="pointer-events-auto flex items-center gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50">
       
@@ -621,6 +633,11 @@
       <!-- Divider -->
       <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0"></div>
 
+      <!-- Instant Language Switcher Button (Option B: Single-File EN <-> TR) -->
+      <button id="lang-toggle" type="button" aria-label="Switch Language" title="Türkçe / English" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm text-[11px] font-bold tracking-tighter" style="width: 40px; height: 40px;">
+        TR
+      </button>
+
       <!-- Theme Toggle -->
       <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
         <!-- Sun (Shown in Dark Mode) -->
@@ -636,15 +653,146 @@
     </nav>
   </div>
 
-  <!-- COMBINED SCRIPT: Theme Toggle + Dock Fisheye + FlickeringGrid Canvas -->
+  <!-- COMBINED SCRIPT: BlurFade + Theme Toggle + Instant TR/EN i18n + Dock Fisheye + FlickeringGrid -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Theme Toggle
+      // 0. Magic UI Staggered BlurFade Entrance
+      const sections = document.querySelectorAll("body > main > section, body > section, #hero, #about, #contributions, #education, #skills, #projects, #contact");
+      sections.forEach((sec, index) => {
+        sec.classList.add("blur-fade-item");
+        sec.style.animationDelay = `${index * 0.08}s`;
+      });
+
+      // 1. Theme Toggle (Light Mode Default + localStorage persistence)
       const toggleBtn = document.getElementById("theme-toggle");
       const htmlEl = document.documentElement;
+      if (localStorage.getItem("theme") === "dark") {
+        htmlEl.classList.add("dark");
+      } else {
+        htmlEl.classList.remove("dark");
+      }
       if (toggleBtn) {
         toggleBtn.addEventListener("click", () => {
           htmlEl.classList.toggle("dark");
+          localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
+        });
+      }
+
+      // 1.5 Instant Single-File Language Switcher (EN <-> TR)
+      const translations = {
+        en: {
+          hero_greeting: "Hi, I'm HamidReza",
+          hero_sub: "Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.",
+          about_title: "About",
+          // Inside en:
+          about_p1: "Great backend engineering takes both technical precision and creative thinking. I approach software with a founder's mindset—helping businesses and engineering teams squash critical bugs, clean up slow architectures, and build fast, dependable backends.",
+          about_p2: 'From contributing bug fixes to <strong class="text-foreground">Node.js core</strong> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.',
+          edu_title: "Education",
+          edu_degree: "Bachelor of Science - BS, Computer Engineering",
+          skills_title: "Skills",
+          skill_acid: "ACID Systems",
+          skill_dsa: "Data Structure &amp; Algorithms",
+          proj_badge: "My Projects",
+          proj_title: "Featured Work",
+          proj_sub: "A live full-stack financial platform and an atomic ledger database system.",
+          btn_website: "Website",
+          btn_source_1: "Source",
+          btn_source_2: "Source",
+          cg_date: "May 2026 - Oct 2026",
+          cg_desc: 'A minimalist fintech engine prioritizing capital preservation through mathematical rigor. Generates institutional-grade "Invisible P&amp;L" by adjusting standard trade results for global inflation with real-time risk gauges.',
+          cg_tag: "Fintech Engine",
+          icl_date: "Nov 2025 - Jan 2026",
+          icl_desc: "Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.",
+          contrib_title: "Node.js Core Contributions",
+          pr1_sub: "util: single-line format fix",
+          pr1_desc: "Fixed edge-case single-line formatting logic in core utility inspection methods.",
+          pr2_sub: "fs: mkdtemp Buffer returns",
+          pr2_desc: 'Ensured proper Buffer return values in filesystem <code class="text-foreground">mkdtemp</code> operations. Linked with merged co-authored commit <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> alongside core maintainer <strong class="text-foreground">@aduh95</strong>.',
+          pr3_sub: "doc: config-schema typo",
+          pr3_desc: "Corrected configuration schema documentation typing to accurately reflect runtime behavior.",
+          pr4_sub: "fs: utf8 fast paths",
+          pr4_desc: "Fast-path optimization for filesystem UTF-8 string encoding resolutions in core I/O operations.",
+          pr_merged_1: "Merged &bull; Sep 2026",
+          pr_merged_2: "Merged &bull; Sep 2026",
+          pr_merged_3: "Merged &bull; Sep 2026",
+          pr_open: "Open &bull; In Review",
+          view_pr_1: "View PR ↗",
+          view_pr_2: "View PR ↗",
+          view_pr_3: "View PR ↗",
+          view_pr_4: "View PR ↗",
+          contact_badge: "Contact",
+          contact_title: "Get in Touch",
+          contact_desc: 'Want to chat? Just shoot me a dm <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on LinkedIn</a> and I\'ll respond whenever I can. I will ignore all soliciting.'
+        },
+        tr: {
+          hero_greeting: "Selam, ben HamidReza",
+          hero_sub: "Girişimci vizyona sahip Backend Yazılım Mühendisi. Yüksek işlem hacimli motorlar, sıkı veri tutarlılığı ve düşük seviyeli Node.js çalışma zamanı (runtime) mimarilerinde uzmanlaşmıştır.",
+          about_title: "Hakkımda",
+          about_p1: "İyi bir backend mühendisliği hem teknik hassasiyet hem de yaratıcı düşünce gerektirir. Yazılıma girişimci bir vizyonla yaklaşıyorum; işletmelerin ve mühendislik ekiplerinin kritik hataları (bug) çözmesine, yavaş mimarileri sadeleştirmesine ve hızlı, güvenilir backend sistemleri kurmasına yardımcı oluyorum.",
+          about_p2: '<strong class="text-foreground">Node.js çekirdeğine (core)</strong> hata düzeltmeleri göndermekten kendi full-stack araçlarımı geliştirmeye kadar en önemli şeye odaklanıyorum: temiz kod yazmak, gerçek iş problemlerini çözmek ve tüm ekibi hızlandırmak.',
+          edu_title: "Eğitim",
+          edu_degree: "Lisans (BS), Bilgisayar Mühendisliği",
+          skills_title: "Yetenekler",
+          skill_acid: "ACID Sistemler",
+          skill_dsa: "Veri Yapıları ve Algoritmalar",
+          proj_badge: "Projelerim",
+          proj_title: "Öne Çıkan Çalışmalar",
+          proj_sub: "Canlı bir full-stack finans platformu ve atomik veritabanı muhasebe (ledger) sistemi.",
+          btn_website: "Web Sitesi",
+          btn_source_1: "Kaynak Kod",
+          btn_source_2: "Kaynak Kod",
+          cg_date: "Mayıs 2026 - Ekim 2026",
+          cg_desc: 'Matematiksel kesinlik ile sermaye korumasını ön planda tutan minimalist fintech motoru. Standart işlem sonuçlarını küresel enflasyona göre uyarlayarak gerçek zamanlı risk göstergeleriyle kurumsal düzeyde "Görünmez P&amp;L" üretir.',
+          cg_tag: "Fintech Motoru",
+          icl_date: "Kasım 2025 - Ocak 2026",
+          icl_desc: "Çoklu para birimi hesaplarını, kullanıcılar arası transferleri ve aylık hesap özetlerini yöneten veritabanı CLI sistemi. Sıkı işlemsel değişmezlik (transactional invariants) kuralları uygulayarak bakiye kaybını imkansız hale getirir.",
+          contrib_title: "Node.js Çekirdek Katkıları (Core PRs)",
+          pr1_sub: "util: tek satır biçimlendirme düzeltmesi",
+          pr1_desc: "Çekirdek util inceleme (inspection) metotlarındaki uç durum tek satır biçimlendirme mantığı düzeltildi.",
+          pr2_sub: "fs: mkdtemp Buffer dönüş değerleri",
+          pr2_desc: 'Dosya sistemi <code class="text-foreground">mkdtemp</code> işlemlerinde doğru Buffer dönüş değerleri sağlandı. Çekirdek geliştirici <strong class="text-foreground">@aduh95</strong> ile birlikte <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> numaralı ortak commit olarak birleştirildi.',
+          pr3_sub: "doc: config-schema yazım ve tip düzeltmesi",
+          pr3_desc: "Çalışma zamanı davranışını doğru yansıtmak için yapılandırma şeması dokümantasyonundaki tip tanımı düzeltildi.",
+          pr4_sub: "fs: utf8 hızlı yol (fast-path) optimizasyonu",
+          pr4_desc: "Çekirdek I/O işlemlerinde dosya sistemi UTF-8 karakter kodlama çözümlemeleri için hızlı yol (fast-path) optimizasyonu.",
+          pr_merged_1: "Birleştirildi &bull; Eyl 2026",
+          pr_merged_2: "Birleştirildi &bull; Eyl 2026",
+          pr_merged_3: "Birleştirildi &bull; Eyl 2026",
+          pr_open: "Açık &bull; İncelemede",
+          view_pr_1: "PR'ı Gör ↗",
+          view_pr_2: "PR'ı Gör ↗",
+          view_pr_3: "PR'ı Gör ↗",
+          view_pr_4: "PR'ı Gör ↗",
+          contact_badge: "İletişim",
+          contact_title: "İletişime Geçin",
+          contact_desc: 'Sohbet etmek mi istiyorsunuz? Bana doğrudan <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">LinkedIn üzerinden mesaj gönderebilirsiniz</a>; müsait olduğumda yanıtlayacağım.'
+        }
+      };
+
+      const langBtn = document.getElementById("lang-toggle");
+      let currentLang = localStorage.getItem("lang") || "en";
+
+      const applyLanguage = (lang) => {
+        htmlEl.setAttribute("lang", lang);
+        const dict = translations[lang];
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key]) {
+            el.innerHTML = dict[key];
+          }
+        });
+        if (langBtn) {
+          langBtn.textContent = lang === "en" ? "TR" : "EN";
+        }
+      };
+
+      applyLanguage(currentLang);
+
+      if (langBtn) {
+        langBtn.addEventListener("click", () => {
+          currentLang = currentLang === "en" ? "tr" : "en";
+          localStorage.setItem("lang", currentLang);
+          applyLanguage(currentLang);
         });
       }
 
