@@ -83,7 +83,7 @@
 
     .blur-fade-item {
       opacity: 0;
-      animation: magicBlurFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: magicBlurFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       will-change: transform, opacity, filter;
     }
   </style>
@@ -671,7 +671,7 @@
       const sections = document.querySelectorAll("body > main > section, body > section, #hero, #about, #contributions, #education, #skills, #projects, #contact");
       sections.forEach((sec, index) => {
         sec.classList.add("blur-fade-item");
-        sec.style.animationDelay = `${index * 0.08}s`;
+        sec.style.animationDelay = `${index * 0.15}s`;
       });
 
       // 1. Theme Toggle (Light Mode Default + localStorage persistence)
