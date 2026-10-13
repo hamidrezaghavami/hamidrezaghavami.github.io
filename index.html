@@ -101,7 +101,7 @@
     <div class="flex items-center justify-between gap-4">
       <div class="flex flex-col space-y-1.5 flex-1">
         <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground flex items-center gap-2">
-          <span data-i18n="hero_greeting">Hi, I'm HamidReza</span> <span class="inline-block origin-[70%_70%]"></span>
+          <span data-i18n="hero_greeting">Hi, I'm HamidReza</span> <span class="inline-block origin-[70%_70%]">👋</span>
         </h1>
         <p data-i18n="hero_sub" class="text-muted-foreground text-base sm:text-lg pt-1 leading-relaxed">
           Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.
@@ -146,7 +146,7 @@
           <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none group-hover:underline">
             Altınbaş Üniversitesi
           </h3>
-          <svg class="size-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+          <svg class="size-3.5 text-muted-foreground opacity-0 rtl:-translate-x-reverse -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
         </div>
         <p data-i18n="edu_degree" class="text-xs sm:text-sm text-muted-foreground mt-1">
           Bachelor of Science - BS, Computer Engineering
@@ -274,15 +274,15 @@
             class="w-full h-full object-cover pointer-events-none"
           ></video>
 
-          <!-- Play/Pause Indicator Overlay (Automatically hides when playing) -->
+          <!-- Play/Pause Indicator Overlay -->
           <div class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
             <div class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
-              <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="size-5 rtl:-scale-x-100 translate-x-0.5 rtl:-translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
 
           <!-- Top Action Badges -->
-          <div class="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
             <a href="https://capital-guard-five.vercel.app" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -301,11 +301,11 @@
           <div class="space-y-1.5">
             <a href="https://capital-guard-five.vercel.app" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
               <h3 class="font-bold tracking-tight text-base text-foreground">CapitalGuard</h3>
-              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
             <span data-i18n="cg_date" class="text-xs text-muted-foreground block">May 2026 - Oct 2026</span>
             <p data-i18n="cg_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
-              A minimalist fintech engine prioritizing capital preservation through mathematical rigor. Generates institutional-grade "Invisible P&amp;L" by adjusting standard trade results for global inflation with real-time risk gauges.
+              Built a full-stack application using React and Node.js that imports trading history from CSV/JSON files and calculates account-risk metrics, drawdowns, and capital-survival projections.
             </p>
           </div>
 
@@ -322,8 +322,8 @@
       <!-- Project 2: Iron-Clad-Ledger -->
       <div class="flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md">
         
-        <!-- Terminal Header (Strictly Contained to h-44) -->
-        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 p-3.5 font-mono text-[10px] sm:text-[11px] flex flex-col justify-between select-none border-b border-border/40">
+        <!-- Terminal Header -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 p-3.5 font-mono text-[10px] sm:text-[11px] flex flex-col justify-between select-none border-b border-border/40" dir="ltr">
           
           <!-- Top Bar: macOS Dots + Source Button -->
           <div class="flex items-center justify-between">
@@ -340,7 +340,7 @@
           </div>
 
           <!-- Middle Terminal Output -->
-          <div class="space-y-1 my-auto">
+          <div class="space-y-1 my-auto text-left">
             <div class="text-neutral-300 truncate">
               <span class="text-sky-400">$</span> ledger transfer --amt 15000.00
             </div>
@@ -367,7 +367,7 @@
 
         </div>
 
-        <!-- Card Body (Geist Sans Font + Clean Title Outside Terminal) -->
+        <!-- Card Body -->
         <div class="flex flex-col flex-1 justify-between p-4 font-sans">
           <div class="space-y-1.5">
             <div class="flex items-center justify-between">
@@ -375,7 +375,7 @@
                 <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="hover:underline">Iron-Clad-Ledger</a>
               </h3>
               <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground">
-                <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10"/></svg>
+                <svg class="size-4 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
               </a>
             </div>
             <time data-i18n="icl_date" class="font-sans text-xs text-muted-foreground block">Nov 2025 - Jan 2026</time>
@@ -416,17 +416,17 @@
           <div class="flex items-start justify-between gap-2">
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none" dir="ltr">
                   nodejs/node #64238
                 </h3>
-                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+                <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr1_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 util: single-line format fix
               </p>
             </div>
 
-            <div class="flex flex-col items-end shrink-0 text-right">
+            <div class="flex flex-col rtl:items-start items-end shrink-0 rtl:text-left text-right">
               <span data-i18n="pr_merged_1" class="text-xs sm:text-sm text-muted-foreground tabular-nums">
                 Merged &bull; Sep 2026
               </span>
@@ -454,17 +454,17 @@
           <div class="flex items-start justify-between gap-2">
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none" dir="ltr">
                   nodejs/node #64397
                 </h3>
-                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+                <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr2_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 fs: mkdtemp Buffer returns
               </p>
             </div>
 
-            <div class="flex flex-col items-end shrink-0 text-right">
+            <div class="flex flex-col rtl:items-start items-end shrink-0 rtl:text-left text-right">
               <span data-i18n="pr_merged_2" class="text-xs sm:text-sm text-muted-foreground tabular-nums">
                 Merged &bull; Sep 2026
               </span>
@@ -492,17 +492,17 @@
           <div class="flex items-start justify-between gap-2">
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none" dir="ltr">
                   nodejs/node #64188
                 </h3>
-                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+                <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr3_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 doc: config-schema typo
               </p>
             </div>
 
-            <div class="flex flex-col items-end shrink-0 text-right">
+            <div class="flex flex-col rtl:items-start items-end shrink-0 rtl:text-left text-right">
               <span data-i18n="pr_merged_3" class="text-xs sm:text-sm text-muted-foreground tabular-nums">
                 Merged &bull; Sep 2026
               </span>
@@ -530,17 +530,17 @@
           <div class="flex items-start justify-between gap-2">
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none">
+                <h3 class="font-semibold text-sm sm:text-base text-foreground leading-none" dir="ltr">
                   nodejs/node #64341
                 </h3>
-                <svg class="pr-chev size-3.5 text-muted-foreground transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
+                <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr4_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
                 fs: utf8 fast paths
               </p>
             </div>
 
-            <div class="flex flex-col items-end shrink-0 text-right">
+            <div class="flex flex-col rtl:items-start items-end shrink-0 rtl:text-left text-right">
               <span data-i18n="pr_open" class="text-xs sm:text-sm text-emerald-500 font-medium tabular-nums">
                 Open &bull; In Review
               </span>
@@ -588,9 +588,9 @@
     </div>
   </section>
 
-  <!-- FIXED FLOATING DOCK (Magic UI Fisheye Magnification + Instant EN/TR Switcher) -->
+  <!-- FIXED FLOATING DOCK -->
   <div class="fixed inset-x-0 bottom-6 z-50 pointer-events-none flex justify-center px-4">
-    <nav id="magic-dock" class="pointer-events-auto flex items-center gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50">
+    <nav id="magic-dock" class="pointer-events-auto flex items-center gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50 rtl:flex-row-reverse">
       
       <!-- Home -->
       <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
@@ -633,10 +633,21 @@
       <!-- Divider -->
       <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0"></div>
 
-      <!-- Instant Language Switcher Button (Option B: Single-File EN <-> TR) -->
-      <button id="lang-toggle" type="button" aria-label="Switch Language" title="Türkçe / English" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm text-[11px] font-bold tracking-tighter" style="width: 40px; height: 40px;">
-        TR
-      </button>
+      <!-- Globe Language Switcher & Dropdown Menu -->
+      <div class="relative flex items-center justify-center shrink-0">
+        <!-- Globe Button -->
+        <button id="lang-menu-btn" type="button" aria-label="Switch Language" class="dock-item flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm transition-colors" style="width: 40px; height: 40px;">
+          <svg class="size-[45%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+        </button>
+
+        <!-- Floating Language Menu (Order: EN, TR, AR, FA) -->
+        <div id="lang-menu" class="absolute bottom-[120%] left-1/2 -translate-x-1/2 hidden flex-col gap-1 rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md p-1.5 shadow-xl w-[110px] pointer-events-auto origin-bottom">
+           <button class="lang-option w-full text-left px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" data-lang="en" dir="ltr">English</button>
+           <button class="lang-option w-full text-left px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" data-lang="tr" dir="ltr">Türkçe</button>
+           <button class="lang-option w-full text-right px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" data-lang="ar" dir="rtl">العربية</button>
+           <button class="lang-option w-full text-right px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" data-lang="fa" dir="rtl">فارسی</button>
+        </div>
+      </div>
 
       <!-- Theme Toggle -->
       <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
@@ -653,7 +664,7 @@
     </nav>
   </div>
 
-  <!-- COMBINED SCRIPT: BlurFade + Theme Toggle + Instant TR/EN i18n + Dock Fisheye + FlickeringGrid -->
+  <!-- COMBINED SCRIPT: BlurFade + Theme Toggle + Instant 4-Lang i18n + Dock Fisheye + FlickeringGrid -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // 0. Magic UI Staggered BlurFade Entrance
@@ -678,13 +689,12 @@
         });
       }
 
-      // 1.5 Instant Single-File Language Switcher (EN <-> TR)
+      // 1.5 Instant 4-Language Dropdown Switcher (EN, TR, AR, FA)
       const translations = {
         en: {
           hero_greeting: "Hi, I'm HamidReza",
           hero_sub: "Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.",
           about_title: "About",
-          // Inside en:
           about_p1: "Great backend engineering takes both technical precision and creative thinking. I approach software with a founder's mindset—helping businesses and engineering teams squash critical bugs, clean up slow architectures, and build fast, dependable backends.",
           about_p2: 'From contributing bug fixes to <strong class="text-foreground">Node.js core</strong> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.',
           edu_title: "Education",
@@ -699,7 +709,7 @@
           btn_source_1: "Source",
           btn_source_2: "Source",
           cg_date: "May 2026 - Oct 2026",
-          cg_desc: 'A minimalist fintech engine prioritizing capital preservation through mathematical rigor. Generates institutional-grade "Invisible P&amp;L" by adjusting standard trade results for global inflation with real-time risk gauges.',
+          cg_desc: 'Built a full-stack application using React and Node.js that imports trading history from CSV/JSON files and calculates account-risk metrics, drawdowns, and capital-survival projections.',
           cg_tag: "Fintech Engine",
           icl_date: "Nov 2025 - Jan 2026",
           icl_desc: "Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.",
@@ -742,7 +752,7 @@
           btn_source_1: "Kaynak Kod",
           btn_source_2: "Kaynak Kod",
           cg_date: "Mayıs 2026 - Ekim 2026",
-          cg_desc: 'Matematiksel kesinlik ile sermaye korumasını ön planda tutan minimalist fintech motoru. Standart işlem sonuçlarını küresel enflasyona göre uyarlayarak gerçek zamanlı risk göstergeleriyle kurumsal düzeyde "Görünmez P&amp;L" üretir.',
+          cg_desc: 'React ve Node.js kullanarak CSV/JSON dosyalarından işlem geçmişini içe aktaran, hesap risk metriklerini, düşüşleri (drawdown) ve sermaye koruma projeksiyonlarını hesaplayan full-stack bir uygulama geliştirdim.',
           cg_tag: "Fintech Motoru",
           icl_date: "Kasım 2025 - Ocak 2026",
           icl_desc: "Çoklu para birimi hesaplarını, kullanıcılar arası transferleri ve aylık hesap özetlerini yöneten veritabanı CLI sistemi. Sıkı işlemsel değişmezlik (transactional invariants) kuralları uygulayarak bakiye kaybını imkansız hale getirir.",
@@ -766,35 +776,146 @@
           contact_badge: "İletişim",
           contact_title: "İletişime Geçin",
           contact_desc: 'Sohbet etmek mi istiyorsunuz? Bana doğrudan <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">LinkedIn üzerinden mesaj gönderebilirsiniz</a>; müsait olduğumda yanıtlayacağım.'
+        },
+        fa: {
+          hero_greeting: "سلام، من حمیدرضا هستم",
+          hero_sub: "مهندس بک‌اند با ذهنیت کارآفرینی. متخصص در موتورهای با توان پردازشی بالا، ثبات دقیق داده‌ها و معماری‌های سطح پایین Node.js.",
+          about_title: "درباره من",
+          about_p1: "مهندسی بک‌اند عالی نیازمند دقت فنی و تفکر خلاقانه است. من با ذهنیت یک بنیان‌گذار به نرم‌افزار نگاه می‌کنم—کمک به کسب‌وکارها و تیم‌های مهندسی برای رفع باگ‌های حیاتی، اصلاح معماری‌های کند و ساخت بک‌اند‌های سریع و قابل اعتماد.",
+          about_p2: 'از مشارکت در رفع باگ‌های <strong class="text-foreground">هسته Node.js</strong> تا راه‌اندازی ابزارهای فول‌استک خودم، تمرکز من روی مهم‌ترین چیزهاست: نوشتن کد تمیز، حل مشکلات واقعی کسب‌وکار و سرعت بخشیدن به کل تیم.',
+          edu_title: "تحصیلات",
+          edu_degree: "کارشناسی مهندسی کامپیوتر",
+          skills_title: "مهارت‌ها",
+          skill_acid: "سیستم‌های ACID",
+          skill_dsa: "ساختمان داده و الگوریتم",
+          proj_badge: "پروژه‌های من",
+          proj_title: "کارهای منتخب",
+          proj_sub: "یک پلتفرم مالی فول‌استک و یک سیستم دیتابیس لجر (دفتر کل) اتمیک.",
+          btn_website: "وب‌سایت",
+          btn_source_1: "کد منبع",
+          btn_source_2: "کد منبع",
+          cg_date: "مه ۲۰۲۶ - اکتبر ۲۰۲۶",
+          cg_desc: 'یک برنامه فول‌استک با استفاده از React و Node.js ساختم که تاریخچه معاملات را از فایل‌های CSV/JSON وارد کرده و معیارهای ریسک حساب، افت سرمایه (Drawdown) و پیش‌بینی بقای سرمایه را محاسبه می‌کند.',
+          cg_tag: "موتور فین‌تک",
+          icl_date: "نوامبر ۲۰۲۵ - ژانویه ۲۰۲۶",
+          icl_desc: "یک سیستم CLI دیتابیس برای مدیریت حساب‌های چندارزی، انتقالات بین کاربران و صورت‌حساب‌های ماهانه. این سیستم با اعمال قوانین سخت‌گیرانه تراکنشی، از دست رفتن موجودی را غیرممکن می‌سازد.",
+          contrib_title: "مشارکت‌ها در هسته Node.js",
+          pr1_sub: "util: اصلاح فرمت یک‌خطی",
+          pr1_desc: "اصلاح منطق فرمت‌بندی یک‌خطی در متدهای بازرسی (inspection) ابزارهای هسته.",
+          pr2_sub: "fs: مقادیر بازگشتی Buffer در mkdtemp",
+          pr2_desc: 'اطمینان از مقادیر بازگشتی صحیح بافر در عملیات <code class="text-foreground">mkdtemp</code> فایل سیستم. ادغام شده در کامیت مشترک <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> با همکاری <strong class="text-foreground">@aduh95</strong>.',
+          pr3_sub: "doc: اصلاح اشتباه تایپی config-schema",
+          pr3_desc: "اصلاح نوع‌داده‌ها در مستندات شمای پیکربندی (config-schema) برای انعکاس دقیق رفتار زمان اجرا (runtime).",
+          pr4_sub: "fs: مسیرهای سریع utf8",
+          pr4_desc: "بهینه‌سازی مسیر سریع (fast-path) برای رمزگشایی رشته‌های UTF-8 در عملیات I/O هسته.",
+          pr_merged_1: "ادغام شده &bull; سپتامبر ۲۰۲۶",
+          pr_merged_2: "ادغام شده &bull; سپتامبر ۲۰۲۶",
+          pr_merged_3: "ادغام شده &bull; سپتامبر ۲۰۲۶",
+          pr_open: "باز &bull; در حال بررسی",
+          view_pr_1: "مشاهده ↗",
+          view_pr_2: "مشاهده ↗",
+          view_pr_3: "مشاهده ↗",
+          view_pr_4: "مشاهده ↗",
+          contact_badge: "تماس",
+          contact_title: "ارتباط با من",
+          contact_desc: 'برای صحبت با من می‌توانید <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">در لینکدین پیام مستقیم بدهید</a> و من در اولین فرصت پاسخ خواهم داد.'
+        },
+        ar: {
+          hero_greeting: "مرحباً، أنا حميد رضا",
+          hero_sub: "مهندس نهاية خلفية (Backend) بعقلية ريادية. متخصص في المحركات ذات القدرة العالية، واتساق البيانات الدقيق، وبيئات تشغيل Node.js منخفضة المستوى.",
+          about_title: "نبذة عني",
+          about_p1: "تتطلب هندسة النهاية الخلفية العظيمة الدقة الفنية والتفكير الإبداعي. أتعامل مع البرمجيات بعقلية المؤسس - لمساعدة الشركات وفرق الهندسة على القضاء على الأخطاء الحرجة، وتنظيف الهياكل البطيئة، وبناء أنظمة خلفية سريعة وموثوقة.",
+          about_p2: 'من المساهمة في إصلاح أخطاء <strong class="text-foreground">نواة Node.js</strong> إلى إطلاق أدواتي الخاصة المتكاملة (Full-stack)، أركز على ما يهم حقاً: كتابة كود نظيف، وحل مشاكل العمل الحقيقية، وجعل الفريق بأكمله أسرع.',
+          edu_title: "التعليم",
+          edu_degree: "بكالوريوس في هندسة الحاسوب",
+          skills_title: "المهارات",
+          skill_acid: "أنظمة ACID",
+          skill_dsa: "هياكل البيانات والخوارزميات",
+          proj_badge: "مشاريعي",
+          proj_title: "أعمال مميزة",
+          proj_sub: "منصة مالية حية متكاملة ونظام قاعدة بيانات لدفتر الأستاذ (Ledger) الذري.",
+          btn_website: "الموقع",
+          btn_source_1: "المصدر",
+          btn_source_2: "المصدر",
+          cg_date: "مايو 2026 - أكتوبر 2026",
+          cg_desc: "قمت ببناء تطبيق متكامل (Full-stack) باستخدام React و Node.js يستورد سجل التداول من ملفات CSV/JSON ويحسب مقاييس مخاطر الحساب والتراجعات (Drawdowns) وتوقعات بقاء رأس المال.",
+          cg_tag: "محرك مالي",
+          icl_date: "نوفمبر 2025 - يناير 2026",
+          icl_desc: "نظام واجهة سطر أوامر (CLI) لقاعدة بيانات يعالج حسابات متعددة العملات، والتحويلات بين المستخدمين، والكشوفات الشهرية. يفرض قواعد معاملات صارمة تجعل من المستحيل فقدان الرصيد.",
+          contrib_title: "المساهمات في نواة Node.js",
+          pr1_sub: "util: إصلاح تنسيق السطر الواحد",
+          pr1_desc: "تم إصلاح منطق تنسيق السطر الواحد لحالات الحافة في طرق الفحص الأساسية للأدوات.",
+          pr2_sub: "fs: قيم الإرجاع Buffer في mkdtemp",
+          pr2_desc: 'ضمان قيم إرجاع صحيحة للمخزن المؤقت (Buffer) في عمليات نظام الملفات <code class="text-foreground">mkdtemp</code>. تم ربطه مع الالتزام المشترك المدمج <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> إلى جانب المطور الأساسي <strong class="text-foreground">@aduh95</strong>.',
+          pr3_sub: "doc: تصحيح خطأ مطبعي في config-schema",
+          pr3_desc: "تصحيح أنواع التوثيق لمخطط التكوين ليعكس بدقة سلوك وقت التشغيل (runtime).",
+          pr4_sub: "fs: المسارات السريعة لـ utf8",
+          pr4_desc: "تحسين المسار السريع لدقة تشفير سلسلة UTF-8 في عمليات الإدخال / الإخراج الأساسية.",
+          pr_merged_1: "تم الدمج &bull; سبتمبر 2026",
+          pr_merged_2: "تم الدمج &bull; سبتمبر 2026",
+          pr_merged_3: "تم الدمج &bull; سبتمبر 2026",
+          pr_open: "مفتوح &bull; قيد المراجعة",
+          view_pr_1: "عرض ↗",
+          view_pr_2: "عرض ↗",
+          view_pr_3: "عرض ↗",
+          view_pr_4: "عرض ↗",
+          contact_badge: "اتصال",
+          contact_title: "ابقى على تواصل",
+          contact_desc: 'هل تريد التحدث؟ فقط <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">أرسل لي رسالة مباشرة على لينكد إن</a> وسأرد متى استطعت.'
         }
       };
 
-      const langBtn = document.getElementById("lang-toggle");
+      const langBtn = document.getElementById("lang-menu-btn");
+      const langMenu = document.getElementById("lang-menu");
       let currentLang = localStorage.getItem("lang") || "en";
 
       const applyLanguage = (lang) => {
+        // Set Language Attribute
         htmlEl.setAttribute("lang", lang);
-        const dict = translations[lang];
+        
+        // Setup Right-to-Left (RTL) formatting automatically
+        const isRTL = lang === 'fa' || lang === 'ar';
+        htmlEl.setAttribute("dir", isRTL ? "rtl" : "ltr");
+        
+        const dict = translations[lang] || translations["en"];
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
           if (dict[key]) {
             el.innerHTML = dict[key];
           }
         });
-        if (langBtn) {
-          langBtn.textContent = lang === "en" ? "TR" : "EN";
-        }
       };
 
+      // Initial Apply on Page Load
       applyLanguage(currentLang);
 
-      if (langBtn) {
-        langBtn.addEventListener("click", () => {
-          currentLang = currentLang === "en" ? "tr" : "en";
-          localStorage.setItem("lang", currentLang);
-          applyLanguage(currentLang);
+      // Toggle Floating Menu
+      if (langBtn && langMenu) {
+        langBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          langMenu.classList.toggle("hidden");
+          langMenu.classList.toggle("flex");
+        });
+
+        // Close Menu when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!langMenu.contains(e.target) && e.target !== langBtn) {
+            langMenu.classList.add("hidden");
+            langMenu.classList.remove("flex");
+          }
         });
       }
+
+      // Handle Selection
+      document.querySelectorAll(".lang-option").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const selectedLang = e.currentTarget.getAttribute("data-lang");
+          localStorage.setItem("lang", selectedLang);
+          applyLanguage(selectedLang);
+          langMenu.classList.add("hidden");
+          langMenu.classList.remove("flex");
+        });
+      });
 
       // 2. Magic UI Dock Fisheye Magnification
       const dock = document.getElementById("magic-dock");
