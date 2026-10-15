@@ -948,9 +948,8 @@
             item.style.height = `${size}px`;
             
             // CRITICAL: Disable CSS transitions while the mouse is moving
-            // This prevents CSS from fighting the 60fps JavaScript updates
-            item.style.transition = "width 0.1s ease-out, height 0.1s ease-out";
-            // Remove the transform scale/z-index applied previously
+            // 40ms micro-transition smooths out the box entry without lagging the JS loop
+            item.style.transition = "width 0.04s ease-out, height 0.04s ease-out";
             item.style.transform = "none";
           });
         });
