@@ -930,6 +930,16 @@
         const baseSize = 40;
         const maxScaleSize = 60;
         const distanceLimit = 135;
+        
+        // 1. Add this flag
+        let isEntering = false; 
+
+        // 2. Add this mouseenter event
+        dock.addEventListener("mouseenter", () => {
+          isEntering = true;
+          // Smooth out the initial jump, then disable it after 150ms for buttery tracking
+          setTimeout(() => { isEntering = false; }, 150); 
+        });
 
         dock.addEventListener("mousemove", (e) => {
           items.forEach((item) => {
@@ -943,21 +953,20 @@
               size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
             }
 
-            // Animate actual dimensions to push neighbors apart
             item.style.width = `${size}px`;
             item.style.height = `${size}px`;
             
-            // CRITICAL: Disable CSS transitions while the mouse is moving
-            // This prevents CSS from fighting the 60fps JavaScript updates
-            item.style.transition = "none";
-            // Remove the transform scale/z-index applied previously
+            // 3. Update the transition line to use the flag
+            item.style.transition = isEntering 
+              ? "width 0.15s ease-out, height 0.15s ease-out" 
+              : "none";
+              
             item.style.transform = "none";
           });
         });
 
         dock.addEventListener("mouseleave", () => {
           items.forEach((item) => {
-            // Re-enable the smooth CSS transition so the icons snap back elegantly
             item.style.transition = "width 0.25s cubic-bezier(0.22, 1, 0.36, 1), height 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
             item.style.width = `${baseSize}px`;
             item.style.height = `${baseSize}px`;
