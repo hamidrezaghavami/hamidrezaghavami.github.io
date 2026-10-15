@@ -949,7 +949,7 @@
             
             // CRITICAL: Disable CSS transitions while the mouse is moving
             // This prevents CSS from fighting the 60fps JavaScript updates
-            item.style.transition = "none";
+            item.style.transition = "width 0.1s ease-out, height 0.1s ease-out";
             // Remove the transform scale/z-index applied previously
             item.style.transform = "none";
           });
