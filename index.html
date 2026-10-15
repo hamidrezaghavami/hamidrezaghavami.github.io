@@ -86,6 +86,12 @@
       animation: magicBlurFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       will-change: transform, opacity, filter;
     }
+
+    /* New style for the dock items to ensure smooth transform scaling */
+    .dock-item {
+      will-change: transform;
+      transform-origin: center bottom;
+    }
   </style>
 </head>
 
@@ -590,7 +596,7 @@
 
   <!-- FIXED FLOATING DOCK -->
   <div class="fixed inset-x-0 bottom-6 z-50 pointer-events-none flex justify-center px-4">
-    <nav id="magic-dock" class="pointer-events-auto flex items-center gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50 rtl:flex-row-reverse">
+    <nav id="magic-dock" class="pointer-events-auto flex items-end gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50 rtl:flex-row-reverse pb-1.5 pt-1.5">
       
       <!-- Home -->
       <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
@@ -600,7 +606,7 @@
       </a>
 
       <!-- Divider -->
-      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0"></div>
+      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0 self-center"></div>
 
       <!-- GitHub -->
       <a href="https://github.com/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
@@ -631,7 +637,7 @@
       </a>
 
       <!-- Divider -->
-      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0"></div>
+      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0 self-center"></div>
 
       <!-- Globe Language Switcher & Dropdown Menu -->
       <div class="relative flex items-center justify-center shrink-0">
@@ -917,7 +923,7 @@
         });
       });
 
-      // 2. Magic UI Dock Fisheye Magnification
+      // 2. Magic UI Dock Fisheye Magnification - REWRITTEN TO USE SCALE
       const dock = document.getElementById("magic-dock");
       if (dock) {
         const items = dock.querySelectorAll(".dock-item");
@@ -931,23 +937,26 @@
             const itemCenterX = rect.left + rect.width / 2;
             const dist = Math.abs(e.clientX - itemCenterX);
 
-            let size = baseSize;
+            let scale = 1;
             if (dist < distanceLimit) {
               const ratio = Math.cos((dist / distanceLimit) * (Math.PI / 2));
-              size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
+              const size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
+              scale = size / baseSize;
             }
 
-            item.style.width = `${size}px`;
-            item.style.height = `${size}px`;
-            item.style.transition = "width 0.04s ease-out, height 0.04s ease-out";
+            // Use GPU accelerated scale transform instead of width/height layout reflows
+            item.style.transform = `scale(${scale})`;
+            item.style.transition = "transform 0.04s ease-out";
+            // Dynamically boost z-index so scaled items overlay siblings smoothly
+            item.style.zIndex = scale > 1.1 ? 10 : 1;
           });
         });
 
         dock.addEventListener("mouseleave", () => {
           items.forEach((item) => {
-            item.style.transition = "width 0.25s cubic-bezier(0.22, 1, 0.36, 1), height 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
-            item.style.width = `${baseSize}px`;
-            item.style.height = `${baseSize}px`;
+            item.style.transition = "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
+            item.style.transform = `scale(1)`;
+            item.style.zIndex = 1;
           });
         });
       }
