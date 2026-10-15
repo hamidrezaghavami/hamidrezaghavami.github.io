@@ -923,7 +923,7 @@
         });
       });
 
-      // 2. Magic UI Dock Fisheye Magnification - REWRITTEN TO USE SCALE
+      // 2. Magic UI Dock Fisheye Magnification
       const dock = document.getElementById("magic-dock");
       if (dock) {
         const items = dock.querySelectorAll(".dock-item");
@@ -937,26 +937,30 @@
             const itemCenterX = rect.left + rect.width / 2;
             const dist = Math.abs(e.clientX - itemCenterX);
 
-            let scale = 1;
+            let size = baseSize;
             if (dist < distanceLimit) {
               const ratio = Math.cos((dist / distanceLimit) * (Math.PI / 2));
-              const size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
-              scale = size / baseSize;
+              size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
             }
 
-            // Use GPU accelerated scale transform instead of width/height layout reflows
-            item.style.transform = `scale(${scale})`;
-            item.style.transition = "transform 0.04s ease-out";
-            // Dynamically boost z-index so scaled items overlay siblings smoothly
-            item.style.zIndex = scale > 1.1 ? 10 : 1;
+            // Animate actual dimensions to push neighbors apart
+            item.style.width = `${size}px`;
+            item.style.height = `${size}px`;
+            
+            // CRITICAL: Disable CSS transitions while the mouse is moving
+            // This prevents CSS from fighting the 60fps JavaScript updates
+            item.style.transition = "none";
+            // Remove the transform scale/z-index applied previously
+            item.style.transform = "none";
           });
         });
 
         dock.addEventListener("mouseleave", () => {
           items.forEach((item) => {
-            item.style.transition = "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
-            item.style.transform = `scale(1)`;
-            item.style.zIndex = 1;
+            // Re-enable the smooth CSS transition so the icons snap back elegantly
+            item.style.transition = "width 0.25s cubic-bezier(0.22, 1, 0.36, 1), height 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
+            item.style.width = `${baseSize}px`;
+            item.style.height = `${baseSize}px`;
           });
         });
       }
