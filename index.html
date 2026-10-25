@@ -208,6 +208,18 @@
         Docker
       </span>
 
+      <!-- TypeScript -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" class="size-4 rounded-[2px]">
+        TypeScript
+      </span>
+
+      <!-- AWS -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" class="size-4 dark:invert">
+        AWS
+      </span>
+
       <!-- Ubuntu Linux -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu Linux" class="size-4">
@@ -397,6 +409,68 @@
             <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Prisma</span>
             <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Docker</span>
             <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">CLI</span>
+          </div>
+        </div>
+      </div>
+
+            <!-- Project 3: Serein -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
+        <!-- Video Header (Autoplay + Click to Pause/Play) -->
+        <div 
+          class="relative h-44 w-full overflow-hidden bg-neutral-950 group cursor-pointer" 
+          onclick="if (this.querySelector('video').paused) { this.querySelector('video').play(); this.querySelector('.play-overlay').style.opacity = '0'; } else { this.querySelector('video').pause(); this.querySelector('.play-overlay').style.opacity = '1'; }"
+        >
+          <video 
+            src="./serein.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0';"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1';"
+            class="w-full h-full object-cover pointer-events-none"
+          ></video>
+
+          <!-- Play/Pause Indicator Overlay -->
+          <div class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+            <div class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+              <svg class="size-5 rtl:-scale-x-100 translate-x-0.5 rtl:-translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+
+          <!-- Top Action Badges -->
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
+            <a href="https://serein-two.vercel.app" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Website</span>
+            </a>
+            <a href="https://github.com/hamidrezaghavami/serein" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
+          <div class="space-y-1.5">
+            <a href="https://serein-two.vercel.app" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
+              <h3 class="font-bold tracking-tight text-base text-foreground">Serein</h3>
+              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <span class="text-xs text-muted-foreground block">Oct 26 - Oct 26</span>
+            <p class="text-xs text-muted-foreground leading-relaxed pt-1">
+              Built a comprehensive full-stack E-commerce platform featuring seamless product browsing, secure checkout integrations, and dynamic cart management.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">TypeScript</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">AWS</span>
           </div>
         </div>
       </div>
