@@ -1080,39 +1080,31 @@
         const maxScaleSize = 60;
         const distanceLimit = 135;
         
-        // 1. Add this flag
-        let isEntering = false; 
-
-        // 2. Add this mouseenter event
-        dock.addEventListener("mouseenter", () => {
-          isEntering = true;
-          // Smooth out the initial jump, then disable it after 150ms for buttery tracking
-          setTimeout(() => { isEntering = false; }, 150); 
-        });
-
-        dock.addEventListener("mousemove", (e) => {
-          items.forEach((item) => {
+        const updateMagnification = (e) => {
+          // Read all positions before resizing so each item uses the same layout.
+          const centers = Array.from(items, item => {
             const rect = item.getBoundingClientRect();
-            const itemCenterX = rect.left + rect.width / 2;
-            const dist = Math.abs(e.clientX - itemCenterX);
+            return rect.left + rect.width / 2;
+          });
 
+          items.forEach((item, index) => {
+            const dist = Math.abs(e.clientX - centers[index]);
             let size = baseSize;
             if (dist < distanceLimit) {
               const ratio = Math.cos((dist / distanceLimit) * (Math.PI / 2));
               size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
             }
 
+            // Keep smoothing active instead of abruptly disabling it after entry.
+            item.style.transition = "width 0.15s ease-out, height 0.15s ease-out";
             item.style.width = `${size}px`;
             item.style.height = `${size}px`;
-            
-            // 3. Update the transition line to use the flag
-            item.style.transition = isEntering 
-              ? "width 0.15s ease-out, height 0.15s ease-out" 
-              : "none";
-              
             item.style.transform = "none";
           });
-        });
+        };
+
+        dock.addEventListener("mouseenter", updateMagnification);
+        dock.addEventListener("mousemove", updateMagnification);
 
         dock.addEventListener("mouseleave", () => {
           items.forEach((item) => {
