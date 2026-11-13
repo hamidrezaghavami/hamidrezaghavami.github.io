@@ -1029,11 +1029,14 @@
         // Keep the layout order fixed across languages.
         htmlEl.setAttribute("dir", "ltr");
         
+        const textDirection = lang === "fa" || lang === "ar" ? "rtl" : "ltr";
         const dict = translations[lang] || translations["en"];
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
           if (dict[key]) {
             el.innerHTML = dict[key];
+            el.style.direction = textDirection;
+            el.style.unicodeBidi = "isolate";
           }
         });
       };
