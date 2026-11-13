@@ -480,9 +480,25 @@
 
       <!-- Project 4: ClientFlow -->
       <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
-        <!-- Animated WebP Preview -->
+        <!-- Click-to-play video preview; preload without autoplay. -->
         <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
-          <img src="./ClientFlow.webp" alt="ClientFlow workspace preview" width="1920" height="1080" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          <video
+            src="./ClientFlow.mp4"
+            poster="./ClientFlow-poster.jpg"
+            loop muted playsinline preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause ClientFlow preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play ClientFlow preview');"
+            class="w-full h-full object-cover pointer-events-none"
+          ></video>
+          <button type="button" aria-label="Play ClientFlow preview"
+            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
+            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+          </button>
 
           <!-- Top Action Badges -->
           <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5">
