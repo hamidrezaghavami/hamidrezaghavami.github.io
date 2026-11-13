@@ -536,6 +536,65 @@
        </div>
       </div>
 
+      <!-- Project 5: Veyra AI -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
+        <!-- Click-to-play video preview; preload without autoplay. -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
+          <video
+            src="./VeyraAI.mp4"
+            poster="./VeyraAI-poster.jpg"
+            loop muted playsinline preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Veyra AI preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Veyra AI preview');"
+            class="w-full h-full object-cover pointer-events-none"
+          ></video>
+          <button type="button" aria-label="Play Veyra AI preview"
+            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
+            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+          </button>
+
+          <!-- Top Action Badges -->
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5">
+            <a href="https://veyra-ai-lemon.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span data-i18n="btn_website">Website</span>
+            </a>
+            <a href="https://github.com/hamidrezaghavami/Veyra-ai" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span data-i18n="btn_source_1">Source</span>
+            </a>
+          </div>
+        </div>
+
+
+       <!-- Content Section -->
+       <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
+         <div class="space-y-1.5">
+           <a href="https://veyra-ai-lemon.vercel.app/" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
+             <h3 class="font-bold tracking-tight text-base text-foreground">Veyra AI</h3>
+             <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+           </a>
+           <span data-i18n="veyra_date" class="text-xs text-muted-foreground block">Nov 2026</span>
+           <p data-i18n="veyra_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+             Built an AI-powered invoice review platform with document extraction, deterministic audit checks, approval history, and a financial assistant.
+           </p>
+         </div>
+
+         <div class="flex flex-wrap gap-1.5 pt-2">
+           <span data-i18n="veyra_tag" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
+           <span data-i18n="veyra_ai" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">AI Automation</span>
+           <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Gemini API</span>
+         </div>
+       </div>
+      </div>
+
     </div>
   </section>
 
@@ -833,6 +892,10 @@
       // 1.5 Instant 4-Language Dropdown Switcher (EN, TR, AR, FA)
       const translations = {
         en: {
+          veyra_date: "Nov 2026",
+          veyra_desc: "Built an AI-powered invoice review platform with document extraction, deterministic audit checks, approval history, and a financial assistant.",
+          veyra_tag: "Full-Stack",
+          veyra_ai: "AI Automation",
           clientflow_date: "Nov 2026",
           clientflow_desc: "Built a freelancer workspace for managing client projects, approving scope changes through shared review links, and drafting AI-assisted follow-ups.",
           clientflow_tag: "Full-Stack",
@@ -883,6 +946,10 @@
           contact_desc: 'Want to chat? Just shoot me a dm <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on LinkedIn</a> and I\'ll respond whenever I can. I will ignore all soliciting.'
         },
         tr: {
+          veyra_date: "Kasım 2026",
+          veyra_desc: "Belge verisi çıkarma, deterministik denetim kontrolleri, onay geçmişi ve finans asistanı sunan yapay zekâ destekli bir fatura inceleme platformu geliştirdim.",
+          veyra_tag: "Full-Stack",
+          veyra_ai: "Yapay Zekâ Otomasyonu",
           clientflow_date: "Kasım 2026",
           clientflow_desc: "Müşteri projelerini yönetmek, paylaşılan inceleme bağlantıları üzerinden kapsam değişikliklerini onaylamak ve yapay zekâ destekli takip mesajları hazırlamak için serbest çalışanlara yönelik bir çalışma alanı geliştirdim.",
           clientflow_tag: "Full-Stack",
@@ -933,6 +1000,10 @@
           contact_desc: 'Sohbet etmek mi istiyorsunuz? Bana doğrudan <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">LinkedIn üzerinden mesaj gönderebilirsiniz</a>; müsait olduğumda yanıtlayacağım.'
         },
         fa: {
+          veyra_date: "نوامبر ۲۰۲۶",
+          veyra_desc: "یک پلتفرم بررسی فاکتور مبتنی بر هوش مصنوعی با استخراج اطلاعات اسناد، کنترل‌های قطعی حسابرسی، تاریخچه تأییدها و دستیار مالی ساختم.",
+          veyra_tag: "فول‌استک",
+          veyra_ai: "اتوماسیون هوش مصنوعی",
           clientflow_date: "نوامبر ۲۰۲۶",
           clientflow_desc: "یک فضای کاری برای فریلنسرها ساختم که مدیریت پروژه‌های مشتریان، تأیید تغییرات محدوده پروژه از طریق لینک‌های بررسی مشترک و تهیه پیش‌نویس پیام‌های پیگیری با کمک هوش مصنوعی را فراهم می‌کند.",
           clientflow_tag: "فول‌استک",
@@ -983,6 +1054,10 @@
           contact_desc: 'برای صحبت با من می‌توانید <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">در لینکدین پیام مستقیم بدهید</a> و من در اولین فرصت پاسخ خواهم داد.'
         },
         ar: {
+          veyra_date: "نوفمبر 2026",
+          veyra_desc: "طوّرت منصة لمراجعة الفواتير بالذكاء الاصطناعي، مع استخراج بيانات المستندات، وفحوص تدقيق قائمة على قواعد محددة، وسجل الموافقات، ومساعد مالي.",
+          veyra_tag: "تطوير متكامل",
+          veyra_ai: "أتمتة بالذكاء الاصطناعي",
           clientflow_date: "نوفمبر 2026",
           clientflow_desc: "طوّرت مساحة عمل للمستقلين لإدارة مشاريع العملاء، واعتماد تغييرات نطاق العمل عبر روابط مراجعة مشتركة، وصياغة رسائل متابعة بمساعدة الذكاء الاصطناعي.",
           clientflow_tag: "تطوير متكامل",
