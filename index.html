@@ -337,144 +337,6 @@
           </div>
         </div>
       </div>
-      
-      <!-- Project 2: Serein -->
-      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
-        <!-- Click-to-play video preview; preload without autoplay. -->
-        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
-          <video
-            src="./serein.mp4"
-            poster="./Serein-poster.jpg"
-            loop muted playsinline preload="auto"
-            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Serein preview');"
-            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Serein preview');"
-            class="w-full h-full object-cover pointer-events-none"
-          ></video>
-          <button type="button" aria-label="Play Serein preview"
-            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
-            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
-            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
-              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
-                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              </span>
-            </span>
-            <span class="pause-indicator hidden absolute bottom-3 left-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
-              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-            </span>
-          </button>
-
-          <!-- Top Action Badges -->
-          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
-            <a href="https://serein-two.vercel.app" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
-              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span data-i18n="btn_website">Website</span>
-            </a>
-            <a href="https://github.com/hamidrezaghavami/serein" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
-              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              <span data-i18n="btn_source_1">Source</span>
-            </a>
-          </div>
-        </div>
-
-
-       <!-- Content Section -->
-       <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
-         <div class="space-y-1.5">
-           <a href="https://serein-two.vercel.app" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
-             <h3 class="font-bold tracking-tight text-base text-foreground">Serein</h3>
-             <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-           </a>
-           <span data-i18n="serein_date" class="text-xs text-muted-foreground block">Oct 26 - Oct 26</span>
-           <p data-i18n="serein_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
-             Built a comprehensive full-stack E-commerce platform featuring seamless product browsing, secure checkout integrations, and dynamic cart management.
-           </p>
-         </div>
-
-         <div class="flex flex-wrap gap-1.5 pt-2">
-           <span data-i18n="serein_tag" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
-           <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">TypeScript</span>
-         </div>
-       </div>
-      </div>
-
-      <!-- Project 3: Iron-Clad-Ledger -->
-      <div class="flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md">
-        
-        <!-- Terminal Header -->
-        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 p-3.5 font-mono text-[10px] sm:text-[11px] flex flex-col justify-between select-none border-b border-border/40" dir="ltr">
-          
-          <!-- Top Bar: macOS Dots + Source Button -->
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-1.5">
-              <span class="size-2.5 rounded-full bg-rose-500/80"></span>
-              <span class="size-2.5 rounded-full bg-amber-500/80"></span>
-              <span class="size-2.5 rounded-full bg-emerald-500/80"></span>
-            </div>
-            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 font-sans text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
-              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              <span data-i18n="btn_source_2">Source</span>
-            </a>
-          </div>
-
-          <!-- Middle Terminal Output -->
-          <div class="space-y-1 my-auto text-left">
-            <div class="text-neutral-300 truncate">
-              <span class="text-sky-400">$</span> ledger transfer --amt 15000.00
-            </div>
-            <div class="flex items-center gap-1.5 text-neutral-400">
-              <span>├── 🔒 Acquired: SERIALIZABLE</span>
-              <span class="text-emerald-400 font-medium">[OK]</span>
-            </div>
-            <div class="flex items-center gap-1.5 text-neutral-400">
-              <span>├── 🔍 Invariant Check: &Delta; = 0.00</span>
-              <span class="text-purple-400 font-medium">[PASS]</span>
-            </div>
-            <div class="pl-2 py-0.5 border-l border-neutral-800 text-[10px] text-neutral-400 flex items-center gap-1.5">
-              <span class="text-rose-400">[Acc_A]</span>
-              <span class="text-neutral-500">&rarr; $15,000 &rarr;</span>
-              <span class="text-emerald-400">[Acc_B]</span>
-            </div>
-          </div>
-
-          <!-- Bottom Status Bar -->
-          <div class="flex items-center justify-between text-[10px] text-neutral-500 border-t border-neutral-900 pt-1.5">
-            <span>PostgreSQL &bull; Prisma</span>
-            <span class="text-emerald-400 font-medium">0 DRIFT &bull; SYNCED</span>
-          </div>
-
-        </div>
-
-        <!-- Card Body -->
-        <div class="flex flex-col flex-1 justify-between p-4 font-sans">
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
-              <h3 class="font-semibold tracking-tight text-base text-foreground">
-                <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="hover:underline">Iron-Clad-Ledger</a>
-              </h3>
-              <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground">
-                <svg class="size-4 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-              </a>
-            </div>
-            <time data-i18n="icl_date" class="font-sans text-xs text-muted-foreground block">Nov 2025 - Jan 2026</time>
-            <p data-i18n="icl_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
-              Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.
-            </p>
-          </div>
-
-          <!-- Tech Stack Pills -->
-          <div class="mt-4 flex flex-wrap gap-1.5">
-            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Node.js</span>
-            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">PostgreSQL</span>
-            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Prisma</span>
-            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Docker</span>
-            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">CLI</span>
-          </div>
-        </div>
-      </div>
-
 
       <!-- Project 4: ClientFlow -->
       <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
@@ -589,6 +451,143 @@
            <span data-i18n="veyra_tag" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
            <span data-i18n="veyra_ai" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">AI Automation</span>
            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Gemini API</span>
+         </div>
+       </div>
+      </div>
+
+      <!-- Project 3: Iron-Clad-Ledger -->
+      <div class="flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md">
+        
+        <!-- Terminal Header -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 p-3.5 font-mono text-[10px] sm:text-[11px] flex flex-col justify-between select-none border-b border-border/40" dir="ltr">
+          
+          <!-- Top Bar: macOS Dots + Source Button -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="size-2.5 rounded-full bg-rose-500/80"></span>
+              <span class="size-2.5 rounded-full bg-amber-500/80"></span>
+              <span class="size-2.5 rounded-full bg-emerald-500/80"></span>
+            </div>
+            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 font-sans text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span data-i18n="btn_source_2">Source</span>
+            </a>
+          </div>
+
+          <!-- Middle Terminal Output -->
+          <div class="space-y-1 my-auto text-left">
+            <div class="text-neutral-300 truncate">
+              <span class="text-sky-400">$</span> ledger transfer --amt 15000.00
+            </div>
+            <div class="flex items-center gap-1.5 text-neutral-400">
+              <span>├── 🔒 Acquired: SERIALIZABLE</span>
+              <span class="text-emerald-400 font-medium">[OK]</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-neutral-400">
+              <span>├── 🔍 Invariant Check: &Delta; = 0.00</span>
+              <span class="text-purple-400 font-medium">[PASS]</span>
+            </div>
+            <div class="pl-2 py-0.5 border-l border-neutral-800 text-[10px] text-neutral-400 flex items-center gap-1.5">
+              <span class="text-rose-400">[Acc_A]</span>
+              <span class="text-neutral-500">&rarr; $15,000 &rarr;</span>
+              <span class="text-emerald-400">[Acc_B]</span>
+            </div>
+          </div>
+
+          <!-- Bottom Status Bar -->
+          <div class="flex items-center justify-between text-[10px] text-neutral-500 border-t border-neutral-900 pt-1.5">
+            <span>PostgreSQL &bull; Prisma</span>
+            <span class="text-emerald-400 font-medium">0 DRIFT &bull; SYNCED</span>
+          </div>
+
+        </div>
+
+        <!-- Card Body -->
+        <div class="flex flex-col flex-1 justify-between p-4 font-sans">
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold tracking-tight text-base text-foreground">
+                <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="hover:underline">Iron-Clad-Ledger</a>
+              </h3>
+              <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground">
+                <svg class="size-4 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+            <time data-i18n="icl_date" class="font-sans text-xs text-muted-foreground block">Nov 2025 - Jan 2026</time>
+            <p data-i18n="icl_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+              Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.
+            </p>
+          </div>
+
+          <!-- Tech Stack Pills -->
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Node.js</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">PostgreSQL</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Prisma</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Docker</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">CLI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Serein -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
+        <!-- Click-to-play video preview; preload without autoplay. -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
+          <video
+            src="./serein.mp4"
+            poster="./Serein-poster.jpg"
+            loop muted playsinline preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Serein preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Serein preview');"
+            class="w-full h-full object-cover pointer-events-none"
+          ></video>
+          <button type="button" aria-label="Play Serein preview"
+            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
+            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+            <span class="pause-indicator hidden absolute bottom-3 left-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
+              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </span>
+          </button>
+
+          <!-- Top Action Badges -->
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
+            <a href="https://serein-two.vercel.app" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span data-i18n="btn_website">Website</span>
+            </a>
+            <a href="https://github.com/hamidrezaghavami/serein" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span data-i18n="btn_source_1">Source</span>
+            </a>
+          </div>
+        </div>
+
+
+       <!-- Content Section -->
+       <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
+         <div class="space-y-1.5">
+           <a href="https://serein-two.vercel.app" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
+             <h3 class="font-bold tracking-tight text-base text-foreground">Serein</h3>
+             <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+           </a>
+           <span data-i18n="serein_date" class="text-xs text-muted-foreground block">Oct 26 - Oct 26</span>
+           <p data-i18n="serein_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+             Built a comprehensive full-stack E-commerce platform featuring seamless product browsing, secure checkout integrations, and dynamic cart management.
+           </p>
+         </div>
+
+         <div class="flex flex-wrap gap-1.5 pt-2">
+           <span data-i18n="serein_tag" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
+           <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">TypeScript</span>
          </div>
        </div>
       </div>
