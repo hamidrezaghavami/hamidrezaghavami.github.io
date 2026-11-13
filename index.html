@@ -277,29 +277,28 @@
       
       <!-- Project 1: CapitalGuard -->
       <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
-        <!-- Video Header (Autoplay + Cache-Busted + Click to Pause/Play) -->
-        <div 
-          class="relative h-44 w-full overflow-hidden bg-neutral-950 group cursor-pointer" 
-          onclick="if (this.querySelector('video').paused) { this.querySelector('video').play(); this.querySelector('.play-overlay').style.opacity = '0'; } else { this.querySelector('video').pause(); this.querySelector('.play-overlay').style.opacity = '1'; }"
-        >
-          <video 
-            src="./video.mp4?v=2" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            preload="auto"
-            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0';"
-            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1';"
+        <!-- Click-to-play video preview; preload without autoplay. -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
+          <video
+            src="./video.mp4"
+            poster="./CapitalGuard-poster.jpg"
+            loop muted playsinline preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause CapitalGuard preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play CapitalGuard preview');"
             class="w-full h-full object-cover pointer-events-none"
           ></video>
-
-          <!-- Play/Pause Indicator Overlay -->
-          <div class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
-            <div class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
-              <svg class="size-5 rtl:-scale-x-100 translate-x-0.5 rtl:-translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
+          <button type="button" aria-label="Play CapitalGuard preview"
+            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
+            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+            <span class="pause-indicator hidden absolute bottom-3 left-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
+              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </span>
+          </button>
 
           <!-- Top Action Badges -->
           <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
@@ -341,29 +340,28 @@
       
       <!-- Project 2: Serein -->
       <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
-        <!-- Video Header (Autoplay + Cache-Busted + Click to Pause/Play) -->
-         <div 
-         class="relative h-44 w-full overflow-hidden bg-neutral-950 group cursor-pointer" 
-          onclick="if (this.querySelector('video').paused) { this.querySelector('video').play(); this.querySelector('.play-overlay').style.opacity = '0'; } else { this.querySelector('video').pause(); this.querySelector('.play-overlay').style.opacity = '1'; }"
-        >
-          <video 
-            src="./serein.mp4?v=1" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            preload="auto"
-            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0';"
-            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1';"
+        <!-- Click-to-play video preview; preload without autoplay. -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
+          <video
+            src="./serein.mp4"
+            poster="./Serein-poster.jpg"
+            loop muted playsinline preload="auto"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Serein preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Serein preview');"
             class="w-full h-full object-cover pointer-events-none"
           ></video>
-
-          <!-- Play/Pause Indicator Overlay -->
-          <div class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
-            <div class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
-              <svg class="size-5 rtl:-scale-x-100 translate-x-0.5 rtl:-translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
+          <button type="button" aria-label="Play Serein preview"
+            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
+            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+            <span class="pause-indicator hidden absolute bottom-3 left-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
+              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </span>
+          </button>
 
           <!-- Top Action Badges -->
           <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
