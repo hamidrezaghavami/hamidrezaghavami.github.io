@@ -1080,6 +1080,9 @@
         const maxScaleSize = 60;
         const distanceLimit = 135;
         
+        let dockEntryTimer;
+        let dockEntering = false;
+
         const updateMagnification = (e) => {
           // Read all positions before resizing so each item uses the same layout.
           const centers = Array.from(items, item => {
@@ -1095,20 +1098,28 @@
               size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
             }
 
-            // Keep smoothing active instead of abruptly disabling it after entry.
-            item.style.transition = "width 0.15s ease-out, height 0.15s ease-out";
+            item.style.transition = dockEntering
+              ? "width 0.06s ease-out, height 0.06s ease-out"
+              : "none";
             item.style.width = `${size}px`;
             item.style.height = `${size}px`;
             item.style.transform = "none";
           });
         };
 
-        dock.addEventListener("mouseenter", updateMagnification);
+        dock.addEventListener("mouseenter", (e) => {
+          clearTimeout(dockEntryTimer);
+          dockEntering = true;
+          updateMagnification(e);
+          dockEntryTimer = setTimeout(() => { dockEntering = false; }, 80);
+        });
         dock.addEventListener("mousemove", updateMagnification);
 
         dock.addEventListener("mouseleave", () => {
+          clearTimeout(dockEntryTimer);
+          dockEntering = false;
           items.forEach((item) => {
-            item.style.transition = "width 0.25s cubic-bezier(0.22, 1, 0.36, 1), height 0.25s cubic-bezier(0.22, 1, 0.36, 1)";
+            item.style.transition = "width 0.12s ease-out, height 0.12s ease-out";
             item.style.width = `${baseSize}px`;
             item.style.height = `${baseSize}px`;
           });
