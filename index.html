@@ -458,49 +458,36 @@
       <!-- Project 3: Iron-Clad-Ledger -->
       <div class="flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md">
         
-        <!-- Terminal Header -->
-        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 p-3.5 font-mono text-[10px] sm:text-[11px] flex flex-col justify-between select-none border-b border-border/40" dir="ltr">
-          
-          <!-- Top Bar: macOS Dots + Source Button -->
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-1.5">
-              <span class="size-2.5 rounded-full bg-rose-500/80"></span>
-              <span class="size-2.5 rounded-full bg-amber-500/80"></span>
-              <span class="size-2.5 rounded-full bg-emerald-500/80"></span>
-            </div>
-            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer" 
+        <!-- Click-to-play video preview; preload without autoplay. -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
+          <video
+            src="./Iron-Clad.mp4"
+            poster="./Iron-Clad-poster.jpg"
+            loop muted playsinline preload="none"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Iron Clad Ledger preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Iron Clad Ledger preview');"
+            class="w-full h-full object-contain pointer-events-none"
+          ></video>
+          <button type="button" aria-label="Play Iron Clad Ledger preview"
+            class="video-toggle absolute inset-0 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+            onclick="const video = this.parentElement.querySelector('video'); if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }">
+            <span class="play-overlay pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[1px] transition-opacity duration-200">
+              <span class="size-11 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+            <span class="pause-indicator hidden absolute bottom-3 start-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
+              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </span>
+          </button>
+
+          <div class="absolute top-2.5 end-2.5 z-20 flex items-center">
+            <a href="https://github.com/hamidrezaghavami/Iron-Clad-Ledger" target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 font-sans text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
               <span data-i18n="btn_source_2">Source</span>
             </a>
           </div>
-
-          <!-- Middle Terminal Output -->
-          <div class="space-y-1 my-auto text-left">
-            <div class="text-neutral-300 truncate">
-              <span class="text-sky-400">$</span> ledger transfer --amt 15000.00
-            </div>
-            <div class="flex items-center gap-1.5 text-neutral-400">
-              <span>├── 🔒 Acquired: SERIALIZABLE</span>
-              <span class="text-emerald-400 font-medium">[OK]</span>
-            </div>
-            <div class="flex items-center gap-1.5 text-neutral-400">
-              <span>├── 🔍 Invariant Check: &Delta; = 0.00</span>
-              <span class="text-purple-400 font-medium">[PASS]</span>
-            </div>
-            <div class="pl-2 py-0.5 border-l border-neutral-800 text-[10px] text-neutral-400 flex items-center gap-1.5">
-              <span class="text-rose-400">[Acc_A]</span>
-              <span class="text-neutral-500">&rarr; $15,000 &rarr;</span>
-              <span class="text-emerald-400">[Acc_B]</span>
-            </div>
-          </div>
-
-          <!-- Bottom Status Bar -->
-          <div class="flex items-center justify-between text-[10px] text-neutral-500 border-t border-neutral-900 pt-1.5">
-            <span>PostgreSQL &bull; Prisma</span>
-            <span class="text-emerald-400 font-medium">0 DRIFT &bull; SYNCED</span>
-          </div>
-
         </div>
 
         <!-- Card Body -->
