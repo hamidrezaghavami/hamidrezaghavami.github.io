@@ -87,10 +87,11 @@
       will-change: transform, opacity, filter;
     }
 
-    /* New style for the dock items to ensure smooth transform scaling */
+    /* Style for the dock items to ensure smooth magnification */
     .dock-item {
-      will-change: transform;
+      will-change: width, height;
       transform-origin: center bottom;
+      transition: width 0.12s cubic-bezier(0.16, 1, 0.3, 1), height 0.12s cubic-bezier(0.16, 1, 0.3, 1);
     }
   </style>
 </head>
@@ -131,6 +132,73 @@
       <p data-i18n="about_p2">
         From contributing bug fixes to <strong class="text-foreground">Node.js core</strong> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.
       </p>
+    </div>
+  </section>
+
+  <!-- WORK WITH ME SECTION -->
+  <section id="work-with-me" class="mt-14 space-y-4">
+    <h2 data-i18n="work_title" class="text-xl font-bold tracking-tight text-foreground">Work With Me</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <!-- Card 1: Build Your Backend Feature -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+        <div class="space-y-1.5">
+          <h3 data-i18n="work_card1_title" class="font-bold tracking-tight text-base text-foreground">Build Your Backend Feature</h3>
+          <p data-i18n="work_card1_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+            Invoice or CSV import pipelines, payments, ledgers, auth.
+          </p>
+        </div>
+        <div class="pt-4">
+          <span data-i18n="work_card1_price" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-1 text-xs font-semibold text-foreground">
+            From $500
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 2: AI-Assisted Full-Stack App -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+        <div class="space-y-1.5">
+          <h3 data-i18n="work_card2_title" class="font-bold tracking-tight text-base text-foreground">AI-Assisted Full-Stack App</h3>
+          <p data-i18n="work_card2_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+            MVP in 2-3 weeks. Fast turnaround from idea to production-ready deployment.
+          </p>
+        </div>
+        <div class="pt-4">
+          <span data-i18n="work_card2_price" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-1 text-xs font-semibold text-foreground">
+            From $1,200
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 3: Monthly Retainer -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+        <div class="space-y-1.5">
+          <h3 data-i18n="work_card3_title" class="font-bold tracking-tight text-base text-foreground">Monthly Retainer</h3>
+          <p data-i18n="work_card3_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+            Set number of hours of bug fixes and improvements.
+          </p>
+        </div>
+        <div class="pt-4">
+          <span data-i18n="work_card3_price" class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-1 text-xs font-semibold text-foreground">
+            From $600/month
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust note & Action buttons -->
+    <div class="space-y-3 pt-1">
+      <p data-i18n="work_trust" class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+        Node.js core contributor. Production fintech and AI tools shipped.
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-foreground text-background px-4 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
+          <span data-i18n="work_btn_book">Book a Call</span>
+        </a>
+        <a href="mailto:hamidr.ghavami@gmail.com" class="inline-flex items-center justify-center rounded-lg border border-border bg-card text-foreground px-4 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm">
+          <span data-i18n="work_btn_email">Email Me</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -178,6 +246,12 @@
         Node.js
       </span>
 
+      <!-- TypeScript -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" class="size-4 rounded-[2px]">
+        TypeScript
+      </span>
+
       <!-- Express.js -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express.js" class="size-4 dark:invert">
@@ -190,16 +264,16 @@
         PostgreSQL
       </span>
 
+      <!-- Redis -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis" class="size-4">
+        Redis
+      </span>
+
       <!-- Prisma ORM -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" alt="Prisma ORM" class="size-4 dark:invert">
         Prisma ORM
-      </span>
-
-      <!-- Passport.js -->
-      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
-        <svg class="size-4 text-emerald-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
-        Passport.js
       </span>
 
       <!-- Docker -->
@@ -207,43 +281,13 @@
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" class="size-4">
         Docker
       </span>
-
-      <!-- TypeScript -->
-      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" class="size-4 rounded-[2px]">
-        TypeScript
-      </span>
       
       <!-- AWS -->
-       <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <svg class="size-3.5 shrink-0 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
         </svg>
         AWS
-      </span>
-
-      <!-- Ubuntu Linux -->
-      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu Linux" class="size-4">
-        Ubuntu Linux
-      </span>
-
-      <!-- Redis -->
-      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis" class="size-4">
-        Redis
-      </span>
-
-      <!-- ACID Systems -->
-      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
-        <svg class="size-4 text-sky-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-        <span data-i18n="skill_acid">ACID Systems</span>
-      </span>
-
-      <!-- Data Structure & Algorithms -->
-      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
-        <svg class="size-4 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        <span data-i18n="skill_dsa">Data Structure &amp; Algorithms</span>
       </span>
 
       <!-- NginX -->
@@ -252,10 +296,34 @@
         NginX
       </span>
 
+      <!-- Ubuntu Linux -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu Linux" class="size-4">
+        Ubuntu Linux
+      </span>
+
+      <!-- Passport.js -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-emerald-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+        Passport.js
+      </span>
+
+      <!-- ACID Systems -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-sky-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+        <span data-i18n="skill_acid">ACID Systems</span>
+      </span>
+
       <!-- OOP -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <svg class="size-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
         OOP
+      </span>
+
+      <!-- Data Structure & Algorithms -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
+        <svg class="size-4 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span data-i18n="skill_dsa">Data Structure &amp; Algorithms</span>
       </span>
 
     </div>
@@ -346,8 +414,8 @@
             src="./ClientFlow.mp4"
             poster="./ClientFlow-poster.jpg"
             loop muted playsinline preload="auto"
-            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause ClientFlow preview');"
-            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play ClientFlow preview');"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause ClientFlow preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play ClientFlow preview');"
             class="w-full h-full object-cover pointer-events-none"
           ></video>
           <button type="button" aria-label="Play ClientFlow preview"
@@ -358,10 +426,13 @@
                 <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </span>
             </span>
+            <span class="pause-indicator hidden absolute bottom-3 left-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
+              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </span>
           </button>
 
           <!-- Top Action Badges -->
-          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5">
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
             <a href="https://clientflow-chi-amber.vercel.app" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -404,8 +475,8 @@
             src="./VeyraAI.mp4"
             poster="./VeyraAI-poster.jpg"
             loop muted playsinline preload="auto"
-            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Veyra AI preview');"
-            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Veyra AI preview');"
+            onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Veyra AI preview');"
+            onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Veyra AI preview');"
             class="w-full h-full object-cover pointer-events-none"
           ></video>
           <button type="button" aria-label="Play Veyra AI preview"
@@ -416,10 +487,13 @@
                 <svg class="size-5 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </span>
             </span>
+            <span class="pause-indicator hidden absolute bottom-3 left-3 size-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white" aria-hidden="true">
+              <svg class="size-4 fill-current" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </span>
           </button>
 
           <!-- Top Action Badges -->
-          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5">
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
             <a href="https://veyra-ai-lemon.vercel.app/" target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
               <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -566,7 +640,7 @@
              <h3 class="font-bold tracking-tight text-base text-foreground">Serein</h3>
              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
            </a>
-           <span data-i18n="serein_date" class="text-xs text-muted-foreground block">Oct 26 - Oct 26</span>
+           <span data-i18n="serein_date" class="text-xs text-muted-foreground block">Oct 2026</span>
            <p data-i18n="serein_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
              Built a comprehensive full-stack E-commerce platform featuring seamless product browsing, secure checkout integrations, and dynamic cart management.
            </p>
@@ -763,9 +837,10 @@
           Get in Touch
         </h2>
         <p data-i18n="contact_desc" class="text-muted-foreground text-sm sm:text-base leading-relaxed">
-          Want to chat? Just shoot me a dm 
-          <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on LinkedIn</a> 
-          and I'll respond whenever I can. I will ignore all soliciting.
+          Have a project or a backend problem? 
+          <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">Book a call</a> 
+          or <a href="mailto:hamidr.ghavami@gmail.com" class="text-blue-500 hover:underline font-normal">email me</a> 
+          with a short description and I'll reply within 24 hours.
         </p>
       </div>
 
@@ -780,6 +855,14 @@
       <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
         <svg class="w-[45%] h-[45%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </a>
+
+      <!-- Work With Me -->
+      <a href="#work-with-me" aria-label="Work With Me" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
+        <svg class="w-[45%] h-[45%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          <rect width="20" height="14" x="2" y="6" rx="2"/>
         </svg>
       </a>
 
@@ -807,20 +890,13 @@
         </svg>
       </a>
 
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/channel/UCLU-IzkmII-8PCLK8VVuvOg" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
-        <svg class="w-[45%] h-[45%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
-      </a>
-
       <!-- Divider -->
       <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0 self-center"></div>
 
       <!-- Globe Language Switcher & Dropdown Menu -->
       <div class="relative flex items-center justify-center shrink-0">
         <!-- Globe Button -->
-        <button id="lang-menu-btn" type="button" aria-label="Switch Language" class="dock-item flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm transition-colors" style="width: 40px; height: 40px;">
+        <button id="lang-menu-btn" type="button" aria-label="Switch Language" class="dock-item flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 shadow-sm" style="width: 40px; height: 40px;">
           <svg class="size-[45%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
         </button>
 
@@ -852,7 +928,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // 0. Magic UI Staggered BlurFade Entrance
-      const sections = document.querySelectorAll("body > main > section, body > section, #hero, #about, #contributions, #education, #skills, #projects, #contact");
+      const sections = document.querySelectorAll("body > main > section, body > section, #hero, #about, #work-with-me, #contributions, #education, #skills, #projects, #contact");
       sections.forEach((sec, index) => {
         sec.classList.add("blur-fade-item");
         sec.style.animationDelay = `${index * 0.15}s`;
@@ -884,7 +960,7 @@
           clientflow_desc: "Built a freelancer workspace for managing client projects, approving scope changes through shared review links, and drafting AI-assisted follow-ups.",
           clientflow_tag: "Full-Stack",
           clientflow_dashboard: "Dashboard",
-          serein_date: "Oct 26 - Oct 26",
+          serein_date: "Oct 2026",
           serein_desc: "Built a comprehensive full-stack E-commerce platform featuring seamless product browsing, secure checkout integrations, and dynamic cart management.",
           serein_tag: "Full-Stack",
           hero_greeting: "Hi, I'm HamidReza",
@@ -925,52 +1001,65 @@
           view_pr_2: "View PR ↗",
           view_pr_3: "View PR ↗",
           view_pr_4: "View PR ↗",
+          work_title: "Work With Me",
+          work_card1_title: "Build Your Backend Feature",
+          work_card1_desc: "Invoice or CSV import pipelines, payments, ledgers, auth.",
+          work_card1_price: "From $500",
+          work_card2_title: "AI-Assisted Full-Stack App",
+          work_card2_desc: "MVP in 2-3 weeks. Fast turnaround from idea to production-ready deployment.",
+          work_card2_price: "From $1,200",
+          work_card3_title: "Monthly Retainer",
+          work_card3_desc: "Set number of hours of bug fixes and improvements.",
+          work_card3_price: "From $600/month",
+          work_trust: "Node.js core contributor. Production fintech and AI tools shipped.",
+          work_btn_book: "Book a Call",
+          work_btn_email: "Email Me",
           contact_badge: "Contact",
           contact_title: "Get in Touch",
-          contact_desc: 'Want to chat? Just shoot me a dm <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">with a direct question on LinkedIn</a> and I\'ll respond whenever I can. I will ignore all soliciting.'
+          contact_desc: 'Have a project or a backend problem? <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">Book a call</a> or <a href="mailto:hamidr.ghavami@gmail.com" class="text-blue-500 hover:underline font-normal">email me</a> with a short description and I\'ll reply within 24 hours.'
         },
         tr: {
           veyra_date: "Kasım 2026",
-          veyra_desc: "Belge verisi çıkarma, deterministik denetim kontrolleri, onay geçmişi ve finans asistanı sunan yapay zekâ destekli bir fatura inceleme platformu geliştirdim.",
+          veyra_desc: "Faturaları otomatik okuyan, muhasebe kurallarını denetleyen, onay geçmişini tutan ve akıllı finans asistanı içeren yapay zekâ destekli platform.",
           veyra_tag: "Full-Stack",
-          veyra_ai: "Yapay Zekâ Otomasyonu",
+          veyra_ai: "Yapay Zekâ",
           clientflow_date: "Kasım 2026",
-          clientflow_desc: "Müşteri projelerini yönetmek, paylaşılan inceleme bağlantıları üzerinden kapsam değişikliklerini onaylamak ve yapay zekâ destekli takip mesajları hazırlamak için serbest çalışanlara yönelik bir çalışma alanı geliştirdim.",
+          clientflow_desc: "Serbest çalışanların (freelancer) müşteri projelerini yönettiği, değişiklik taleplerini paylaşılan bağlantılarla onaylattığı ve akıllı takip mesajları hazırladığı çalışma alanı.",
           clientflow_tag: "Full-Stack",
-          clientflow_dashboard: "Kontrol Paneli",
-          serein_date: "Ekim 26 - Ekim 26",
-          serein_desc: "Sorunsuz ürün gezinme, güvenli ödeme entegrasyonları ve dinamik sepet yönetimi sunan kapsamlı bir full-stack e-ticaret platformu geliştirdim.",
+          clientflow_dashboard: "Yönetim Paneli",
+          serein_date: "Ekim 2026",
+          serein_desc: "Hızlı ürün keşfi, dinamik sepet yönetimi ve güvenli ödeme altyapısına sahip modern e-ticaret platformu.",
           serein_tag: "Full-Stack",
           hero_greeting: "Selam, ben HamidReza",
-          hero_sub: "Girişimci vizyona sahip Backend Yazılım Mühendisi. Yüksek işlem hacimli motorlar, sıkı veri tutarlılığı ve düşük seviyeli Node.js çalışma zamanı (runtime) mimarilerinde uzmanlaşmıştır.",
+          hero_sub: "Girişimci vizyonuna sahip Backend Mühendisi. Yüksek performanslı sistemler, hatasız veri akışı ve Node.js mimarilerinde uzman.",
           about_title: "Hakkımda",
-          about_p1: "İyi bir backend mühendisliği hem teknik hassasiyet hem de yaratıcı düşünce gerektirir. Yazılıma girişimci bir vizyonla yaklaşıyorum; işletmelerin ve mühendislik ekiplerinin kritik hataları (bug) çözmesine, yavaş mimarileri sadeleştirmesine ve hızlı, güvenilir backend sistemleri kurmasına yardımcı oluyorum.",
-          about_p2: '<strong class="text-foreground">Node.js çekirdeğine (core)</strong> hata düzeltmeleri göndermekten kendi full-stack araçlarımı geliştirmeye kadar en önemli şeye odaklanıyorum: temiz kod yazmak, gerçek iş problemlerini çözmek ve tüm ekibi hızlandırmak.',
+          about_p1: "Güçlü bir backend mimarisi hem teknik ustalık hem de pratik bir vizyon gerektirir. Yazılıma bir kurucu gözüyle yaklaşıyorum; ekiplerin ve işletmelerin kritik hataları çözmesine, hantal sistemleri hızlandırmasına ve güvenilir altyapılar kurmasına yardımcı oluyorum.",
+          about_p2: "<strong class=\"text-foreground\">Node.js</strong> projesine doğrudan katkıda bulunmaktan uçtan uca ürünler geliştirmeye kadar odağım hep net: temiz kod yazmak, iş dünyasındaki gerçek sorunları çözmek ve ekibi hızlandırmak.",
           edu_title: "Eğitim",
           edu_degree: "Lisans (BS), Bilgisayar Mühendisliği",
           skills_title: "Yetenekler",
           skill_acid: "ACID Sistemler",
-          skill_dsa: "Veri Yapıları ve Algoritmalar",
+          skill_dsa: "Veri Yapıları &amp; Algoritmalar",
           proj_badge: "Projelerim",
           proj_title: "Öne Çıkan Çalışmalar",
-          proj_sub: "Canlı bir full-stack finans platformu ve atomik veritabanı muhasebe (ledger) sistemi.",
-          btn_website: "Web Sitesi",
+          proj_sub: "Canlı bir finansal analiz platformu ve sıfır hatalı bakiye yönetimi sağlayan işlem altyapısı.",
+          btn_website: "Siteyi Gör",
           btn_source_1: "Kaynak Kod",
           btn_source_2: "Kaynak Kod",
           cg_date: "Mayıs 2026 - Ekim 2026",
-          cg_desc: 'React ve Node.js kullanarak CSV/JSON dosyalarından işlem geçmişini içe aktaran, hesap risk metriklerini, düşüşleri (drawdown) ve sermaye koruma projeksiyonlarını hesaplayan full-stack bir uygulama geliştirdim.',
-          cg_tag: "Fintech Motoru",
+          cg_desc: "React ve Node.js ile geliştirilen, CSV ve Excel dosyalarından işlem geçmişini alarak hesap riskini, olası kayıp oranlarını ve sermaye dayanıklılığını hesaplayan finansal analiz uygulaması.",
+          cg_tag: "Fintech Sistemi",
           icl_date: "Kasım 2025 - Ocak 2026",
-          icl_desc: "Çoklu para birimi hesaplarını, kullanıcılar arası transferleri ve aylık hesap özetlerini yöneten veritabanı CLI sistemi. Sıkı işlemsel değişmezlik (transactional invariants) kuralları uygulayarak bakiye kaybını imkansız hale getirir.",
-          contrib_title: "Node.js Çekirdek Katkıları (Core PRs)",
+          icl_desc: "Farklı para birimlerini, kullanıcılar arası transferleri ve aylık dökümleri yöneten işlem sistemi. Katı finansal kuralları sayesinde bakiye kaybını veya hesap hatasını tamamen engeller.",
+          contrib_title: "Node.js Projesine Katkılarım",
           pr1_sub: "util: tek satır biçimlendirme düzeltmesi",
-          pr1_desc: "Çekirdek util inceleme (inspection) metotlarındaki uç durum tek satır biçimlendirme mantığı düzeltildi.",
+          pr1_desc: "Node.js'in sık kullanılan temel fonksiyonlarındaki tek satır metin biçimlendirme hatası düzeltildi.",
           pr2_sub: "fs: mkdtemp Buffer dönüş değerleri",
-          pr2_desc: 'Dosya sistemi <code class="text-foreground">mkdtemp</code> işlemlerinde doğru Buffer dönüş değerleri sağlandı. Çekirdek geliştirici <strong class="text-foreground">@aduh95</strong> ile birlikte <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> numaralı ortak commit olarak birleştirildi.',
-          pr3_sub: "doc: config-schema yazım ve tip düzeltmesi",
-          pr3_desc: "Çalışma zamanı davranışını doğru yansıtmak için yapılandırma şeması dokümantasyonundaki tip tanımı düzeltildi.",
-          pr4_sub: "fs: utf8 hızlı yol (fast-path) optimizasyonu",
-          pr4_desc: "Çekirdek I/O işlemlerinde dosya sistemi UTF-8 karakter kodlama çözümlemeleri için hızlı yol (fast-path) optimizasyonu.",
+          pr2_desc: "Geçici dosya işlemlerinde doğru veri çıktısı sağlandı; resmi çekirdek geliştirici <strong class=\"text-foreground\">@aduh95</strong> ile birlikte <a href=\"https://github.com/nodejs/node/pull/65743\" target=\"_blank\" rel=\"noopener noreferrer\" onclick=\"event.stopPropagation()\" class=\"text-foreground underline underline-offset-4\">#65743</a> ortak commiti olarak birleştirildi.",
+          pr3_sub: "doc: config-schema tip düzeltmesi",
+          pr3_desc: "Yapılandırma şeması dokümantasyonundaki veri tipleri, sistemin gerçek çalışma davranışına tam uyacak şekilde düzeltildi.",
+          pr4_sub: "fs: utf8 hızlı yol optimizasyonu",
+          pr4_desc: "Dosya sistemi metin kodlama işlemlerinde UTF-8 okuma hızını artıran doğrudan optimizasyon.",
           pr_merged_1: "Birleştirildi &bull; Eyl 2026",
           pr_merged_2: "Birleştirildi &bull; Eyl 2026",
           pr_merged_3: "Birleştirildi &bull; Eyl 2026",
@@ -979,27 +1068,40 @@
           view_pr_2: "PR'ı Gör ↗",
           view_pr_3: "PR'ı Gör ↗",
           view_pr_4: "PR'ı Gör ↗",
+          work_title: "Birlikte Çalışalım",
+          work_card1_title: "Özel Backend Özelliği Geliştirme",
+          work_card1_desc: "Fatura ve veri aktarımı, ödeme altyapıları, bakiye yönetimi ve güvenli giriş sistemleri.",
+          work_card1_price: "500$'dan başlayan fiyatlarla",
+          work_card2_title: "Yapay Zekâ Destekli Uygulama (MVP)",
+          work_card2_desc: "Fikrinizi 2-3 haftada çalışan, yayına hazır ve modern bir web uygulamasına dönüştürün.",
+          work_card2_price: "1.200$'dan başlayan fiyatlarla",
+          work_card3_title: "Aylık Teknik Destek ve Geliştirme",
+          work_card3_desc: "Hata düzeltmeleri, performans artırımı ve sürekli sistem bakımı için aylık düzenli çalışma.",
+          work_card3_price: "600$/aydan başlayan fiyatlarla",
+          work_trust: "Node.js katkıcısı. Canlıda çalışan finans ve yapay zekâ sistemleri geliştiricisi.",
+          work_btn_book: "Görüşme Ayarla",
+          work_btn_email: "E-posta Gönder",
           contact_badge: "İletişim",
           contact_title: "İletişime Geçin",
-          contact_desc: 'Sohbet etmek mi istiyorsunuz? Bana doğrudan <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">LinkedIn üzerinden mesaj gönderebilirsiniz</a>; müsait olduğumda yanıtlayacağım.'
+          contact_desc: "Aklınızda bir proje mi var veya backend tarafında bir sorun mu yaşıyorsunuz? <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">Kısa bir görüşme ayarlayabilir</a> veya <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">e-posta gönderebilirsiniz</a>; 24 saat içinde dönüş yaparım."
         },
         fa: {
-          veyra_date: "نوامبر ۲۰۲۶",
-          veyra_desc: "یک پلتفرم بررسی فاکتور مبتنی بر هوش مصنوعی با استخراج اطلاعات اسناد، کنترل‌های قطعی حسابرسی، تاریخچه تأییدها و دستیار مالی ساختم.",
+          veyra_date: "آبان ۱۴۰۵",
+          veyra_desc: "سامانه هوشمند بررسی فاکتورها با هوش مصنوعی؛ شامل خواندن خودکار اسناد، اعتبارسنجی دقیق حسابداری، ثبت تاییده‌ها و دستیار مالی هوشمند.",
           veyra_tag: "فول‌استک",
-          veyra_ai: "اتوماسیون هوش مصنوعی",
-          clientflow_date: "نوامبر ۲۰۲۶",
-          clientflow_desc: "یک فضای کاری برای فریلنسرها ساختم که مدیریت پروژه‌های مشتریان، تأیید تغییرات محدوده پروژه از طریق لینک‌های بررسی مشترک و تهیه پیش‌نویس پیام‌های پیگیری با کمک هوش مصنوعی را فراهم می‌کند.",
+          veyra_ai: "هوش مصنوعی",
+          clientflow_date: "آبان ۱۴۰۵",
+          clientflow_desc: "فضای کاری ویژه فریلنسرها برای مدیریت قراردادها، ارسال لینک تایید تغییرات پروژه برای کارفرما و نگارش خودکار پیام‌های پیگیری با هوش مصنوعی.",
           clientflow_tag: "فول‌استک",
-          clientflow_dashboard: "داشبورد",
-          serein_date: "اکتبر ۲۶ - اکتبر ۲۶",
-          serein_desc: "یک پلتفرم جامع تجارت الکترونیک فول‌استک با قابلیت مرور روان محصولات، یکپارچه‌سازی پرداخت امن و مدیریت پویای سبد خرید ساختم.",
+          clientflow_dashboard: "داشبورد مدیریتی",
+          serein_date: "مهر ۱۴۰۵",
+          serein_desc: "فروشگاه اینترنتی مدرن و سریع با امکان جست‌وجوی آسان محصولات، سبد خرید پویا و اتصال امن به درگاه‌های پرداخت.",
           serein_tag: "فول‌استک",
           hero_greeting: "سلام، من حمیدرضا هستم",
-          hero_sub: "مهندس بک‌اند با ذهنیت کارآفرینی. متخصص در موتورهای با توان پردازشی بالا، ثبات دقیق داده‌ها و معماری‌های سطح پایین Node.js.",
+          hero_sub: "مهندس بک‌اند با تفکر محصولی و کارآفرینی؛ متخصص ساخت سیستم‌های پرسرعت، پایگاه‌داده‌های دقیق و توسعه با Node.js.",
           about_title: "درباره من",
-          about_p1: "مهندسی بک‌اند عالی نیازمند دقت فنی و تفکر خلاقانه است. من با ذهنیت یک بنیان‌گذار به نرم‌افزار نگاه می‌کنم—کمک به کسب‌وکارها و تیم‌های مهندسی برای رفع باگ‌های حیاتی، اصلاح معماری‌های کند و ساخت بک‌اند‌های سریع و قابل اعتماد.",
-          about_p2: 'از مشارکت در رفع باگ‌های <strong class="text-foreground">هسته Node.js</strong> تا راه‌اندازی ابزارهای فول‌استک خودم، تمرکز من روی مهم‌ترین چیزهاست: نوشتن کد تمیز، حل مشکلات واقعی کسب‌وکار و سرعت بخشیدن به کل تیم.',
+          about_p1: "یک بک‌اند قدرتمند هم به دقت فنی نیاز دارد و هم به تفکر خلاق. من با نگاه یک هم‌بنیان‌گذار کار می‌کنم؛ به استارتاپ‌ها و تیم‌های نرم‌افزاری کمک می‌کنم تا باگ‌های اساسی را برطرف کنند، سرعت سیستم‌ها را بالا ببرند و زیرساختی پایدار و مطمئن بسازند.",
+          about_p2: "از مشارکت در برطرف کردن باگ‌های رسمی <strong class=\"text-foreground\">Node.js</strong> تا راه‌اندازی ابزارهای کاربردی، تمرکزم همیشه روی اصل کار است: کد تمیز، حل مسائل واقعی کسب‌وکار و افزایش سرعت پیشرفت کل تیم.",
           edu_title: "تحصیلات",
           edu_degree: "کارشناسی مهندسی کامپیوتر",
           skills_title: "مهارت‌ها",
@@ -1007,53 +1109,66 @@
           skill_dsa: "ساختمان داده و الگوریتم",
           proj_badge: "پروژه‌های من",
           proj_title: "کارهای منتخب",
-          proj_sub: "یک پلتفرم مالی فول‌استک و یک سیستم دیتابیس لجر (دفتر کل) اتمیک.",
-          btn_website: "وب‌سایت",
-          btn_source_1: "کد منبع",
-          btn_source_2: "کد منبع",
-          cg_date: "مه ۲۰۲۶ - اکتبر ۲۰۲۶",
-          cg_desc: 'یک برنامه فول‌استک با استفاده از React و Node.js ساختم که تاریخچه معاملات را از فایل‌های CSV/JSON وارد کرده و معیارهای ریسک حساب، افت سرمایه (Drawdown) و پیش‌بینی بقای سرمایه را محاسبه می‌کند.',
-          cg_tag: "موتور فین‌تک",
-          icl_date: "نوامبر ۲۰۲۵ - ژانویه ۲۰۲۶",
-          icl_desc: "یک سیستم CLI دیتابیس برای مدیریت حساب‌های چندارزی، انتقالات بین کاربران و صورت‌حساب‌های ماهانه. این سیستم با اعمال قوانین سخت‌گیرانه تراکنشی، از دست رفتن موجودی را غیرممکن می‌سازد.",
-          contrib_title: "مشارکت‌ها در هسته Node.js",
-          pr1_sub: "util: اصلاح فرمت یک‌خطی",
-          pr1_desc: "اصلاح منطق فرمت‌بندی یک‌خطی در متدهای بازرسی (inspection) ابزارهای هسته.",
-          pr2_sub: "fs: مقادیر بازگشتی Buffer در mkdtemp",
-          pr2_desc: 'اطمینان از مقادیر بازگشتی صحیح بافر در عملیات <code class="text-foreground">mkdtemp</code> فایل سیستم. ادغام شده در کامیت مشترک <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> با همکاری <strong class="text-foreground">@aduh95</strong>.',
-          pr3_sub: "doc: اصلاح اشتباه تایپی config-schema",
-          pr3_desc: "اصلاح نوع‌داده‌ها در مستندات شمای پیکربندی (config-schema) برای انعکاس دقیق رفتار زمان اجرا (runtime).",
-          pr4_sub: "fs: مسیرهای سریع utf8",
-          pr4_desc: "بهینه‌سازی مسیر سریع (fast-path) برای رمزگشایی رشته‌های UTF-8 در عملیات I/O هسته.",
-          pr_merged_1: "ادغام شده &bull; سپتامبر ۲۰۲۶",
-          pr_merged_2: "ادغام شده &bull; سپتامبر ۲۰۲۶",
-          pr_merged_3: "ادغام شده &bull; سپتامبر ۲۰۲۶",
-          pr_open: "باز &bull; در حال بررسی",
+          proj_sub: "شامل یک پلتفرم جامع تحلیل مالی و یک سیستم مدیریت تراکنش‌ها بدون احتمال خطای محاسباتی.",
+          btn_website: "مشاهده سایت",
+          btn_source_1: "مشاهده سورس",
+          btn_source_2: "مشاهده سورس",
+          cg_date: "اردیبهشت ۱۴۰۵ - مهر ۱۴۰۵",
+          cg_desc: "سامانه تحلیلی کامل با React و Node.js که با دریافت تاریخچه معاملات از فایل‌های اکسل و داده‌ها، ریسک حساب، میزان افت سرمایه و پایداری حساب معاملاتی را به‌دقت محاسبه می‌کند.",
+          cg_tag: "فین‌تک",
+          icl_date: "آبان ۱۴۰۴ - دی ۱۴۰۴",
+          icl_desc: "سیستمی دقیق برای مدیریت حساب‌های چندارزی، انتقال وجه آنی بین کاربران و صدور گزارش‌های ماهانه؛ با ساختاری امن که بروز هرگونه خطای موجودی را به صفر می‌رساند.",
+          contrib_title: "مشارکت در توسعه Node.js",
+          pr1_sub: "util: اصلاح خطای فرمت‌بندی تک‌خطی",
+          pr1_desc: "اصلاح خطای نمایش تک‌خطی در توابع پرکاربرد بازرسی اطلاعات در Node.js.",
+          pr2_sub: "fs: دریافت مقادیر صحیح Buffer در mkdtemp",
+          pr2_desc: "اطمینان از دریافت خروجی دقیق داده در ایجاد فایل‌های موقت با Node.js؛ ثبت‌شده در کامیت رسمی <a href=\"https://github.com/nodejs/node/pull/65743\" target=\"_blank\" rel=\"noopener noreferrer\" onclick=\"event.stopPropagation()\" class=\"text-foreground underline underline-offset-4\">#65743</a> با همکاری توسعه‌دهنده رسمی <strong class=\"text-foreground\">@aduh95</strong>.",
+          pr3_sub: "doc: اصلاح مستندات config-schema",
+          pr3_desc: "اصلاح مستندات و نوع‌داده‌های تنظیمات Node.js برای هماهنگی کامل با رفتار واقعی سیستم.",
+          pr4_sub: "fs: افزایش سرعت در خواندن UTF-8",
+          pr4_desc: "بهینه‌سازی مستقیم برای افزایش سرعت خواندن و تبدیل متون UTF-8 در سیستم ذخیره‌سازی Node.js.",
+          pr_merged_1: "تایید شده &bull; شهریور ۱۴۰۵",
+          pr_merged_2: "تایید شده &bull; شهریور ۱۴۰۵",
+          pr_merged_3: "تایید شده &bull; شهریور ۱۴۰۵",
+          pr_open: "در حال بررسی",
           view_pr_1: "مشاهده ↗",
           view_pr_2: "مشاهده ↗",
           view_pr_3: "مشاهده ↗",
           view_pr_4: "مشاهده ↗",
+          work_title: "همکاری با من",
+          work_card1_title: "توسعه قابلیت‌های اختصاصی بک‌اند",
+          work_card1_desc: "سیستم‌های ورود و پردازش داده (اکسل/فاکتور)، درگاه‌های پرداخت، مدیریت حساب‌ها و ورود و ثبت‌نام امن.",
+          work_card1_price: "شروع از ۵۰۰ دلار",
+          work_card2_title: "طراحی و ساخت کامل نرم‌افزار (MVP)",
+          work_card2_desc: "تبدیل ایده شما به محصول قابل استفاده طی ۲ تا ۳ هفته؛ همراه با فرانت‌اند، بک‌اند و هوش مصنوعی.",
+          work_card2_price: "شروع از ۱,۲۰۰ دلار",
+          work_card3_title: "پشتیبانی و توسعه مستمر ماهانه",
+          work_card3_desc: "اختصاص زمان مشخص در هر ماه برای رفع سریع باگ‌ها، بهبود امنیت و ارتقای عملکرد سیستم شما.",
+          work_card3_price: "شروع از ۶۰۰ دلار / ماه",
+          work_trust: "مشارکت‌کننده رسمی در Node.js و سازنده سیستم‌های مالی و ابزارهای هوش مصنوعی فعال.",
+          work_btn_book: "رزرو جلسه",
+          work_btn_email: "ارسال ایمیل",
           contact_badge: "تماس",
           contact_title: "ارتباط با من",
-          contact_desc: 'برای صحبت با من می‌توانید <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">در لینکدین پیام مستقیم بدهید</a> و من در اولین فرصت پاسخ خواهم داد.'
+          contact_desc: "پروژه‌ای برای اجرا دارید یا با چالشی در سیستم خود مواجه شدید؟ می‌توانید <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">یک جلسه آنلاین هماهنگ کنید</a> یا با شرحی کوتاه <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">به من ایمیل بزنید</a>؛ ظرف ۲۴ ساعت پاسخ می‌دهم."
         },
         ar: {
-          veyra_date: "نوفمبر 2026",
-          veyra_desc: "طوّرت منصة لمراجعة الفواتير بالذكاء الاصطناعي، مع استخراج بيانات المستندات، وفحوص تدقيق قائمة على قواعد محددة، وسجل الموافقات، ومساعد مالي.",
-          veyra_tag: "تطوير متكامل",
-          veyra_ai: "أتمتة بالذكاء الاصطناعي",
-          clientflow_date: "نوفمبر 2026",
-          clientflow_desc: "طوّرت مساحة عمل للمستقلين لإدارة مشاريع العملاء، واعتماد تغييرات نطاق العمل عبر روابط مراجعة مشتركة، وصياغة رسائل متابعة بمساعدة الذكاء الاصطناعي.",
-          clientflow_tag: "تطوير متكامل",
+          veyra_date: "جمادى الأولى 1448 هـ",
+          veyra_desc: "منصة ذكية لمراجعة الفواتير بالذكاء الاصطناعي؛ تشمل القراءة الآلية للمستندات، والتدقيق المحاسبي الدقيق، وسجل الموافقات، ومساعد مالي ذكي.",
+          veyra_tag: "تطبيق متكامل",
+          veyra_ai: "ذكاء اصطناعي",
+          clientflow_date: "جمادى الأولى 1448 هـ",
+          clientflow_desc: "مساحة عمل للمستقلين لإدارة مشاريع العملاء، واعتماد التعديلات عبر روابط مراجعة مشتركة، وصياغة رسائل المتابعة بمساعدة الذكاء الاصطناعي.",
+          clientflow_tag: "تطبيق متكامل",
           clientflow_dashboard: "لوحة التحكم",
-          serein_date: "أكتوبر 26 - أكتوبر 26",
-          serein_desc: "طوّرت منصة تجارة إلكترونية متكاملة تتيح تصفح المنتجات بسلاسة، وتكامل عمليات الدفع الآمنة، وإدارة سلة التسوق بشكل ديناميكي.",
-          serein_tag: "تطوير متكامل",
+          serein_date: "ربيع الآخر 1448 هـ",
+          serein_desc: "متجر إلكتروني حديث وسريع يتيح تصفح المنتجات بسهولة، وإدارة ديناميكية لسلة التسوق، مع ربط آمن ببوابات الدفع.",
+          serein_tag: "تطبيق متكامل",
           hero_greeting: "مرحباً، أنا حميد رضا",
-          hero_sub: "مهندس نهاية خلفية (Backend) بعقلية ريادية. متخصص في المحركات ذات القدرة العالية، واتساق البيانات الدقيق، وبيئات تشغيل Node.js منخفضة المستوى.",
+          hero_sub: "مهندس برمجيات خلفية (Backend) بعقلية ريادية؛ متخصص في بناء أنظمة فائقة السرعة، وقواعد بيانات عالية الدقة، وتطبيقات Node.js المتقدمة.",
           about_title: "نبذة عني",
-          about_p1: "تتطلب هندسة النهاية الخلفية العظيمة الدقة الفنية والتفكير الإبداعي. أتعامل مع البرمجيات بعقلية المؤسس - لمساعدة الشركات وفرق الهندسة على القضاء على الأخطاء الحرجة، وتنظيف الهياكل البطيئة، وبناء أنظمة خلفية سريعة وموثوقة.",
-          about_p2: 'من المساهمة في إصلاح أخطاء <strong class="text-foreground">نواة Node.js</strong> إلى إطلاق أدواتي الخاصة المتكاملة (Full-stack)، أركز على ما يهم حقاً: كتابة كود نظيف، وحل مشاكل العمل الحقيقية، وجعل الفريق بأكمله أسرع.',
+          about_p1: "بناء برمجيات خلفية قوية يتطلب دقة تقنية ورؤية عملية. أتعامل مع البرمجيات بعقلية رائد الأعمال؛ أساعد الشركات والفرق التقنية في معالجة المشكلات المعقدة، وتسريع الأنظمة البطيئة، وبناء بنية تحتية موثوقة.",
+          about_p2: "من المساهمة في تطوير مشروع <strong class=\"text-foreground\">Node.js</strong> الرسمي إلى إطلاق تطبيقات متكاملة، ينصب تركيزي على الأهم: كود نظيف، وحلول عملية لمتطلبات الأعمال، ومساعدة الفريق على الإنجاز بكفاءة أعلى.",
           edu_title: "التعليم",
           edu_degree: "بكالوريوس في هندسة الحاسوب",
           skills_title: "المهارات",
@@ -1061,35 +1176,48 @@
           skill_dsa: "هياكل البيانات والخوارزميات",
           proj_badge: "مشاريعي",
           proj_title: "أعمال مميزة",
-          proj_sub: "منصة مالية حية متكاملة ونظام قاعدة بيانات لدفتر الأستاذ (Ledger) الذري.",
-          btn_website: "الموقع",
-          btn_source_1: "المصدر",
-          btn_source_2: "المصدر",
-          cg_date: "مايو 2026 - أكتوبر 2026",
-          cg_desc: "قمت ببناء تطبيق متكامل (Full-stack) باستخدام React و Node.js يستورد سجل التداول من ملفات CSV/JSON ويحسب مقاييس مخاطر الحساب والتراجعات (Drawdowns) وتوقعات بقاء رأس المال.",
-          cg_tag: "محرك مالي",
-          icl_date: "نوفمبر 2025 - يناير 2026",
-          icl_desc: "نظام واجهة سطر أوامر (CLI) لقاعدة بيانات يعالج حسابات متعددة العملات، والتحويلات بين المستخدمين، والكشوفات الشهرية. يفرض قواعد معاملات صارمة تجعل من المستحيل فقدان الرصيد.",
-          contrib_title: "المساهمات في نواة Node.js",
+          proj_sub: "منصة تحليل مالي متكاملة ونظام معاملات يضمن دقة الحسابات المالية ومنع أي خطأ في الأرصدة.",
+          btn_website: "زيارة الموقع",
+          btn_source_1: "كود المصدر",
+          btn_source_2: "كود المصدر",
+          cg_date: "ذو القعدة 1447 - ربيع الآخر 1448 هـ",
+          cg_desc: "تطبيق تحليل مالي متكامل باستخدام React و Node.js يستورد سجل المعاملات من ملفات Excel و CSV، ويحسب معدلات المخاطر وتوقعات حماية رأس المال بدقة.",
+          cg_tag: "محرك مالي (Fintech)",
+          icl_date: "جمادى الأولى 1447 - رجب 1447 هـ",
+          icl_desc: "نظام لمعالجة الحسابات متعددة العملات والتحويلات المالية بين المستخدمين والتقارير الشهرية، بهندسة تضمن ثبات البيانات واستحالة حدوث أي خطأ في الأرصدة.",
+          contrib_title: "المساهمات في مشروع Node.js",
           pr1_sub: "util: إصلاح تنسيق السطر الواحد",
-          pr1_desc: "تم إصلاح منطق تنسيق السطر الواحد لحالات الحافة في طرق الفحص الأساسية للأدوات.",
+          pr1_desc: "إصلاح خطأ في تنسيق وعرض البيانات بالسطر الواحد في الدوال الشائعة لـ Node.js.",
           pr2_sub: "fs: قيم الإرجاع Buffer في mkdtemp",
-          pr2_desc: 'ضمان قيم إرجاع صحيحة للمخزن المؤقت (Buffer) في عمليات نظام الملفات <code class="text-foreground">mkdtemp</code>. تم ربطه مع الالتزام المشترك المدمج <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> إلى جانب المطور الأساسي <strong class="text-foreground">@aduh95</strong>.',
-          pr3_sub: "doc: تصحيح خطأ مطبعي في config-schema",
-          pr3_desc: "تصحيح أنواع التوثيق لمخطط التكوين ليعكس بدقة سلوك وقت التشغيل (runtime).",
-          pr4_sub: "fs: المسارات السريعة لـ utf8",
-          pr4_desc: "تحسين المسار السريع لدقة تشفير سلسلة UTF-8 في عمليات الإدخال / الإخراج الأساسية.",
-          pr_merged_1: "تم الدمج &bull; سبتمبر 2026",
-          pr_merged_2: "تم الدمج &bull; سبتمبر 2026",
-          pr_merged_3: "تم الدمج &bull; سبتمبر 2026",
-          pr_open: "مفتوح &bull; قيد المراجعة",
+          pr2_desc: "ضمان صحة مخرجات البيانات عند إنشاء الملفات المؤقتة في Node.js؛ مدمج في الالتزام الرسمي <a href=\"https://github.com/nodejs/node/pull/65743\" target=\"_blank\" rel=\"noopener noreferrer\" onclick=\"event.stopPropagation()\" class=\"text-foreground underline underline-offset-4\">#65743</a> بالتعاون مع المطور الرسمي <strong class=\"text-foreground\">@aduh95</strong>.",
+          pr3_sub: "doc: تصحيح التوثيق في config-schema",
+          pr3_desc: "تصحيح توثيق أنواع البيانات في إعدادات Node.js لتطابق بدقة سلوك النظام الفعلي.",
+          pr4_sub: "fs: تسريع قراءة UTF-8",
+          pr4_desc: "تحسين مباشر لتسريع قراءة وترميز نصوص UTF-8 في نظام ملفات Node.js.",
+          pr_merged_1: "تم الاعتماد &bull; ربيع الأول 1448 هـ",
+          pr_merged_2: "تم الاعتماد &bull; ربيع الأول 1448 هـ",
+          pr_merged_3: "تم الاعتماد &bull; ربيع الأول 1448 هـ",
+          pr_open: "قيد المراجعة",
           view_pr_1: "عرض ↗",
           view_pr_2: "عرض ↗",
           view_pr_3: "عرض ↗",
           view_pr_4: "عرض ↗",
+          work_title: "اعمل معي",
+          work_card1_title: "تطوير ميزات مخصصة في الباك إند",
+          work_card1_desc: "استيراد ومعالجة الفواتير وبيانات Excel، بوابات الدفع، وإدارة الحسابات وتسجيل الدخول الآمن.",
+          work_card1_price: "يبدأ من 500$",
+          work_card2_title: "تطبيق ويب متكامل بالذكاء الاصطناعي (MVP)",
+          work_card2_desc: "تحويل فكرتك إلى تطبيق عملي جاهز للإطلاق خلال أسبوعين إلى 3 أسابيع.",
+          work_card2_price: "يبدأ من 1,200$",
+          work_card3_title: "دعم وتطوير شهري مستمر",
+          work_card3_desc: "ساعات عمل مخصصة شهرياً لحل المشكلات التقنية، وتحسين الأداء، وتطوير النظام باستمرار.",
+          work_card3_price: "يبدأ من 600$/شهرياً",
+          work_trust: "مساهم رسمي في Node.js؛ مطور لأنظمة مالية وأدوات ذكاء اصطناعي تعمل في بيئات حقيقية.",
+          work_btn_book: "حجز موعد",
+          work_btn_email: "راسلني",
           contact_badge: "اتصال",
           contact_title: "ابقى على تواصل",
-          contact_desc: 'هل تريد التحدث؟ فقط <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">أرسل لي رسالة مباشرة على لينكد إن</a> وسأرد متى استطعت.'
+          contact_desc: "هل لديك فكرة مشروع أو تواجه مشكلة تقنية في نظامك؟ يمكنك <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">حجز موعد لمكالمة قصيرة</a> أو <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">مراسلتي عبر البريد الإلكتروني</a>؛ وسأرد عليك خلال 24 ساعة."
         }
       };
 
@@ -1153,51 +1281,58 @@
         const items = dock.querySelectorAll(".dock-item");
         const baseSize = 40;
         const maxScaleSize = 60;
-        const distanceLimit = 135;
+        const distanceLimit = 125;
         
-        let dockEntryTimer;
-        let dockEntering = false;
-
-        const updateMagnification = (e) => {
-          // Read all positions before resizing so each item uses the same layout.
-          const centers = Array.from(items, item => {
+        let baseCenters = [];
+        const measureBaseCenters = () => {
+          baseCenters = Array.from(items, item => {
             const rect = item.getBoundingClientRect();
             return rect.left + rect.width / 2;
           });
+        };
 
+        measureBaseCenters();
+        window.addEventListener("resize", measureBaseCenters);
+
+        let rafId = null;
+        let mouseX = 0;
+
+        const applyMagnification = () => {
+          rafId = null;
           items.forEach((item, index) => {
-            const dist = Math.abs(e.clientX - centers[index]);
+            const center = baseCenters[index] || 0;
+            const dist = Math.abs(mouseX - center);
             let size = baseSize;
             if (dist < distanceLimit) {
               const ratio = Math.cos((dist / distanceLimit) * (Math.PI / 2));
               size = baseSize + (maxScaleSize - baseSize) * Math.pow(ratio, 1.4);
             }
-
-            item.style.transition = dockEntering
-              ? "width 0.06s ease-out, height 0.06s ease-out"
-              : "none";
-            item.style.width = `${size}px`;
-            item.style.height = `${size}px`;
-            item.style.transform = "none";
+            item.style.width = `${Math.round(size * 10) / 10}px`;
+            item.style.height = `${Math.round(size * 10) / 10}px`;
           });
         };
 
         dock.addEventListener("mouseenter", (e) => {
-          clearTimeout(dockEntryTimer);
-          dockEntering = true;
-          updateMagnification(e);
-          dockEntryTimer = setTimeout(() => { dockEntering = false; }, 80);
+          measureBaseCenters();
+          mouseX = e.clientX;
+          if (!rafId) rafId = requestAnimationFrame(applyMagnification);
         });
-        dock.addEventListener("mousemove", updateMagnification);
+
+        dock.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          if (!rafId) rafId = requestAnimationFrame(applyMagnification);
+        });
 
         dock.addEventListener("mouseleave", () => {
-          clearTimeout(dockEntryTimer);
-          dockEntering = false;
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
           items.forEach((item) => {
-            item.style.transition = "width 0.12s ease-out, height 0.12s ease-out";
             item.style.width = `${baseSize}px`;
             item.style.height = `${baseSize}px`;
           });
+          setTimeout(measureBaseCenters, 180);
         });
       }
 
