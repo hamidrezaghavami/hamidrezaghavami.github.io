@@ -210,8 +210,8 @@
 <body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-10 sm:py-20 px-4 sm:px-6 relative selection:bg-neutral-800 selection:text-white overflow-x-hidden">
 
   <!-- TOP PAGE FLICKERING GRID BANNER -->
-  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-36 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_15%,transparent_95%)] z-0">
-    <canvas class="flickering-grid-canvas w-full h-full"></canvas>
+  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-36 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_15%,transparent_95%)] z-0" style="width: 100vw; height: 144px;">
+    <canvas class="flickering-grid-canvas w-full h-full" style="width: 100%; height: 100%; display: block;"></canvas>
   </div>
 
   <!-- HERO SECTION -->
@@ -490,7 +490,7 @@
           <video
             src="./video.mp4"
             poster="./CapitalGuard-poster.jpg"
-            loop muted playsinline preload="auto"
+            loop muted playsinline preload="none"
             onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause CapitalGuard preview');"
             onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play CapitalGuard preview');"
             class="w-full h-full object-cover pointer-events-none"
@@ -553,7 +553,7 @@
           <video
             src="./ClientFlow.mp4"
             poster="./ClientFlow-poster.jpg"
-            loop muted playsinline preload="auto"
+            loop muted playsinline preload="none"
             onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause ClientFlow preview');"
             onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play ClientFlow preview');"
             class="w-full h-full object-cover pointer-events-none"
@@ -614,7 +614,7 @@
           <video
             src="./VeyraAI.mp4"
             poster="./VeyraAI-poster.jpg"
-            loop muted playsinline preload="auto"
+            loop muted playsinline preload="none"
             onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Veyra AI preview');"
             onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Veyra AI preview');"
             class="w-full h-full object-cover pointer-events-none"
@@ -739,7 +739,7 @@
           <video
             src="./serein.mp4"
             poster="./Serein-poster.jpg"
-            loop muted playsinline preload="auto"
+            loop muted playsinline preload="none"
             onplay="this.parentElement.querySelector('.play-overlay').style.opacity = '0'; this.parentElement.querySelector('.pause-indicator').classList.remove('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Pause Serein preview');"
             onpause="this.parentElement.querySelector('.play-overlay').style.opacity = '1'; this.parentElement.querySelector('.pause-indicator').classList.add('hidden'); this.parentElement.querySelector('.video-toggle').setAttribute('aria-label', 'Play Serein preview');"
             class="w-full h-full object-cover pointer-events-none"
@@ -1573,17 +1573,24 @@
 
         let cols = 0;
         let rows = 0;
+        let viewW = 0;
+        let viewH = 0;
         let squares = new Float32Array(0);
 
         const setupCanvas = () => {
-          const dpr = window.devicePixelRatio || 1;
           const rect = canvas.getBoundingClientRect();
-          canvas.width = rect.width * dpr;
-          canvas.height = rect.height * dpr;
-          ctx.scale(dpr, dpr);
+          if (rect.width <= 0 || rect.height <= 0) return;
+          if (Math.abs(rect.width - viewW) < 1 && Math.abs(rect.height - viewH) < 1) return;
 
-          cols = Math.floor(rect.width / (squareSize + gridGap));
-          rows = Math.floor(rect.height / (squareSize + gridGap));
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          viewW = rect.width;
+          viewH = rect.height;
+          canvas.width = Math.round(viewW * dpr);
+          canvas.height = Math.round(viewH * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          cols = Math.floor(viewW / (squareSize + gridGap));
+          rows = Math.floor(viewH / (squareSize + gridGap));
           squares = new Float32Array(cols * rows);
 
           for (let i = 0; i < squares.length; i++) {
@@ -1592,25 +1599,26 @@
         };
 
         const draw = () => {
-          const rect = canvas.getBoundingClientRect();
-          ctx.clearRect(0, 0, rect.width, rect.height);
+          if (viewW > 0 && viewH > 0) {
+            ctx.clearRect(0, 0, viewW, viewH);
 
-          const isDark = document.documentElement.classList.contains("dark");
-          const rgb = isDark ? "255, 255, 255" : "0, 0, 0";
+            const isDark = document.documentElement.classList.contains("dark");
+            const rgb = isDark ? "255, 255, 255" : "0, 0, 0";
 
-          for (let i = 0; i < cols; i++) {
-            for (let j = 0; j < rows; j++) {
-              const idx = i * rows + j;
-              if (Math.random() < flickerChance) {
-                squares[idx] = Math.pow(Math.random(), 1.6) * maxOpacity;
+            for (let i = 0; i < cols; i++) {
+              for (let j = 0; j < rows; j++) {
+                const idx = i * rows + j;
+                if (Math.random() < flickerChance) {
+                  squares[idx] = Math.pow(Math.random(), 1.6) * maxOpacity;
+                }
+                ctx.fillStyle = `rgba(${rgb}, ${squares[idx]})`;
+                ctx.fillRect(
+                  i * (squareSize + gridGap),
+                  j * (squareSize + gridGap),
+                  squareSize,
+                  squareSize
+                );
               }
-              ctx.fillStyle = `rgba(${rgb}, ${squares[idx]})`;
-              ctx.fillRect(
-                i * (squareSize + gridGap),
-                j * (squareSize + gridGap),
-                squareSize,
-                squareSize
-              );
             }
           }
           requestAnimationFrame(draw);
@@ -1618,7 +1626,12 @@
 
         setupCanvas();
         draw();
-        window.addEventListener("resize", setupCanvas);
+
+        if (typeof ResizeObserver !== "undefined") {
+          new ResizeObserver(setupCanvas).observe(canvas);
+        } else {
+          window.addEventListener("resize", setupCanvas);
+        }
       });
     });
   </script>
