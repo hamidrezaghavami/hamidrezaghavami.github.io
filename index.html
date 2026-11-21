@@ -192,10 +192,22 @@
       opacity: 0 !important;
       pointer-events: none;
     }
+
+    @media (max-width: 400px) {
+      #magic-dock {
+        height: 48px;
+        gap: 5px;
+        padding: 6px 8px;
+      }
+      .dock-item {
+        width: 36px;
+        height: 36px;
+      }
+    }
   </style>
 </head>
 
-<body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-12 sm:py-20 px-6 relative selection:bg-neutral-800 selection:text-white">
+<body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-10 sm:py-20 px-4 sm:px-6 relative selection:bg-neutral-800 selection:text-white overflow-x-hidden">
 
   <!-- TOP PAGE FLICKERING GRID BANNER -->
   <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-36 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_15%,transparent_95%)] z-0">
@@ -203,41 +215,41 @@
   </div>
 
   <!-- HERO SECTION -->
-  <section id="hero" class="space-y-6">
-    <div class="flex items-center justify-between gap-4">
-      <div class="flex flex-col space-y-1.5 flex-1">
+  <section id="hero" class="space-y-4 sm:space-y-5">
+    <div class="flex items-start sm:items-center justify-between gap-3 sm:gap-4">
+      <div class="flex flex-col space-y-1.5 flex-1 min-w-0">
         <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground flex items-center gap-2">
           <span data-i18n="hero_greeting">Hi, I'm HamidReza</span> <span class="inline-block origin-[70%_70%]"></span>
         </h1>
-        <p data-i18n="hero_sub" class="text-muted-foreground text-base sm:text-lg pt-1 leading-relaxed">
+        <p data-i18n="hero_sub" class="text-muted-foreground text-sm sm:text-lg pt-1 leading-relaxed">
           Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.
         </p>
-
-        <!-- Above-the-fold Quick Actions & Proof -->
-        <div class="flex flex-wrap items-center gap-2.5 pt-3">
-          <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-3.5 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
-            <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-            <span data-i18n="work_btn_book">Book a Call</span>
-          </a>
-
-          <button type="button" data-email="hamidr.ghavami@gmail.com" class="copy-email-btn inline-flex items-center gap-1.5 rounded-lg border border-border bg-card text-foreground px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer">
-            <svg class="copy-email-icon size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-            <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
-          </button>
-
-          <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-3.5">
-            <span data-i18n="hero_node_prs">Node.js Core PRs</span>
-            <svg class="size-3 opacity-70 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-          </a>
-        </div>
       </div>
 
       <!-- Avatar Badge -->
-      <div class="relative flex shrink-0 overflow-hidden rounded-full size-24 sm:size-28 border border-border shadow-sm self-start mt-1">
+      <div class="relative flex shrink-0 overflow-hidden rounded-full size-20 sm:size-28 border border-border shadow-sm mt-1 sm:mt-0">
         <img src="./image.jpg" alt="HamidReza Ghavami" class="aspect-square h-full w-full object-cover">
       </div>
+    </div>
+
+    <!-- Full-Width Responsive Quick Actions & Proof (Phone, iPhone, Tablet, Desktop) -->
+    <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1">
+      <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 rounded-lg bg-foreground text-background px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm whitespace-nowrap">
+        <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        <span data-i18n="work_btn_book">Book a Call</span>
+      </a>
+
+      <button type="button" data-email="hamidr.ghavami@gmail.com" class="copy-email-btn inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card text-foreground px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer whitespace-nowrap">
+        <svg class="copy-email-icon size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+        <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
+      </button>
+
+      <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-3.5">
+        <span data-i18n="hero_node_prs">Node.js Core PRs</span>
+        <svg class="size-3 opacity-70 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
     </div>
   </section>
 
