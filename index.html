@@ -191,10 +191,30 @@
         <p data-i18n="hero_sub" class="text-muted-foreground text-base sm:text-lg pt-1 leading-relaxed">
           Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.
         </p>
+
+        <!-- Above-the-fold Quick Actions & Proof -->
+        <div class="flex flex-wrap items-center gap-2.5 pt-3">
+          <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-3.5 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
+            <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <span data-i18n="work_btn_book">Book a Call</span>
+          </a>
+
+          <button type="button" data-email="hamidr.ghavami@gmail.com" class="copy-email-btn inline-flex items-center gap-1.5 rounded-lg border border-border bg-card text-foreground px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer">
+            <svg class="copy-email-icon size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
+          </button>
+
+          <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-3.5">
+            <span data-i18n="hero_node_prs">Node.js Core PRs</span>
+            <svg class="size-3 opacity-70 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+        </div>
       </div>
 
       <!-- Avatar Badge -->
-      <div class="relative flex shrink-0 overflow-hidden rounded-full size-24 sm:size-28 border border-border shadow-sm">
+      <div class="relative flex shrink-0 overflow-hidden rounded-full size-24 sm:size-28 border border-border shadow-sm self-start mt-1">
         <img src="./image.jpg" alt="HamidReza Ghavami" class="aspect-square h-full w-full object-cover">
       </div>
     </div>
@@ -208,7 +228,7 @@
         Great backend engineering takes both technical precision and creative thinking. I approach software with a founder's mindset—helping businesses and engineering teams squash critical bugs, clean up slow architectures, and build fast, dependable backends.
       </p>
       <p data-i18n="about_p2">
-        From contributing bug fixes to <strong class="text-foreground">Node.js core</strong> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.
+        From contributing bug fixes to <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Node.js core</a> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.
       </p>
     </div>
   </section>
@@ -270,12 +290,15 @@
         Node.js core contributor. Production fintech and AI tools shipped.
       </p>
       <div class="flex flex-wrap items-center gap-3">
-        <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-foreground text-background px-4 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
+        <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 justify-center rounded-lg bg-foreground text-background px-4 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
+          <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
           <span data-i18n="work_btn_book">Book a Call</span>
         </a>
-        <a href="mailto:hamidr.ghavami@gmail.com" class="inline-flex items-center justify-center rounded-lg border border-border bg-card text-foreground px-4 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm">
-          <span data-i18n="work_btn_email">Email Me</span>
-        </a>
+        <button type="button" data-email="hamidr.ghavami@gmail.com" class="copy-email-btn inline-flex items-center gap-1.5 justify-center rounded-lg border border-border bg-card text-foreground px-4 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer">
+          <svg class="copy-email-icon size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
+        </button>
       </div>
     </div>
   </section>
@@ -395,7 +418,7 @@
       <!-- ACID Systems -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <svg class="size-4 text-sky-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-        <span data-i18n="skill_acid">ACID Systems</span>
+        ACID Systems
       </span>
 
       <!-- OOP -->
@@ -407,7 +430,7 @@
       <!-- Data Structure & Algorithms -->
       <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs sm:text-sm font-medium text-foreground shadow-sm">
         <svg class="size-4 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        <span data-i18n="skill_dsa">Data Structure &amp; Algorithms</span>
+        Data Structure &amp; Algorithms
       </span>
 
     </div>
@@ -1047,11 +1070,15 @@
           serein_date: "Oct 2026",
           serein_desc: "Built a comprehensive full-stack E-commerce platform featuring seamless product browsing, secure checkout integrations, and dynamic cart management.",
           serein_tag: "Full-Stack",
+          hero_available: "Available for work",
+          hero_copy_email: "Copy Email",
+          hero_copied: "Copied!",
+          hero_node_prs: "Node.js Core PRs",
           hero_greeting: "Hi, I'm HamidReza",
           hero_sub: "Backend engineer and entrepreneur mindset. Specialized in high-throughput engines, strict data consistency, and low-level Node.js runtimes.",
           about_title: "About",
           about_p1: "Great backend engineering takes both technical precision and creative thinking. I approach software with a founder's mindset—helping businesses and engineering teams squash critical bugs, clean up slow architectures, and build fast, dependable backends.",
-          about_p2: 'From contributing bug fixes to <strong class="text-foreground">Node.js core</strong> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.',
+          about_p2: 'From contributing bug fixes to <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Node.js core</a> to launching my own full-stack tools, I focus on what matters most: writing clean code, solving real business problems, and making the whole team faster.',
           edu_title: "Education",
           edu_degree: "Bachelor of Science - BS, Computer Engineering",
           skills_title: "Skills",
@@ -1114,11 +1141,15 @@
           serein_date: "Ekim 2026",
           serein_desc: "Hızlı ürün keşfi, dinamik sepet yönetimi ve güvenli ödeme altyapısına sahip modern e-ticaret platformu.",
           serein_tag: "Full-Stack",
+          hero_available: "Yeni projelere açık",
+          hero_copy_email: "E-postayı Kopyala",
+          hero_copied: "Kopyalandı!",
+          hero_node_prs: "Node.js Core PR'ları",
           hero_greeting: "Selam, ben HamidReza",
           hero_sub: "Girişimci vizyonuna sahip Backend Mühendisi. Yüksek performanslı sistemler, hatasız veri akışı ve Node.js mimarilerinde uzman.",
           about_title: "Hakkımda",
           about_p1: "Güçlü bir backend mimarisi hem teknik ustalık hem de pratik bir vizyon gerektirir. Yazılıma bir kurucu gözüyle yaklaşıyorum; ekiplerin ve işletmelerin kritik hataları çözmesine, hantal sistemleri hızlandırmasına ve güvenilir altyapılar kurmasına yardımcı oluyorum.",
-          about_p2: "<strong class=\"text-foreground\">Node.js</strong> projesine doğrudan katkıda bulunmaktan uçtan uca ürünler geliştirmeye kadar odağım hep net: temiz kod yazmak, iş dünyasındaki gerçek sorunları çözmek ve ekibi hızlandırmak.",
+          about_p2: '<a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Node.js</a> projesine doğrudan katkıda bulunmaktan uçtan uca ürünler geliştirmeye kadar odağım hep net: temiz kod yazmak, iş dünyasındaki gerçek sorunları çözmek ve ekibi hızlandırmak.',
           edu_title: "Eğitim",
           edu_degree: "Lisans (BS), Bilgisayar Mühendisliği",
           skills_title: "Yetenekler",
@@ -1181,11 +1212,15 @@
           serein_date: "مهر ۱۴۰۵",
           serein_desc: "فروشگاه اینترنتی مدرن و سریع با امکان جست‌وجوی آسان محصولات، سبد خرید پویا و اتصال امن به درگاه‌های پرداخت.",
           serein_tag: "فول‌استک",
+          hero_available: "آماده همکاری",
+          hero_copy_email: "کپی ایمیل",
+          hero_copied: "کپی شد!",
+          hero_node_prs: "مشارکت‌های Node.js",
           hero_greeting: "سلام، من حمیدرضا هستم",
           hero_sub: "مهندس بک‌اند با تفکر محصولی و کارآفرینی؛ متخصص ساخت سیستم‌های پرسرعت، پایگاه‌داده‌های دقیق و توسعه با Node.js.",
           about_title: "درباره من",
           about_p1: "یک بک‌اند قدرتمند هم به دقت فنی نیاز دارد و هم به تفکر خلاق. من با نگاه یک هم‌بنیان‌گذار کار می‌کنم؛ به استارتاپ‌ها و تیم‌های نرم‌افزاری کمک می‌کنم تا باگ‌های اساسی را برطرف کنند، سرعت سیستم‌ها را بالا ببرند و زیرساختی پایدار و مطمئن بسازند.",
-          about_p2: "از مشارکت در برطرف کردن باگ‌های رسمی <strong class=\"text-foreground\">Node.js</strong> تا راه‌اندازی ابزارهای کاربردی، تمرکزم همیشه روی اصل کار است: کد تمیز، حل مسائل واقعی کسب‌وکار و افزایش سرعت پیشرفت کل تیم.",
+          about_p2: 'از مشارکت در برطرف کردن باگ‌های رسمی <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Node.js</a> تا راه‌اندازی ابزارهای کاربردی، تمرکزم همیشه روی اصل کار است: کد تمیز، حل مسائل واقعی کسب‌وکار و افزایش سرعت پیشرفت کل تیم.',
           edu_title: "تحصیلات",
           edu_degree: "کارشناسی مهندسی کامپیوتر",
           skills_title: "مهارت‌ها",
@@ -1248,11 +1283,15 @@
           serein_date: "ربيع الآخر 1448 هـ",
           serein_desc: "متجر إلكتروني حديث وسريع يتيح تصفح المنتجات بسهولة، وإدارة ديناميكية لسلة التسوق، مع ربط آمن ببوابات الدفع.",
           serein_tag: "تطبيق متكامل",
+          hero_available: "متاح للعمل",
+          hero_copy_email: "نسخ البريد",
+          hero_copied: "تم النسخ!",
+          hero_node_prs: "مساهمات Node.js",
           hero_greeting: "مرحباً، أنا حميد رضا",
           hero_sub: "مهندس برمجيات خلفية (Backend) بعقلية ريادية؛ متخصص في بناء أنظمة فائقة السرعة، وقواعد بيانات عالية الدقة، وتطبيقات Node.js المتقدمة.",
           about_title: "نبذة عني",
           about_p1: "بناء برمجيات خلفية قوية يتطلب دقة تقنية ورؤية عملية. أتعامل مع البرمجيات بعقلية رائد الأعمال؛ أساعد الشركات والفرق التقنية في معالجة المشكلات المعقدة، وتسريع الأنظمة البطيئة، وبناء بنية تحتية موثوقة.",
-          about_p2: "من المساهمة في تطوير مشروع <strong class=\"text-foreground\">Node.js</strong> الرسمي إلى إطلاق تطبيقات متكاملة، ينصب تركيزي على الأهم: كود نظيف، وحلول عملية لمتطلبات الأعمال، ومساعدة الفريق على الإنجاز بكفاءة أعلى.",
+          about_p2: 'من المساهمة في تطوير مشروع <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Node.js</a> الرسمي إلى إطلاق تطبيقات متكاملة، ينصب تركيزي على الأهم: كود نظيف، وحلول عملية لمتطلبات الأعمال، ومساعدة الفريق على الإنجاز بكفاءة أعلى.',
           edu_title: "التعليم",
           edu_degree: "بكالوريوس في هندسة الحاسوب",
           skills_title: "المهارات",
@@ -1330,6 +1369,44 @@
 
       // Initial Apply on Page Load
       applyLanguage(currentLang);
+
+      // Copy Email One-Click Buttons (Hero + Work With Me)
+      document.querySelectorAll(".copy-email-btn").forEach((btn) => {
+        const icon = btn.querySelector(".copy-email-icon");
+        const check = btn.querySelector(".copy-email-check");
+        const label = btn.querySelector(".copy-email-label");
+        let resetTimer = null;
+
+        btn.addEventListener("click", async () => {
+          const email = btn.getAttribute("data-email") || "hamidr.ghavami@gmail.com";
+          try {
+            await navigator.clipboard.writeText(email);
+          } catch {
+            const ta = document.createElement("textarea");
+            ta.value = email;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+          }
+          const lang = localStorage.getItem("lang") || "en";
+          const dict = translations[lang] || translations["en"];
+          if (label) label.textContent = dict.hero_copied || "Copied!";
+          if (icon) icon.classList.add("hidden");
+          if (check) check.classList.remove("hidden");
+
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(() => {
+            const curLang = localStorage.getItem("lang") || "en";
+            const curDict = translations[curLang] || translations["en"];
+            if (label) label.textContent = curDict.hero_copy_email || "Copy Email";
+            if (icon) icon.classList.remove("hidden");
+            if (check) check.classList.add("hidden");
+          }, 2000);
+        });
+      });
 
       // Toggle Floating Menu
       if (langBtn && langMenu) {
