@@ -87,26 +87,21 @@
       will-change: transform, opacity, filter;
     }
 
-    /* Style for the dock items to ensure smooth single-item magnification */
+    /* Magic UI style dock items: circle at 40px, morphs into soft squircle at 60px via 24px radius */
     .dock-item {
       position: relative;
       width: 40px;
       height: 40px;
+      border-radius: 1.5rem;
       will-change: width, height;
-      transform-origin: center bottom;
       transition:
-        width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.25s ease;
+        background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     @media (hover: hover) {
       .dock-item:hover {
-        width: 58px;
-        height: 58px;
         z-index: 10;
       }
     }
@@ -114,39 +109,65 @@
     .dock-item::after {
       content: attr(aria-label);
       position: absolute;
-      bottom: calc(100% + 10px);
+      bottom: calc(100% + 13px);
       left: 50%;
       transform: translateX(-50%) translateY(4px) scale(0.95);
-      padding: 4px 10px;
-      border-radius: 8px;
-      background: rgba(24, 24, 27, 0.92);
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 1.3;
+      padding: 8px 16px;
+      border-radius: 14px;
+      background: #171717;
+      color: #fafafa;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
       white-space: nowrap;
       pointer-events: none;
       opacity: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
       transition:
-        opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 20;
+        opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 50;
+    }
+
+    .dock-item::before {
+      content: "";
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px) scale(0.95);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #171717;
+      pointer-events: none;
+      opacity: 0;
+      transition:
+        opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 50;
     }
 
     .dark .dock-item::after {
-      background: rgba(244, 244, 245, 0.95);
-      color: #18181b;
+      background: #e5e5e5;
+      color: #171717;
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark .dock-item::before {
+      border-top-color: #e5e5e5;
     }
 
     @media (hover: hover) {
-      .dock-item:hover::after {
+      .dock-item:hover::after,
+      .dock-item:hover::before {
         opacity: 1;
         transform: translateX(-50%) translateY(0) scale(1);
       }
     }
 
-    .dock-item.tooltip-hidden::after {
+    .dock-item.tooltip-hidden::after,
+    .dock-item.tooltip-hidden::before {
       opacity: 0 !important;
       pointer-events: none;
     }
@@ -911,18 +932,18 @@
   </section>
 
   <!-- FIXED FLOATING DOCK -->
-  <div class="fixed inset-x-0 bottom-6 z-50 pointer-events-none flex justify-center px-4">
-    <nav id="magic-dock" class="pointer-events-auto flex items-end gap-2 px-3 h-14 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-xl shadow-black/5 dark:shadow-black/50 rtl:flex-row-reverse pb-2 pt-2">
+  <div class="fixed inset-x-0 bottom-4 z-50 pointer-events-none flex justify-center px-4">
+    <nav id="magic-dock" class="pointer-events-auto relative flex items-end justify-center overflow-visible gap-2 p-2 h-14 w-fit mx-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-3xl shadow-[0_0_10px_3px_rgba(23,23,23,0.05)] dark:shadow-[0_0_10px_3px_rgba(229,229,229,0.05)] rtl:flex-row-reverse">
       
       <!-- Home -->
-      <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+      <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
         <svg class="w-[50%] h-[50%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
       </a>
 
       <!-- Work With Me -->
-      <a href="#work-with-me" aria-label="Work With Me" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+      <a href="#work-with-me" aria-label="Work With Me" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
         <svg class="w-[50%] h-[50%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
           <rect width="20" height="14" x="2" y="6" rx="2"/>
@@ -930,36 +951,36 @@
       </a>
 
       <!-- Divider -->
-      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0 self-center"></div>
+      <div class="w-px h-2/3 bg-zinc-200 dark:bg-zinc-800 m-auto shrink-0"></div>
 
       <!-- GitHub -->
-      <a href="https://github.com/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+      <a href="https://github.com/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
         <svg class="w-[50%] h-[50%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
         </svg>
       </a>
 
       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+      <a href="https://www.linkedin.com/in/hamidrezaghavami" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
         <svg class="w-[50%] h-[50%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
           <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 1 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.39 9.74v-8.37H5.07v8.37h2.78z"/>
         </svg>
       </a>
 
       <!-- X / Twitter -->
-      <a href="https://x.com/hamidrghavami" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+      <a href="https://x.com/hamidrghavami" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
         <svg class="w-[50%] h-[50%] pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
       </a>
 
       <!-- Divider -->
-      <div class="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-0.5 shrink-0 self-center"></div>
+      <div class="w-px h-2/3 bg-zinc-200 dark:bg-zinc-800 m-auto shrink-0"></div>
 
       <!-- Globe Language Switcher & Dropdown Menu -->
-      <div class="relative flex items-center justify-center shrink-0">
+      <div class="relative flex items-end justify-center shrink-0">
         <!-- Globe Button -->
-        <button id="lang-menu-btn" type="button" aria-label="Switch Language" class="dock-item flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+        <button id="lang-menu-btn" type="button" aria-label="Switch Language" class="dock-item flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
           <svg class="w-[50%] h-[50%] pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
         </button>
 
@@ -973,7 +994,7 @@
       </div>
 
       <!-- Theme Toggle -->
-      <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="dock-item shrink-0 flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/90 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100/90 dark:hover:bg-zinc-800/90 shadow-sm">
+      <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
         <!-- Sun (Shown in Dark Mode) -->
         <svg class="w-[50%] h-[50%] hidden dark:block pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
@@ -1341,6 +1362,95 @@
           if (langBtn) langBtn.classList.remove("tooltip-hidden");
         });
       });
+
+      // 2. Magic UI Spring-Physics Dock Magnification (circle -> squircle via 24px radius)
+      const dock = document.getElementById("magic-dock");
+      if (dock && window.matchMedia("(hover: hover)").matches) {
+        const items = Array.from(dock.querySelectorAll(".dock-item"));
+        const baseSize = 40;
+        const maxSize = 60;
+        const distance = 100;
+        const stiffness = 280;
+        const damping = 24;
+
+        const states = items.map(() => ({ current: baseSize, target: baseSize, velocity: 0 }));
+        let mouseX = Infinity;
+        let rafId = null;
+        let lastTime = 0;
+
+        const updateTargets = () => {
+          items.forEach((item, i) => {
+            if (!Number.isFinite(mouseX)) {
+              states[i].target = baseSize;
+              return;
+            }
+            const rect = item.getBoundingClientRect();
+            const center = rect.left + rect.width / 2;
+            const dist = Math.abs(mouseX - center);
+            if (dist < distance) {
+              const t = 1 - dist / distance;
+              states[i].target = baseSize + (maxSize - baseSize) * t;
+            } else {
+              states[i].target = baseSize;
+            }
+          });
+        };
+
+        const tick = (now) => {
+          const rawDt = lastTime ? (now - lastTime) / 1000 : 1 / 60;
+          lastTime = now;
+          const dt = Math.min(rawDt, 0.032);
+          const subSteps = 2;
+          const subDt = dt / subSteps;
+
+          updateTargets();
+
+          let moving = false;
+          items.forEach((item, i) => {
+            const s = states[i];
+            for (let step = 0; step < subSteps; step++) {
+              const force = (s.target - s.current) * stiffness - s.velocity * damping;
+              s.velocity += force * subDt;
+              s.current += s.velocity * subDt;
+            }
+
+            if (Math.abs(s.target - s.current) > 0.04 || Math.abs(s.velocity) > 0.04) {
+              moving = true;
+            } else {
+              s.current = s.target;
+              s.velocity = 0;
+            }
+
+            const px = `${s.current.toFixed(2)}px`;
+            item.style.width = px;
+            item.style.height = px;
+          });
+
+          if (moving) {
+            rafId = requestAnimationFrame(tick);
+          } else {
+            rafId = null;
+            lastTime = 0;
+          }
+        };
+
+        const ensureLoop = () => {
+          if (!rafId) {
+            lastTime = 0;
+            rafId = requestAnimationFrame(tick);
+          }
+        };
+
+        dock.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          ensureLoop();
+        });
+
+        dock.addEventListener("mouseleave", () => {
+          mouseX = Infinity;
+          ensureLoop();
+        });
+      }
 
       // 3. Multi-Canvas Magic UI FlickeringGrid (Top Banner + Contact Card)
       const canvases = document.querySelectorAll("#flickering-grid, .flickering-grid-canvas");
