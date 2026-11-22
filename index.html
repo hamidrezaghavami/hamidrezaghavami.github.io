@@ -109,6 +109,12 @@
       background-color: hsl(var(--background));
       color: hsl(var(--foreground));
       font-feature-settings: "rlig" 1, "calt" 1;
+      opacity: 0;
+      transition: opacity 0.18s ease-out;
+    }
+
+    body.page-ready {
+      opacity: 1;
     }
 
     /* Start sections hidden before BlurFade runs so they never paint -> blink off -> fade back in */
@@ -314,7 +320,7 @@
       filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.35));
     }
   </style>
-  <noscript><style>body > section { opacity: 1 !important; }</style></noscript>
+  <noscript><style>body, body > section { opacity: 1 !important; }</style></noscript>
 </head>
 
 <body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-10 sm:py-20 px-4 sm:px-6 relative selection:bg-neutral-800 selection:text-white overflow-x-hidden">
@@ -1422,6 +1428,11 @@
   <!-- COMBINED SCRIPT: BlurFade + Theme Toggle + Instant 4-Lang i18n + Dock Fisheye + FlickeringGrid -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Reveal entire page together once DOM + Tailwind CDN are ready (prevents piecemeal bar/lights pop-in)
+      requestAnimationFrame(() => {
+        document.body.classList.add("page-ready");
+      });
+
       // 0. Magic UI Staggered BlurFade Entrance
       const sections = document.querySelectorAll("body > main > section, body > section, #hero, #about, #work-with-me, #contributions, #education, #skills, #projects, #contact");
       sections.forEach((sec, index) => {
