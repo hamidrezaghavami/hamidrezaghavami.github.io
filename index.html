@@ -125,7 +125,7 @@
     @keyframes magicBlurFade {
       0% {
         opacity: 0;
-        filter: blur(6px);
+        filter: blur(4px);
         transform: translateY(-6px);
       }
       100% {
@@ -135,10 +135,28 @@
       }
     }
 
+    /* Hardware-compositor-only slide/fade on mobile (avoids Mali/Adreno blur texture hitch on frame 1) */
+    @keyframes magicFadeMobile {
+      0% {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .blur-fade-item {
       opacity: 0;
       animation: magicBlurFade 0.4s ease-out forwards;
-      will-change: transform, opacity, filter;
+      will-change: transform, opacity;
+    }
+
+    @media (max-width: 768px) {
+      .blur-fade-item {
+        animation-name: magicFadeMobile;
+      }
     }
 
     /* Magic UI style dock items: circle at 40px, morphs into soft squircle at 60px via 24px radius */
@@ -1529,7 +1547,7 @@
             }
             sCtx.globalAlpha = 1;
           };
-          requestAnimationFrame(drawSnow);
+          setTimeout(() => requestAnimationFrame(drawSnow), 260);
         }
       }
 
