@@ -3,6 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Early Theme & Yearly Seasonal Check (runs before first paint to prevent any flash/blink) -->
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const override = params.get("christmas");
+      const now = new Date();
+      const m = now.getMonth() + 1;
+      const d = now.getDate();
+      const inSeason = (m === 11 && d >= 22) || m === 12 || (m === 1 && d <= 5);
+      const isChristmas = override === "1" ? true : override === "0" ? false : inSeason;
+      window.__IS_CHRISTMAS_MODE__ = isChristmas;
+      if (isChristmas) {
+        document.documentElement.classList.add("dark", "christmas-mode");
+      } else if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
   <title>HamidReza Ghavami - Portfolio</title>
   <meta name="description" content="HamidReza Ghavami - Backend Engineer & Node.js Core Contributor.">
   <link rel="canonical" href="https://hamidrezaghavami.github.io/">
@@ -83,10 +101,19 @@
       --muted-foreground: 240 5% 64.9%;
     }
 
+    html {
+      background-color: hsl(var(--background));
+    }
+
     body {
       background-color: hsl(var(--background));
       color: hsl(var(--foreground));
       font-feature-settings: "rlig" 1, "calt" 1;
+    }
+
+    /* Start sections hidden before BlurFade runs so they never paint -> blink off -> fade back in */
+    body > section {
+      opacity: 0;
     }
 
     @keyframes magicBlurFade {
@@ -287,23 +314,7 @@
       filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.35));
     }
   </style>
-
-  <!-- Early Seasonal Check (Nov 22 – Jan 5 yearly; ?christmas=1 or ?christmas=0 overrides for preview) -->
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search);
-      const override = params.get("christmas");
-      const now = new Date();
-      const m = now.getMonth() + 1; // 1-12
-      const d = now.getDate();      // 1-31
-      const inSeason = (m === 11 && d >= 22) || m === 12 || (m === 1 && d <= 5);
-      const isChristmas = override === "1" ? true : override === "0" ? false : inSeason;
-      window.__IS_CHRISTMAS_MODE__ = isChristmas;
-      if (isChristmas) {
-        document.documentElement.classList.add("dark", "christmas-mode");
-      }
-    })();
-  </script>
+  <noscript><style>body > section { opacity: 1 !important; }</style></noscript>
 </head>
 
 <body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-10 sm:py-20 px-4 sm:px-6 relative selection:bg-neutral-800 selection:text-white overflow-x-hidden">
