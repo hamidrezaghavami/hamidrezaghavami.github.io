@@ -322,7 +322,7 @@
       <p data-i18n="work_trust" class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
         Node.js core contributor. Production fintech and AI tools shipped.
       </p>
-      <div class="flex flex-wrap items-center gap-3">
+      <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
         <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 justify-center rounded-lg bg-foreground text-background px-4 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
           <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
           <span data-i18n="work_btn_book">Book a Call</span>
@@ -332,6 +332,133 @@
           <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
         </button>
+        <button type="button" id="crypto-toggle-btn" aria-expanded="false" aria-controls="crypto-payments" class="inline-flex items-center gap-1.5 justify-center rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer">
+          <svg class="size-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></svg>
+          <span data-i18n="work_btn_crypto">Crypto &amp; Escrow</span>
+          <svg id="crypto-toggle-chevron" class="size-3.5 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Safe Crypto & Milestone Payments Card (Hidden until toggled) -->
+    <div id="crypto-payments" class="hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm p-5 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="inline-flex items-center justify-center size-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
+            <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div class="min-w-0">
+            <h3 data-i18n="crypto_title" class="font-bold tracking-tight text-sm sm:text-base text-foreground">Safe Crypto &amp; Milestone Payments</h3>
+            <p data-i18n="crypto_sub" class="text-[11px] sm:text-xs text-muted-foreground">Built to protect both sides. Zero 100% upfront risk.</p>
+          </div>
+        </div>
+
+        <!-- Stablecoin & Network Pills -->
+        <div class="flex flex-wrap sm:flex-nowrap items-center gap-1.5 shrink-0" dir="ltr">
+          <span class="inline-flex items-center gap-1 rounded-full border border-border bg-neutral-100/80 dark:bg-neutral-800/80 px-2.5 py-0.5 text-[11px] font-semibold text-foreground whitespace-nowrap">
+            <span class="size-1.5 rounded-full bg-blue-500"></span>USDC / USDT
+          </span>
+          <span class="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground whitespace-nowrap">
+            Base · Arbitrum · Polygon
+          </span>
+        </div>
+      </div>
+
+      <!-- Payment Mode Switcher -->
+      <div class="inline-flex rounded-lg border border-border bg-neutral-100/70 dark:bg-neutral-900/70 p-1 gap-1" role="tablist" aria-label="Payment protection options">
+        <button type="button" role="tab" aria-selected="true" data-pay-tab="escrow" class="pay-tab-btn rounded-md px-3 py-1.5 text-xs font-semibold transition-all bg-card text-foreground shadow-sm cursor-pointer">
+          <span data-i18n="crypto_tab_escrow">Milestone Escrow</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-pay-tab="milestones" class="pay-tab-btn rounded-md px-3 py-1.5 text-xs font-medium transition-all text-muted-foreground hover:text-foreground cursor-pointer">
+          <span data-i18n="crypto_tab_milestones">30 / 40 / 30 Milestones</span>
+        </button>
+      </div>
+
+      <!-- Tab Panel 1: Milestone Escrow -->
+      <div data-pay-panel="escrow" class="pay-tab-panel grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center size-5 rounded-full bg-foreground text-background text-[10px] font-bold shrink-0">1</span>
+            <span data-i18n="crypto_e1_t" class="text-xs font-semibold text-foreground">Deposit to Escrow</span>
+          </div>
+          <p data-i18n="crypto_e1_d" class="text-[11px] text-muted-foreground leading-relaxed">Funds lock in a neutral smart contract or platform (Midcontract / Trustap), never a private wallet upfront.</p>
+        </div>
+
+        <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center size-5 rounded-full bg-foreground text-background text-[10px] font-bold shrink-0">2</span>
+            <span data-i18n="crypto_e2_t" class="text-xs font-semibold text-foreground">Verified On-Chain</span>
+          </div>
+          <p data-i18n="crypto_e2_d" class="text-[11px] text-muted-foreground leading-relaxed">Development starts immediately once the locked milestone balance is verified on-chain.</p>
+        </div>
+
+        <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center size-5 rounded-full bg-foreground text-background text-[10px] font-bold shrink-0">3</span>
+            <span data-i18n="crypto_e3_t" class="text-xs font-semibold text-foreground">Live Staging Review</span>
+          </div>
+          <p data-i18n="crypto_e3_d" class="text-[11px] text-muted-foreground leading-relaxed">Test the completed feature on my staging server or live screenshare before approving.</p>
+        </div>
+
+        <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center size-5 rounded-full bg-foreground text-background text-[10px] font-bold shrink-0">4</span>
+            <span data-i18n="crypto_e4_t" class="text-xs font-semibold text-foreground">Release &amp; Arbitration</span>
+          </div>
+          <p data-i18n="crypto_e4_d" class="text-[11px] text-muted-foreground leading-relaxed">You release funds on approval; built-in dispute arbitration protects both sides fairly.</p>
+        </div>
+      </div>
+
+      <!-- Tab Panel 2: 30 / 40 / 30 Phased Milestones -->
+      <div data-pay-panel="milestones" class="pay-tab-panel hidden space-y-3">
+        <!-- Visual Progress Bar -->
+        <div class="flex h-2 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800 gap-0.5">
+          <div class="w-[30%] bg-foreground rounded-s-full"></div>
+          <div class="w-[40%] bg-foreground/70"></div>
+          <div class="w-[30%] bg-foreground/45 rounded-e-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+            <div class="flex items-center justify-between">
+              <span data-i18n="crypto_m1_t" class="text-xs font-semibold text-foreground">Deposit</span>
+              <span class="rounded bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 text-[11px] font-bold text-foreground">30%</span>
+            </div>
+            <p data-i18n="crypto_m1_d" class="text-[11px] text-muted-foreground leading-relaxed">Low upfront exposure to kick off architecture &amp; planning.</p>
+          </div>
+
+          <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+            <div class="flex items-center justify-between">
+              <span data-i18n="crypto_m2_t" class="text-xs font-semibold text-foreground">Midpoint</span>
+              <span class="rounded bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 text-[11px] font-bold text-foreground">40%</span>
+            </div>
+            <p data-i18n="crypto_m2_d" class="text-[11px] text-muted-foreground leading-relaxed">Paid only after seeing a working live demo on staging.</p>
+          </div>
+
+          <div class="rounded-lg border border-border/80 bg-background/60 p-3 space-y-1">
+            <div class="flex items-center justify-between">
+              <span data-i18n="crypto_m3_t" class="text-xs font-semibold text-foreground">Final Delivery</span>
+              <span class="rounded bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 text-[11px] font-bold text-foreground">30%</span>
+            </div>
+            <p data-i18n="crypto_m3_d" class="text-[11px] text-muted-foreground leading-relaxed">Released right before production deploy &amp; repo transfer.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transparency & Receipt Guarantees Footer -->
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-2 border-t border-border/70 text-[11px] text-muted-foreground">
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="size-3.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="crypto_g1">Stablecoins only (zero slippage)</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="size-3.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="crypto_g2">Staging demo before release</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <svg class="size-3.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="crypto_g3">Scoped invoice &amp; on-chain txHash receipt</span>
+        </span>
       </div>
     </div>
   </section>
@@ -1158,6 +1285,28 @@
           work_trust: "Node.js core contributor. Production fintech and AI tools shipped.",
           work_btn_book: "Book a Call",
           work_btn_email: "Email Me",
+          work_btn_crypto: "Crypto & Escrow",
+          crypto_title: "Safe Crypto & Milestone Payments",
+          crypto_sub: "Built to protect both sides. Zero 100% upfront risk.",
+          crypto_tab_escrow: "Milestone Escrow",
+          crypto_tab_milestones: "30 / 40 / 30 Milestones",
+          crypto_e1_t: "Deposit to Escrow",
+          crypto_e1_d: "Funds lock in a neutral smart contract or platform (Midcontract / Trustap), never a private wallet upfront.",
+          crypto_e2_t: "Verified On-Chain",
+          crypto_e2_d: "Development starts immediately once the locked milestone balance is verified on-chain.",
+          crypto_e3_t: "Live Staging Review",
+          crypto_e3_d: "Test the completed feature on my staging server or live screenshare before approving.",
+          crypto_e4_t: "Release & Arbitration",
+          crypto_e4_d: "You release funds on approval; built-in dispute arbitration protects both sides fairly.",
+          crypto_m1_t: "Deposit",
+          crypto_m1_d: "Low upfront exposure to kick off architecture & planning.",
+          crypto_m2_t: "Midpoint",
+          crypto_m2_d: "Paid only after seeing a working live demo on staging.",
+          crypto_m3_t: "Final Delivery",
+          crypto_m3_d: "Released right before production deploy & repo transfer.",
+          crypto_g1: "Stablecoins only (zero slippage)",
+          crypto_g2: "Staging demo before release",
+          crypto_g3: "Scoped invoice & on-chain txHash receipt",
           contact_badge: "Contact",
           contact_title: "Get in Touch",
           contact_desc: 'Have a project or a backend problem? <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">Book a call</a> or <a href="mailto:hamidr.ghavami@gmail.com" class="text-blue-500 hover:underline font-normal">email me</a> with a short description and I\'ll reply within 24 hours.'
@@ -1229,6 +1378,28 @@
           work_trust: "Node.js katkıcısı. Canlıda çalışan finans ve yapay zekâ sistemleri geliştiricisi.",
           work_btn_book: "Görüşme Ayarla",
           work_btn_email: "E-posta Gönder",
+          work_btn_crypto: "Kripto ve Escrow",
+          crypto_title: "Güvenli Kripto ve Aşamalı Ödeme",
+          crypto_sub: "İki taraf için de güvenli. %100 peşin riski yok.",
+          crypto_tab_escrow: "Escrow Koruması",
+          crypto_tab_milestones: "30 / 40 / 30 Aşamalı",
+          crypto_e1_t: "Escrow Hesabına Yatırın",
+          crypto_e1_d: "Ödeme kişisel cüzdan yerine tarafsız bir akıllı sözleşme veya platformda (Midcontract / Trustap) kilitlenir.",
+          crypto_e2_t: "Zincir Üstü Doğrulama",
+          crypto_e2_d: "Kilitli bakiye zincir üzerinde doğrulandığı anda geliştirmeye başlanır.",
+          crypto_e3_t: "Canlı Test Sunucusu",
+          crypto_e3_d: "Onay vermeden önce tamamlanan özelliği test sunucusunda veya ekran paylaşımıyla inceleyin.",
+          crypto_e4_t: "Onay ve Hakemlik",
+          crypto_e4_d: "Onayınızla ödeme aktarılır; anlaşmazlık durumunda tarafsız hakemlik her iki tarafı da korur.",
+          crypto_m1_t: "Başlangıç",
+          crypto_m1_d: "Mimari ve planlama başlangıcı için düşük ön ödeme.",
+          crypto_m2_t: "Ara Teslim",
+          crypto_m2_d: "Yalnızca test sunucusunda çalışan demoyu gördükten sonra ödenir.",
+          crypto_m3_t: "Final Teslim",
+          crypto_m3_d: "Canlıya alım ve kod deposu devrinden hemen önce tamamlanır.",
+          crypto_g1: "Yalnızca stabil coin (kur riski yok)",
+          crypto_g2: "Ödeme öncesi canlı demo",
+          crypto_g3: "Proje faturası ve txHash makbuzu",
           contact_badge: "İletişim",
           contact_title: "İletişime Geçin",
           contact_desc: "Aklınızda bir proje mi var veya backend tarafında bir sorun mu yaşıyorsunuz? <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">Kısa bir görüşme ayarlayabilir</a> veya <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">e-posta gönderebilirsiniz</a>; 24 saat içinde dönüş yaparım."
@@ -1300,6 +1471,28 @@
           work_trust: "مشارکت‌کننده رسمی در Node.js و سازنده سیستم‌های مالی و ابزارهای هوش مصنوعی فعال.",
           work_btn_book: "رزرو جلسه",
           work_btn_email: "ارسال ایمیل",
+          work_btn_crypto: "پرداخت کریپتو و اسکرو",
+          crypto_title: "پرداخت امن کریپتو و مرحله‌ای",
+          crypto_sub: "امنیت برای هر دو طرف، بدون ریسک پیش‌پرداخت کامل.",
+          crypto_tab_escrow: "اسکرو هوشمند (Escrow)",
+          crypto_tab_milestones: "پرداخت مرحله‌ای ۳۰ / ۴۰ / ۳۰",
+          crypto_e1_t: "واریز به حساب امانی (Escrow)",
+          crypto_e1_d: "مبلغ در قرارداد هوشمند یا پلتفرم واسط (Midcontract / Trustap) قفل می‌شود، نه کیف‌پول شخصی.",
+          crypto_e2_t: "تایید روی شبکه",
+          crypto_e2_d: "بلافاصله پس از تایید قفل شدن مبلغ مرحله روی بلاکچین، کدنویسی شروع می‌شود.",
+          crypto_e3_t: "بررسی روی سرور تست",
+          crypto_e3_d: "پیش از تایید پرداخت، نسخه کامل را روی سرور تست یا در جلسه آنلاین بررسی کنید.",
+          crypto_e4_t: "آزادسازی و داوری",
+          crypto_e4_d: "با تایید شما مبلغ آزاد می‌شود و سیستم داوری در صورت اختلاف از هر دو طرف محافظت می‌کند.",
+          crypto_m1_t: "پیش‌پرداخت",
+          crypto_m1_d: "ریسک اولیه پایین برای شروع طراحی معماری و برنامه‌ریزی.",
+          crypto_m2_t: "میانه پروژه",
+          crypto_m2_d: "تنها پس از مشاهده دموی زنده روی سرور تست پرداخت می‌شود.",
+          crypto_m3_t: "تحویل نهایی",
+          crypto_m3_d: "دقیقاً پیش از انتشار نهایی و انتقال کامل مخزن کد آزاد می‌شود.",
+          crypto_g1: "فقط استیبل‌کوین (بدون نوسان قیمت)",
+          crypto_g2: "دموی زنده پیش از آزادسازی وجه",
+          crypto_g3: "فاکتور شفاف و رسید txHash",
           contact_badge: "تماس",
           contact_title: "ارتباط با من",
           contact_desc: "پروژه‌ای برای اجرا دارید یا با چالشی در سیستم خود مواجه شدید؟ می‌توانید <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">یک جلسه آنلاین هماهنگ کنید</a> یا با شرحی کوتاه <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">به من ایمیل بزنید</a>؛ ظرف ۲۴ ساعت پاسخ می‌دهم."
@@ -1371,6 +1564,28 @@
           work_trust: "مساهم رسمي في Node.js؛ مطور لأنظمة مالية وأدوات ذكاء اصطناعي تعمل في بيئات حقيقية.",
           work_btn_book: "حجز موعد",
           work_btn_email: "راسلني",
+          work_btn_crypto: "الدفع بالكريبتو والضمان",
+          crypto_title: "دفع آمن بالكريبتو وعلى مراحل",
+          crypto_sub: "حماية للطرفين دون مخاطرة الدفع الكامل مقدماً.",
+          crypto_tab_escrow: "الضمان الذكي (Escrow)",
+          crypto_tab_milestones: "مراحل 30 / 40 / 30",
+          crypto_e1_t: "الإيداع في الضمان",
+          crypto_e1_d: "يتم تجميد المبلغ في عقد ذكي أو منصة وسيطة (Midcontract / Trustap) وليس في محفظة شخصية مقدماً.",
+          crypto_e2_t: "التحقق على الشبكة",
+          crypto_e2_d: "يبدأ التطوير فوراً بعد التحقق من حجز مبلغ المرحلة على البلوكشين.",
+          crypto_e3_t: "معاينة على خادم تجريبي",
+          crypto_e3_d: "تجربة الميزة المكتملة على خادم تجريبي أو عرض مباشر قبل اعتماد الدفع.",
+          crypto_e4_t: "الإفراج والتحكيم",
+          crypto_e4_d: "تطلق الدفعة بعد موافقتك، مع آلية تحكيم عادلة تحمي الطرفين عند أي خلاف.",
+          crypto_m1_t: "دفعة أولى",
+          crypto_m1_d: "مخاطرة منخفضة لبدء التخطيط وتصميم البنية.",
+          crypto_m2_t: "منتصف المشروع",
+          crypto_m2_d: "تُدفع فقط بعد رؤية عرض تجريبي يعمل فعلياً.",
+          crypto_m3_t: "التسليم النهائي",
+          crypto_m3_d: "تُطلق قبل النشر النهائي ونقل مستودع الكود مباشرة.",
+          crypto_g1: "عملات مستقرة فقط (دون تقلبات)",
+          crypto_g2: "معاينة تجريبية قبل الإفراج",
+          crypto_g3: "فاتورة واضحة وإيصال txHash",
           contact_badge: "اتصال",
           contact_title: "ابقى على تواصل",
           contact_desc: "هل لديك فكرة مشروع أو تواجه مشكلة تقنية في نظامك؟ يمكنك <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">حجز موعد لمكالمة قصيرة</a> أو <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">مراسلتي عبر البريد الإلكتروني</a>؛ وسأرد عليك خلال 24 ساعة."
@@ -1389,6 +1604,10 @@
         htmlEl.setAttribute("dir", "ltr");
         
         const textDirection = lang === "fa" || lang === "ar" ? "rtl" : "ltr";
+        const cryptoCard = document.getElementById("crypto-payments");
+        if (cryptoCard) {
+          cryptoCard.setAttribute("dir", textDirection);
+        }
         const dict = translations[lang] || translations["en"];
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
@@ -1402,6 +1621,42 @@
 
       // Initial Apply on Page Load
       applyLanguage(currentLang);
+
+      // Payment Mode Tab Switcher (Escrow vs 30/40/30 Milestones) + Collapsible Toggle
+      const cryptoToggleBtn = document.getElementById("crypto-toggle-btn");
+      const cryptoToggleChevron = document.getElementById("crypto-toggle-chevron");
+      const cryptoPaymentsPanel = document.getElementById("crypto-payments");
+      if (cryptoToggleBtn && cryptoPaymentsPanel) {
+        cryptoToggleBtn.addEventListener("click", () => {
+          const isOpening = cryptoPaymentsPanel.classList.contains("hidden");
+          cryptoPaymentsPanel.classList.toggle("hidden");
+          cryptoToggleBtn.setAttribute("aria-expanded", isOpening ? "true" : "false");
+          if (cryptoToggleChevron) {
+            cryptoToggleChevron.classList.toggle("rotate-180", isOpening);
+          }
+        });
+      }
+
+      const payTabBtns = document.querySelectorAll(".pay-tab-btn");
+      const payTabPanels = document.querySelectorAll(".pay-tab-panel");
+      payTabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-pay-tab");
+          payTabBtns.forEach((b) => {
+            const active = b.getAttribute("data-pay-tab") === target;
+            b.setAttribute("aria-selected", active ? "true" : "false");
+            b.classList.toggle("bg-card", active);
+            b.classList.toggle("text-foreground", active);
+            b.classList.toggle("shadow-sm", active);
+            b.classList.toggle("font-semibold", active);
+            b.classList.toggle("text-muted-foreground", !active);
+            b.classList.toggle("font-medium", !active);
+          });
+          payTabPanels.forEach((panel) => {
+            panel.classList.toggle("hidden", panel.getAttribute("data-pay-panel") !== target);
+          });
+        });
+      });
 
       // Copy Email One-Click Buttons (Hero + Work With Me)
       document.querySelectorAll(".copy-email-btn").forEach((btn) => {
