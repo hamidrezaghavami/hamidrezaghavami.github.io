@@ -111,6 +111,7 @@
     /* Magic UI style dock items: circle at 40px, morphs into soft squircle at 60px via 24px radius */
     .dock-item {
       position: relative;
+      z-index: 2;
       width: 40px;
       height: 40px;
       border-radius: 1.5rem;
@@ -204,7 +205,99 @@
         height: 36px;
       }
     }
+
+    /* =========================================================================
+       YEARLY CHRISTMAS MODE (Nov 22 – Jan 5, auto-reverts outside this window)
+       ========================================================================= */
+    .xmas-only {
+      display: none !important;
+    }
+
+    html.christmas-mode .xmas-only {
+      display: block !important;
+    }
+
+    html.christmas-mode .xmas-only-inline {
+      display: inline-flex !important;
+    }
+
+    html.christmas-mode #theme-toggle {
+      display: none !important;
+    }
+
+    html.christmas-mode .xmas-book-btn {
+      background-color: #27272a !important;
+      color: #fafafa !important;
+      border: 1px solid #52525b;
+    }
+
+    html.christmas-mode .xmas-book-btn:hover {
+      background-color: #3f3f46 !important;
+      opacity: 1 !important;
+    }
+
+    @keyframes xmasTwinkleA {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px currentColor); }
+      50% { opacity: 0.45; filter: drop-shadow(0 0 1px currentColor); }
+    }
+
+    @keyframes xmasTwinkleB {
+      0%, 100% { opacity: 0.45; filter: drop-shadow(0 0 1px currentColor); }
+      50% { opacity: 1; filter: drop-shadow(0 0 6px currentColor); }
+    }
+
+    .xmas-bulb-a {
+      animation: xmasTwinkleA 2.4s ease-in-out infinite;
+    }
+
+    .xmas-bulb-b {
+      animation: xmasTwinkleB 2.4s ease-in-out infinite;
+    }
+
+    .xmas-pixel {
+      image-rendering: pixelated;
+      shape-rendering: crispEdges;
+    }
+
+    /* Pixel-art snow cap on action buttons (active only in Christmas mode) */
+    html.christmas-mode .xmas-snow-btn {
+      position: relative;
+      overflow: visible;
+    }
+
+    html.christmas-mode .xmas-snow-btn::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 5px;
+      right: 5px;
+      height: 8px;
+      pointer-events: none;
+      z-index: 10;
+      image-rendering: pixelated;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8' preserveAspectRatio='none' shape-rendering='crispEdges'%3E%3Cpath d='M0 5h2V3h6V2h10v1h8V1h14v2h10V2h12v1h10v1h6v1h2v2H0V5z' fill='%23f8fafc'/%3E%3Cpath d='M2 6h76v1H2V6z' fill='%23cbd5e1'/%3E%3C/svg%3E");
+      filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.35));
+    }
   </style>
+
+  <!-- Early Seasonal Check (Nov 22 – Jan 5 yearly; ?christmas=1 or ?christmas=0 overrides for preview) -->
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const override = params.get("christmas");
+      const now = new Date();
+      const m = now.getMonth() + 1; // 1-12
+      const d = now.getDate();      // 1-31
+      const inSeason = (m === 11 && d >= 22) || m === 12 || (m === 1 && d <= 5);
+      const isChristmas = override === "1" ? true : override === "0" ? false : inSeason;
+      window.__IS_CHRISTMAS_MODE__ = isChristmas;
+      if (isChristmas) {
+        document.documentElement.classList.add("dark", "christmas-mode");
+      }
+    })();
+  </script>
 </head>
 
 <body class="min-h-screen font-sans antialiased max-w-2xl mx-auto py-10 sm:py-20 px-4 sm:px-6 relative selection:bg-neutral-800 selection:text-white overflow-x-hidden">
@@ -214,12 +307,126 @@
     <canvas class="flickering-grid-canvas w-full h-full" style="width: 100%; height: 100%; display: block;"></canvas>
   </div>
 
+  <!-- CHRISTMAS ONLY: Gentle Pixel Snowfall Canvas -->
+  <canvas id="xmas-snow-canvas" class="xmas-only pointer-events-none fixed inset-0 w-full h-full z-30" aria-hidden="true"></canvas>
+
+  <!-- CHRISTMAS ONLY: Top Pixel-Art Fairy Lights String (stays at top of page when scrolling) -->
+  <div id="xmas-lights" class="xmas-only pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen z-10 overflow-hidden select-none" aria-hidden="true">
+    <div class="flex justify-center w-full">
+      <svg class="xmas-pixel shrink-0 w-[1440px] max-w-none h-[58px]" viewBox="0 0 360 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Repeating 120px garlands x3 = 360px -->
+        <defs>
+          <g id="xmas-garland">
+            <!-- Pixel Wire Curve -->
+            <path d="M0 1h4v1h5v1h6v1h8v1h10v1h14v1h26v-1h14v-1h10v-1h8v-1h6v-1h5v-1h4V1" fill="#18181b"/>
+            <rect x="0" y="1" width="5" height="1" fill="#27272a"/>
+            <rect x="5" y="2" width="6" height="1" fill="#27272a"/>
+            <rect x="11" y="3" width="8" height="1" fill="#27272a"/>
+            <rect x="19" y="4" width="10" height="1" fill="#27272a"/>
+            <rect x="29" y="5" width="16" height="1" fill="#27272a"/>
+            <rect x="45" y="6" width="30" height="1" fill="#27272a"/>
+            <rect x="75" y="5" width="16" height="1" fill="#27272a"/>
+            <rect x="91" y="4" width="10" height="1" fill="#27272a"/>
+            <rect x="101" y="3" width="8" height="1" fill="#27272a"/>
+            <rect x="109" y="2" width="6" height="1" fill="#27272a"/>
+            <rect x="115" y="1" width="5" height="1" fill="#27272a"/>
+
+            <!-- Bulb 1: Warm Yellow -->
+            <g class="xmas-bulb-a" style="color:#facc15">
+              <rect x="13" y="4" width="4" height="2" fill="#3f3f46"/>
+              <rect x="12" y="6" width="6" height="4" fill="#facc15"/>
+              <rect x="13" y="10" width="4" height="2" fill="#eab308"/>
+              <rect x="14" y="12" width="2" height="1" fill="#ca8a04"/>
+              <rect x="13" y="7" width="1" height="2" fill="#fef9c3"/>
+            </g>
+
+            <!-- Bulb 2: Emerald Green -->
+            <g class="xmas-bulb-b" style="color:#22c55e">
+              <rect x="33" y="6" width="4" height="2" fill="#3f3f46"/>
+              <rect x="32" y="8" width="6" height="4" fill="#22c55e"/>
+              <rect x="33" y="12" width="4" height="2" fill="#16a34a"/>
+              <rect x="34" y="14" width="2" height="1" fill="#15803d"/>
+              <rect x="33" y="9" width="1" height="2" fill="#bbf7d0"/>
+            </g>
+
+            <!-- Bulb 3: Sky Blue -->
+            <g class="xmas-bulb-a" style="color:#38bdf8">
+              <rect x="53" y="7" width="4" height="2" fill="#3f3f46"/>
+              <rect x="52" y="9" width="6" height="4" fill="#38bdf8"/>
+              <rect x="53" y="13" width="4" height="2" fill="#0284c7"/>
+              <rect x="54" y="15" width="2" height="1" fill="#0369a1"/>
+              <rect x="53" y="10" width="1" height="2" fill="#e0f2fe"/>
+            </g>
+
+            <!-- Dangling Orange Pixel Ornament Bauble -->
+            <g>
+              <rect x="67" y="7" width="1" height="8" fill="#27272a"/>
+              <rect x="66" y="14" width="3" height="2" fill="#facc15"/>
+              <rect x="64" y="16" width="7" height="1" fill="#18181b"/>
+              <rect x="63" y="17" width="9" height="7" fill="#18181b"/>
+              <rect x="64" y="24" width="7" height="1" fill="#18181b"/>
+              <rect x="64" y="17" width="7" height="7" fill="#f97316"/>
+              <rect x="64" y="20" width="7" height="1" fill="#fff7ed"/>
+              <rect x="65" y="18" width="2" height="1" fill="#fed7aa"/>
+              <rect x="69" y="21" width="2" height="2" fill="#ea580c"/>
+            </g>
+
+            <!-- Bulb 4: Warm Cream White -->
+            <g class="xmas-bulb-b" style="color:#fef3c7">
+              <rect x="78" y="6" width="4" height="2" fill="#3f3f46"/>
+              <rect x="77" y="8" width="6" height="4" fill="#fef9c3"/>
+              <rect x="78" y="12" width="4" height="2" fill="#fde68a"/>
+              <rect x="79" y="14" width="2" height="1" fill="#fcd34d"/>
+              <rect x="78" y="9" width="1" height="2" fill="#ffffff"/>
+            </g>
+
+            <!-- Bulb 5: Festive Red -->
+            <g class="xmas-bulb-a" style="color:#ef4444">
+              <rect x="100" y="4" width="4" height="2" fill="#3f3f46"/>
+              <rect x="99" y="6" width="6" height="4" fill="#ef4444"/>
+              <rect x="100" y="10" width="4" height="2" fill="#dc2626"/>
+              <rect x="101" y="12" width="2" height="1" fill="#b91c1c"/>
+              <rect x="100" y="7" width="1" height="2" fill="#fecaca"/>
+            </g>
+          </g>
+        </defs>
+        <use href="#xmas-garland" x="0"/>
+        <use href="#xmas-garland" x="120"/>
+        <use href="#xmas-garland" x="240"/>
+      </svg>
+    </div>
+  </div>
+
   <!-- HERO SECTION -->
   <section id="hero" class="space-y-4 sm:space-y-5">
     <div class="flex items-start sm:items-center justify-between gap-3 sm:gap-4">
       <div class="flex flex-col space-y-1.5 flex-1 min-w-0">
-        <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground flex items-center gap-2">
-          <span data-i18n="hero_greeting">Hi, I'm HamidReza</span> <span class="inline-block origin-[70%_70%]"></span>
+        <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground flex items-center gap-2.5">
+          <span data-i18n="hero_greeting">Hi, I'm HamidReza</span>
+          <!-- CHRISTMAS ONLY: Pixel-Art Christmas Tree -->
+          <span class="xmas-only xmas-only-inline items-center shrink-0" title="Happy Holidays!" aria-hidden="true">
+            <svg class="xmas-pixel size-7 sm:size-10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Gold Star -->
+              <rect x="7" y="1" width="2" height="2" fill="#facc15"/>
+              <!-- Tier 1 -->
+              <rect x="7" y="3" width="1" height="2" fill="#22c55e"/>
+              <rect x="8" y="3" width="1" height="2" fill="#16a34a"/>
+              <rect x="6" y="4" width="2" height="2" fill="#22c55e"/>
+              <rect x="8" y="4" width="2" height="2" fill="#16a34a"/>
+              <!-- Tier 2 -->
+              <rect x="5" y="6" width="3" height="3" fill="#22c55e"/>
+              <rect x="8" y="6" width="3" height="3" fill="#16a34a"/>
+              <!-- Tier 3 -->
+              <rect x="3" y="9" width="5" height="4" fill="#22c55e"/>
+              <rect x="8" y="9" width="5" height="4" fill="#16a34a"/>
+              <!-- Ornaments -->
+              <rect x="6" y="6" width="2" height="2" fill="#ef4444"/>
+              <rect x="6" y="9" width="2" height="2" fill="#facc15"/>
+              <rect x="9" y="10" width="2" height="2" fill="#ef4444"/>
+              <!-- Trunk -->
+              <rect x="7" y="13" width="2" height="2" fill="#92400e"/>
+            </svg>
+          </span>
         </h1>
         <p data-i18n="hero_sub" class="text-muted-foreground text-sm sm:text-lg pt-1 leading-relaxed">
           Backend engineer who thinks like a founder. I build fast Node.js systems, reliable databases, and clean APIs that hold up under real load.
@@ -234,18 +441,18 @@
 
     <!-- Full-Width Responsive Quick Actions & Proof (Phone, iPhone, Tablet, Desktop) -->
     <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1">
-      <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 rounded-lg bg-foreground text-background px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm whitespace-nowrap">
+      <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="xmas-snow-btn xmas-book-btn inline-flex items-center justify-center gap-1.5 rounded-lg bg-foreground text-background px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm whitespace-nowrap">
         <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
         <span data-i18n="work_btn_book">Book a Call</span>
       </a>
 
-      <button type="button" data-email="hamidr.ghavami@gmail.com" class="copy-email-btn inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card text-foreground px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer whitespace-nowrap">
+      <button type="button" data-email="hamidr.ghavami@gmail.com" class="xmas-snow-btn copy-email-btn inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card text-foreground px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer whitespace-nowrap">
         <svg class="copy-email-icon size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
         <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
       </button>
 
-      <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap">
+      <a href="https://github.com/nodejs/node/pulls?q=author%3Ahamidrezaghavami" target="_blank" rel="noopener noreferrer" class="xmas-snow-btn inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="size-3.5">
         <span data-i18n="hero_node_prs">Node.js Core PRs</span>
         <svg class="size-3 opacity-70 rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
@@ -272,7 +479,12 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <!-- Card 1: Build Your Backend Feature -->
-      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+      <div class="relative rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+        <!-- CHRISTMAS ONLY: Pixel Snow + Icicle Cap -->
+        <svg class="xmas-only xmas-pixel pointer-events-none absolute -top-[6px] left-1.5 right-1.5 w-[calc(100%-12px)] h-[14px] z-10" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 5h6V3h12V1h14v2h10V2h16v2h14V1h16v2h12v2h10v2h6v2h-4v2h-2V9h-10v3h-2V9H86v2h-2V9H68v4h-2V9H50v2h-2V9H30v3h-2V9H14v2h-2V9H4v2H2V9H0V7h2V5z" fill="#f8fafc"/>
+          <path d="M4 8h10v1H4V8zm14 0h10v1H18V8zm16 0h14v1H34V8zm18 0h14v1H52V8zm18 0h14v1H70V8zm18 0h12v1H88V8zm16 0h10v1h-10V8z" fill="#cbd5e1"/>
+        </svg>
         <div class="space-y-1.5">
           <h3 data-i18n="work_card1_title" class="font-bold tracking-tight text-base text-foreground">Build Your Backend Feature</h3>
           <p data-i18n="work_card1_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
@@ -286,8 +498,13 @@
         </div>
       </div>
 
-      <!-- Card 2: AI-Assisted Full-Stack App -->
-      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+      <!-- Card 2: Full-Stack MVP Build -->
+      <div class="relative rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+        <!-- CHRISTMAS ONLY: Pixel Snow + Icicle Cap -->
+        <svg class="xmas-only xmas-pixel pointer-events-none absolute -top-[6px] left-1.5 right-1.5 w-[calc(100%-12px)] h-[14px] z-10" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 5h8V2h14v2h12V1h18v2h14v1h14V2h16v2h12v1h8v2h2v2h-6v3h-2V9H94v2h-2V9H74v3h-2V9H54v2h-2V9H36v4h-2V9H18v2h-2V9H4v2H2V9H0V7h2V5z" fill="#f8fafc"/>
+          <path d="M4 8h12v1H4V8zm16 0h14v1H20V8zm18 0h14v1H38V8zm18 0h16v1H56V8zm20 0h16v1H76V8zm20 0h16v1H96V8z" fill="#cbd5e1"/>
+        </svg>
         <div class="space-y-1.5">
           <h3 data-i18n="work_card2_title" class="font-bold tracking-tight text-base text-foreground">Full-Stack MVP Build</h3>
           <p data-i18n="work_card2_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
@@ -302,7 +519,12 @@
       </div>
 
       <!-- Card 3: Monthly Retainer -->
-      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+      <div class="relative rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col justify-between p-5 hover:shadow-md transition-all duration-200">
+        <!-- CHRISTMAS ONLY: Pixel Snow + Icicle Cap -->
+        <svg class="xmas-only xmas-pixel pointer-events-none absolute -top-[6px] left-1.5 right-1.5 w-[calc(100%-12px)] h-[14px] z-10" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 5h10V2h16v2h14V1h16v2h16V2h14v2h14v1h12v2h4v2h-4v2h-2V9H92v3h-2V9H72v2h-2V9H52v4h-2V9H32v2h-2V9H12v3h-2V9H2V7H0V5h2z" fill="#f8fafc"/>
+          <path d="M4 8h10v1H4V8zm12 0h14v1H16V8zm18 0h16v1H34V8zm20 0h16v1H54V8zm20 0h16v1H74V8zm20 0h18v1H94V8z" fill="#cbd5e1"/>
+        </svg>
         <div class="space-y-1.5">
           <h3 data-i18n="work_card3_title" class="font-bold tracking-tight text-base text-foreground">Monthly Retainer</h3>
           <p data-i18n="work_card3_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
@@ -323,16 +545,16 @@
         Node.js core contributor. Production fintech and AI tools shipped.
       </p>
       <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
-        <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 justify-center rounded-lg bg-foreground text-background px-4 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
+        <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="xmas-snow-btn xmas-book-btn inline-flex items-center gap-1.5 justify-center rounded-lg bg-foreground text-background px-4 py-2 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity shadow-sm">
           <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
           <span data-i18n="work_btn_book">Book a Call</span>
         </a>
-        <button type="button" data-email="hamidr.ghavami@gmail.com" class="copy-email-btn inline-flex items-center gap-1.5 justify-center rounded-lg border border-border bg-card text-foreground px-4 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer">
+        <button type="button" data-email="hamidr.ghavami@gmail.com" class="xmas-snow-btn copy-email-btn inline-flex items-center gap-1.5 justify-center rounded-lg border border-border bg-card text-foreground px-4 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer">
           <svg class="copy-email-icon size-3.5 shrink-0 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
           <svg class="copy-email-check size-3.5 shrink-0 text-emerald-500 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <span class="copy-email-label" data-i18n="hero_copy_email">Copy Email</span>
         </button>
-        <button type="button" id="crypto-toggle-btn" aria-expanded="false" aria-controls="crypto-payments" class="inline-flex items-center gap-1.5 justify-center rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer">
+        <button type="button" id="crypto-toggle-btn" aria-expanded="false" aria-controls="crypto-payments" class="xmas-snow-btn inline-flex items-center gap-1.5 justify-center rounded-lg border border-border bg-card/70 text-muted-foreground hover:text-foreground px-3.5 py-2 text-xs sm:text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer">
           <svg class="size-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></svg>
           <span data-i18n="work_btn_crypto">Crypto &amp; Escrow</span>
           <svg id="crypto-toggle-chevron" class="size-3.5 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
@@ -1117,6 +1339,18 @@
   <!-- FIXED FLOATING DOCK -->
   <div class="fixed inset-x-0 bottom-4 z-50 pointer-events-none flex justify-center px-4">
     <nav id="magic-dock" class="pointer-events-auto relative flex items-end justify-center overflow-visible gap-2 p-2 h-14 w-fit mx-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-3xl shadow-[0_0_10px_3px_rgba(23,23,23,0.05)] dark:shadow-[0_0_10px_3px_rgba(229,229,229,0.05)] rtl:flex-row-reverse">
+      <!-- CHRISTMAS ONLY: Pixel Snow Mound Cap on Floating Dock (sits behind icons so hovered icons pop up through it) -->
+      <svg class="xmas-only xmas-pixel pointer-events-none absolute -top-[9px] left-2 right-2 w-[calc(100%-16px)] h-[14px] z-0" viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 12h2V9h2V7h3V5h5V3h14V2h18v2h16V3h18v1h16V2h18V1h16v2h18V2h18v2h16V3h18v2h14v2h5v2h3v2h2v3h-4v-2h-4v-1H8v1H4v2H0v-2z" fill="#f8fafc"/>
+        <path d="M4 9h232v2H4V9z" fill="#dbeafe"/>
+        <rect x="2" y="11" width="3" height="1" fill="#dbeafe"/>
+        <rect x="235" y="11" width="3" height="1" fill="#dbeafe"/>
+        <rect x="20" y="5" width="2" height="2" fill="#bfdbfe"/>
+        <rect x="68" y="6" width="2" height="2" fill="#bfdbfe"/>
+        <rect x="120" y="4" width="2" height="2" fill="#bfdbfe"/>
+        <rect x="172" y="6" width="2" height="2" fill="#bfdbfe"/>
+        <rect x="216" y="5" width="2" height="2" fill="#bfdbfe"/>
+      </svg>
       
       <!-- Home -->
       <a href="#hero" aria-label="Home" class="dock-item shrink-0 flex items-center justify-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800 backdrop-blur-3xl cursor-pointer">
@@ -1201,19 +1435,83 @@
         sec.style.animationDelay = `${(index * 0.05).toFixed(2)}s`;
       });
 
-      // 1. Theme Toggle (Light Mode Default + localStorage persistence)
+      // 1. Theme Toggle (Locked to Dark Mode during yearly Nov 22 – Jan 5 Christmas Mode)
       const toggleBtn = document.getElementById("theme-toggle");
       const htmlEl = document.documentElement;
-      if (localStorage.getItem("theme") === "dark") {
-        htmlEl.classList.add("dark");
+      if (window.__IS_CHRISTMAS_MODE__) {
+        htmlEl.classList.add("dark", "christmas-mode");
       } else {
-        htmlEl.classList.remove("dark");
+        if (localStorage.getItem("theme") === "dark") {
+          htmlEl.classList.add("dark");
+        } else {
+          htmlEl.classList.remove("dark");
+        }
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", () => {
+            htmlEl.classList.toggle("dark");
+            localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
+          });
+        }
       }
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", () => {
-          htmlEl.classList.toggle("dark");
-          localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
-        });
+
+      // 1b. Soft Realistic Falling Snowflakes (Only runs during Christmas Mode)
+      if (window.__IS_CHRISTMAS_MODE__) {
+        const snowCanvas = document.getElementById("xmas-snow-canvas");
+        if (snowCanvas) {
+          const sCtx = snowCanvas.getContext("2d");
+          let sw = 0, sh = 0;
+          const flakes = Array.from({ length: 48 }, () => {
+            const depth = Math.random(); // 0 = far, 1 = close
+            return {
+              x: Math.random(),
+              y: Math.random(),
+              radius: 1.1 + depth * 2.4,
+              speed: 0.22 + depth * 0.65,
+              swayAmp: 0.00012 + depth * 0.00028,
+              swayFreq: 0.6 + Math.random() * 1.1,
+              phase: Math.random() * Math.PI * 2,
+              opacity: 0.25 + depth * 0.5
+            };
+          });
+
+          const resizeSnow = () => {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            sw = window.innerWidth;
+            sh = window.innerHeight;
+            snowCanvas.width = Math.round(sw * dpr);
+            snowCanvas.height = Math.round(sh * dpr);
+            sCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          };
+
+          resizeSnow();
+          window.addEventListener("resize", resizeSnow);
+
+          const drawSnow = (now) => {
+            const t = (now || 0) * 0.001;
+            sCtx.clearRect(0, 0, sw, sh);
+            for (let i = 0; i < flakes.length; i++) {
+              const f = flakes[i];
+              f.y += (f.speed / Math.max(sh, 1)) * 1.45;
+              f.x += Math.sin(t * f.swayFreq + f.phase) * f.swayAmp;
+              if (f.y > 1.02) { f.y = -0.02; f.x = Math.random(); }
+              if (f.x < -0.02) f.x = 1.02;
+              if (f.x > 1.02) f.x = -0.02;
+
+              const px = f.x * sw;
+              const py = f.y * sh;
+              const grad = sCtx.createRadialGradient(px, py, 0, px, py, f.radius * 1.4);
+              grad.addColorStop(0, `rgba(255, 255, 255, ${f.opacity})`);
+              grad.addColorStop(0.55, `rgba(224, 242, 254, ${f.opacity * 0.6})`);
+              grad.addColorStop(1, "rgba(224, 242, 254, 0)");
+              sCtx.fillStyle = grad;
+              sCtx.beginPath();
+              sCtx.arc(px, py, f.radius * 1.4, 0, Math.PI * 2);
+              sCtx.fill();
+            }
+            requestAnimationFrame(drawSnow);
+          };
+          requestAnimationFrame(drawSnow);
+        }
       }
 
       // 1.5 Instant 4-Language Dropdown Switcher (EN, TR, AR, FA)
