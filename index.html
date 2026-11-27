@@ -709,7 +709,48 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      
+
+      <!-- Project 0: Atish Digital Menu (Official Restaurant Client Website) -->
+      <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
+        <!-- Preview Banner -->
+        <div class="relative h-44 w-full overflow-hidden bg-neutral-950 group">
+          <a href="https://pizzaatish.ir" target="_blank" rel="noopener noreferrer" aria-label="Visit Atish Digital Menu live website" class="block w-full h-full">
+            <img src="./Atish-poster.webp" alt="Atish Fast Food &amp; Grill Digital Menu" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]">
+          </a>
+
+          <!-- Top Action Badge (Live Website Only — Proprietary Client Work) -->
+          <div class="absolute top-2.5 rtl:left-2.5 rtl:right-auto right-2.5 z-20 flex items-center gap-1.5">
+            <a href="https://pizzaatish.ir" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/10 text-white px-2.5 py-1 text-[11px] font-medium hover:bg-black transition-colors shadow-sm">
+              <svg class="size-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span data-i18n="btn_website">Website</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-4">
+          <div class="space-y-1.5">
+            <a href="https://pizzaatish.ir" target="_blank" rel="noopener noreferrer" class="group/title flex items-center justify-between hover:underline">
+              <h3 class="font-bold tracking-tight text-base text-foreground">Atish Digital Menu</h3>
+              <svg class="size-4 text-muted-foreground group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 rtl:group-hover/title:-translate-x-0.5 transition-transform rtl:-scale-x-100" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <span data-i18n="atish_date" class="text-xs text-muted-foreground block">Nov 2026</span>
+            <p data-i18n="atish_desc" class="text-xs text-muted-foreground leading-relaxed pt-1">
+              Official production website and offline-ready mobile PWA for Atish Restaurant (pizzaatish.ir). Features QR table menus, an interactive order tray with live totals, VIP discount vouchers, and custom domain deployment.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span data-i18n="atish_client" class="inline-flex items-center rounded-md bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 px-2.5 py-0.5 text-[11px] font-medium">Client Work</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Full-Stack</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">PWA</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Vite</span>
+            <span class="inline-flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800/90 px-2.5 py-0.5 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">SEO</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Project 1: CapitalGuard -->
       <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm flex flex-col overflow-hidden hover:shadow-lg transition-all duration-200">
         <!-- Click-to-play video preview; preload without autoplay. -->
@@ -1455,6 +1496,9 @@
       // 1.5 Instant 4-Language Dropdown Switcher (EN, TR, AR, FA)
       const translations = {
         en: {
+          atish_date: "Nov 2026",
+          atish_desc: "Official production website and offline-ready mobile PWA for Atish Restaurant (pizzaatish.ir). Features QR table menus, an interactive order tray with live totals, VIP discount vouchers, and custom domain deployment.",
+          atish_client: "Client Work",
           veyra_date: "Nov 2026",
           veyra_desc: "Built an AI-powered invoice review platform with document extraction, deterministic audit checks, approval history, and a financial assistant.",
           veyra_tag: "Full-Stack",
@@ -1548,6 +1592,9 @@
           contact_desc: 'Have a project or a backend problem? <a href="https://cal.com/hamidrghavami" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline font-normal">Book a call</a> or <a href="mailto:hamidr.ghavami@gmail.com" class="text-blue-500 hover:underline font-normal">email me</a> with a short description and I\'ll reply within 24 hours.'
         },
         tr: {
+          atish_date: "Kasım 2026",
+          atish_desc: "Atish Restoran için canlıda çalışan resmi web sitesi ve çevrimdışı destekli mobil PWA (pizzaatish.ir). Masa QR menüsü, anlık hesaplamalı sipariş sepeti, VIP indirim kuponları ve özel alan adı yayını içerir.",
+          atish_client: "Müşteri Projesi",
           veyra_date: "Kasım 2026",
           veyra_desc: "Faturaları otomatik okuyan, muhasebe kurallarını denetleyen, onay geçmişini tutan ve akıllı finans asistanı içeren yapay zekâ destekli platform.",
           veyra_tag: "Full-Stack",
@@ -1641,6 +1688,9 @@
           contact_desc: "Aklınızda bir proje mi var veya backend tarafında bir sorun mu yaşıyorsunuz? <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">Kısa bir görüşme ayarlayabilir</a> veya <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">e-posta gönderebilirsiniz</a>; 24 saat içinde dönüş yaparım."
         },
         fa: {
+          atish_date: "آبان ۱۴۰۵",
+          atish_desc: "وب‌سایت رسمی و اپلیکیشن وب پیشرونده (PWA) فست‌فود و گریل آتیش روی دامنه اختصاصی pizzaatish.ir. شامل منوی QR سر میز، سبد سفارش تعاملی با محاسبه آنی، کارت تخفیف VIP و بارگذاری فوق‌سریع روی موبایل.",
+          atish_client: "پروژه کارفرما",
           veyra_date: "آبان ۱۴۰۵",
           veyra_desc: "سامانه هوشمند بررسی فاکتورها با هوش مصنوعی؛ شامل خواندن خودکار اسناد، اعتبارسنجی دقیق حسابداری، ثبت تاییده‌ها و دستیار مالی هوشمند.",
           veyra_tag: "فول‌استک",
@@ -1734,6 +1784,9 @@
           contact_desc: "پروژه‌ای برای اجرا دارید یا با چالشی در سیستم خود مواجه شدید؟ می‌توانید <a href=\"https://cal.com/hamidrghavami\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline font-normal\">یک جلسه آنلاین هماهنگ کنید</a> یا با شرحی کوتاه <a href=\"mailto:hamidr.ghavami@gmail.com\" class=\"text-blue-500 hover:underline font-normal\">به من ایمیل بزنید</a>؛ ظرف ۲۴ ساعت پاسخ می‌دهم."
         },
         ar: {
+          atish_date: "جمادى الأولى 1448 هـ",
+          atish_desc: "الموقع الرسمي وتطبيق الويب التقدمي (PWA) لمطعم آتيش على النطاق الخاص pizzaatish.ir، يضم قائمة QR للطاولات وسلة طلبات تفاعلية بحساب فوري وقسائم خصم VIP وأداء سريع على الهواتف.",
+          atish_client: "مشروع عميل",
           veyra_date: "جمادى الأولى 1448 هـ",
           veyra_desc: "منصة ذكية لمراجعة الفواتير بالذكاء الاصطناعي؛ تشمل القراءة الآلية للمستندات، والتدقيق المحاسبي الدقيق، وسجل الموافقات، ومساعد مالي ذكي.",
           veyra_tag: "تطبيق متكامل",
