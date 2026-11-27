@@ -1,0 +1,27 @@
+# HamidReza Ghavami (Hamid Reza Ghavami)
+
+> Backend Engineer & Node.js Core Contributor. Computer Engineering graduate (Altinbas University).
+
+- Portfolio: https://hamidrezaghavami.github.io/
+- GitHub: https://github.com/hamidrezaghavami
+- LinkedIn: https://www.linkedin.com/in/hamidrezaghavami
+- X (Twitter): https://x.com/hamidrghavami
+- Instagram: https://www.instagram.com/hamidr.ghavami
+- Email: hamidr.ghavami@gmail.com
+
+## Core Stack
+JavaScript, Node.js, TypeScript, Express.js, PostgreSQL, Redis, Prisma ORM, Apache Kafka, Docker, AWS, NginX, Ubuntu Linux, Passport.js, ACID Systems, OOP, Data Structures & Algorithms.
+
+## Node.js Core Contributions
+- nodejs/node #64397 (Merged, Node.js 27): fs: return Buffer from mkdtemp when prefix is a Buffer
+- nodejs/node #64238 (Merged): util: allow single-line format when break length is infinite
+- nodejs/node #64188 (Merged): doc: fix typo in node-config-schema.json
+- nodejs/node #64341 (Open, In Review): fs: accept all valid utf8 values in fast paths
+
+## Featured Projects
+- Atish Restaurant (https://pizzaatish.ir): Official production website & offline-ready mobile PWA for Atish Restaurant in Tehran, Iran.
+- CapitalGuard (https://capital-guard-five.vercel.app): Full-stack trading risk and capital-survival analysis platform.
+- ClientFlow (https://clientflow-chi-amber.vercel.app): Freelancer project workspace with shareable scope approvals and AI follow-ups.
+- Veyra AI (https://veyra-ai-lemon.vercel.app): AI-powered invoice review and deterministic audit platform.
+- Iron-Clad-Ledger (https://github.com/hamidrezaghavami/Iron-Clad-Ledger): ACID-guaranteed multi-currency ledger database CLI.
+- Serein (https://serein-two.vercel.app): Full-stack e-commerce platform.
