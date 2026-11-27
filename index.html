@@ -884,7 +884,7 @@
                 <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr1_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
-                util: single-line format fix
+                util: allow single-line format when break length is infinite
               </p>
             </div>
 
@@ -899,7 +899,7 @@
           </div>
 
           <div data-i18n="pr1_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Fixed edge-case single-line formatting logic in core utility inspection methods.
+            Added an early return in <code class="text-foreground">util.inspect</code>'s <code class="text-foreground">isBelowBreakLength</code> when <code class="text-foreground">breakLength</code> is <code class="text-foreground">Infinity</code>, skipping line-width calculations that can't change the result. Output is unchanged, so this is a small performance cleanup, not a bug fix. Worked through maintainer feedback on the test and lint rules.
           </div>
         </div>
       </div>
@@ -922,7 +922,7 @@
                 <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr2_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
-                fs: mkdtemp Buffer returns
+                fs: return Buffer from mkdtemp when prefix is a Buffer
               </p>
             </div>
 
@@ -937,7 +937,7 @@
           </div>
 
           <div data-i18n="pr2_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Ensured proper Buffer return values in filesystem <code class="text-foreground">mkdtemp</code> operations. Linked with merged co-authored commit <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> alongside core maintainer <strong class="text-foreground">@aduh95</strong>.
+            Fixed a bug where <code class="text-foreground">fs.mkdtemp</code>, <code class="text-foreground">mkdtempSync</code>, <code class="text-foreground">fs.promises.mkdtemp</code> and the disposable variants returned a string for a Buffer prefix, which could mangle non-UTF8 paths (fixes #58795). Now forces <code class="text-foreground">encoding: 'buffer'</code> for Buffer prefixes across all APIs, with new regression tests and docs history. A semver-major change that needed TSC approval and several rounds of review; shipped in Node.js 27.
           </div>
         </div>
       </div>
@@ -960,7 +960,7 @@
                 <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr3_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
-                doc: config-schema typo
+                doc: fix typo in node-config-schema.json
               </p>
             </div>
 
@@ -975,7 +975,7 @@
           </div>
 
           <div data-i18n="pr3_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Corrected configuration schema documentation typing to accurately reflect runtime behavior.
+            Fixed a typo in the <code class="text-foreground">experimental-print-required-tla</code> description in <code class="text-foreground">node-config-schema.json</code>. Learned in review that the file is generated from <code class="text-foreground">node_options.cc</code>, and that the project doesn't accept merge commits.
           </div>
         </div>
       </div>
@@ -998,7 +998,7 @@
                 <svg class="pr-chev size-3.5 text-muted-foreground rtl:-scale-x-100 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></svg>
               </div>
               <p data-i18n="pr4_sub" class="text-xs sm:text-sm text-muted-foreground mt-1">
-                fs: utf8 fast paths
+                fs: accept all valid utf8 values in fast paths
               </p>
             </div>
 
@@ -1013,7 +1013,7 @@
           </div>
 
           <div data-i18n="pr4_desc" class="pr-desc hidden mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Fast-path optimization for filesystem UTF-8 string encoding resolutions in core I/O operations.
+            Fixes a 3-year-old issue (#49888) where the UTF-8 fast paths only matched lowercase <code class="text-foreground">utf8</code> and <code class="text-foreground">utf-8</code>, so <code class="text-foreground">UTF8</code> and <code class="text-foreground">UTF-8</code> silently took the slower path. Adds a small <code class="text-foreground">isUtf8Encoding</code> helper so <code class="text-foreground">readFileSync</code>, <code class="text-foreground">writeFileSync</code> and <code class="text-foreground">encodeRealpathResult</code> use the fast C++ path for every valid UTF-8 spelling, and extends it to the Buffer I/O fast paths. Under review.
           </div>
         </div>
       </div>
@@ -1333,14 +1333,14 @@
           icl_date: "Nov 2025 - Jan 2026",
           icl_desc: "Database system CLI handling multi-currency accounts, transfers between users, and monthly statements. Enforces strict transactional invariants making it impossible to lose balance.",
           contrib_title: "Node.js Core Contributions",
-          pr1_sub: "util: single-line format fix",
-          pr1_desc: "Fixed edge-case single-line formatting logic in core utility inspection methods.",
-          pr2_sub: "fs: mkdtemp Buffer returns",
-          pr2_desc: 'Ensured proper Buffer return values in filesystem <code class="text-foreground">mkdtemp</code> operations. Linked with merged co-authored commit <a href="https://github.com/nodejs/node/pull/65743" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-foreground underline underline-offset-4">#65743</a> alongside core maintainer <strong class="text-foreground">@aduh95</strong>.',
-          pr3_sub: "doc: config-schema typo",
-          pr3_desc: "Corrected configuration schema documentation typing to accurately reflect runtime behavior.",
-          pr4_sub: "fs: utf8 fast paths",
-          pr4_desc: "Fast-path optimization for filesystem UTF-8 string encoding resolutions in core I/O operations.",
+          pr1_sub: "util: allow single-line format when break length is infinite",
+          pr1_desc: 'Added an early return in <code class="text-foreground">util.inspect</code>\'s <code class="text-foreground">isBelowBreakLength</code> when <code class="text-foreground">breakLength</code> is <code class="text-foreground">Infinity</code>, skipping line-width calculations that can\'t change the result. Output is unchanged, so this is a small performance cleanup, not a bug fix. Worked through maintainer feedback on the test and lint rules.',
+          pr2_sub: "fs: return Buffer from mkdtemp when prefix is a Buffer",
+          pr2_desc: 'Fixed a bug where <code class="text-foreground">fs.mkdtemp</code>, <code class="text-foreground">mkdtempSync</code>, <code class="text-foreground">fs.promises.mkdtemp</code> and the disposable variants returned a string for a Buffer prefix, which could mangle non-UTF8 paths (fixes #58795). Now forces <code class="text-foreground">encoding: \'buffer\'</code> for Buffer prefixes across all APIs, with new regression tests and docs history. A semver-major change that needed TSC approval and several rounds of review; shipped in Node.js 27.',
+          pr3_sub: "doc: fix typo in node-config-schema.json",
+          pr3_desc: 'Fixed a typo in the <code class="text-foreground">experimental-print-required-tla</code> description in <code class="text-foreground">node-config-schema.json</code>. Learned in review that the file is generated from <code class="text-foreground">node_options.cc</code>, and that the project doesn\'t accept merge commits.',
+          pr4_sub: "fs: accept all valid utf8 values in fast paths",
+          pr4_desc: 'Fixes a 3-year-old issue (#49888) where the UTF-8 fast paths only matched lowercase <code class="text-foreground">utf8</code> and <code class="text-foreground">utf-8</code>, so <code class="text-foreground">UTF8</code> and <code class="text-foreground">UTF-8</code> silently took the slower path. Adds a small <code class="text-foreground">isUtf8Encoding</code> helper so <code class="text-foreground">readFileSync</code>, <code class="text-foreground">writeFileSync</code> and <code class="text-foreground">encodeRealpathResult</code> use the fast C++ path for every valid UTF-8 spelling, and extends it to the Buffer I/O fast paths. Under review.',
           pr_merged_1: "Merged &bull; Sep 2026",
           pr_merged_2: "Merged &bull; Sep 2026",
           pr_merged_3: "Merged &bull; Sep 2026",
@@ -1429,14 +1429,14 @@
           icl_date: "Kasım 2025 - Ocak 2026",
           icl_desc: "Farklı para birimlerini, kullanıcılar arası transferleri ve aylık dökümleri yöneten işlem sistemi. Katı finansal kuralları sayesinde bakiye kaybını veya hesap hatasını tamamen engeller.",
           contrib_title: "Node.js Projesine Katkılarım",
-          pr1_sub: "util: tek satır biçimlendirme düzeltmesi",
-          pr1_desc: "Node.js'in sık kullanılan temel fonksiyonlarındaki tek satır metin biçimlendirme hatası düzeltildi.",
-          pr2_sub: "fs: mkdtemp Buffer dönüş değerleri",
-          pr2_desc: "Geçici dosya işlemlerinde doğru veri çıktısı sağlandı; resmi çekirdek geliştirici <strong class=\"text-foreground\">@aduh95</strong> ile birlikte <a href=\"https://github.com/nodejs/node/pull/65743\" target=\"_blank\" rel=\"noopener noreferrer\" onclick=\"event.stopPropagation()\" class=\"text-foreground underline underline-offset-4\">#65743</a> ortak commiti olarak birleştirildi.",
-          pr3_sub: "doc: config-schema tip düzeltmesi",
-          pr3_desc: "Yapılandırma şeması dokümantasyonundaki veri tipleri, sistemin gerçek çalışma davranışına tam uyacak şekilde düzeltildi.",
-          pr4_sub: "fs: utf8 hızlı yol optimizasyonu",
-          pr4_desc: "Dosya sistemi metin kodlama işlemlerinde UTF-8 okuma hızını artıran doğrudan optimizasyon.",
+          pr1_sub: "util: breakLength sonsuzken tek satır biçimlendirme",
+          pr1_desc: '<code class="text-foreground">util.inspect</code> içindeki <code class="text-foreground">isBelowBreakLength</code> fonksiyonuna <code class="text-foreground">breakLength</code> <code class="text-foreground">Infinity</code> olduğunda erken dönüş eklendi; sonucu değiştirmeyen satır genişliği hesaplamaları atlandı. Çıktı değişmeden küçük bir performans iyileştirmesi sağlandı ve bakım ekibinin test ile lint geri bildirimleri uygulandı.',
+          pr2_sub: "fs: ön ek Buffer olduğunda mkdtemp'in Buffer döndürmesi",
+          pr2_desc: '<code class="text-foreground">fs.mkdtemp</code>, <code class="text-foreground">mkdtempSync</code>, <code class="text-foreground">fs.promises.mkdtemp</code> ve disposable varyantlarının Buffer ön eki verildiğinde string döndürerek UTF-8 olmayan yolları bozabilme hatası düzeltildi (#58795). Tüm API\'lerde Buffer ön ekleri için <code class="text-foreground">encoding: \'buffer\'</code> zorunlu hale getirildi, yeni regresyon testleri ve dokümantasyon geçmişi eklendi. TSC onayı ve birkaç tur inceleme gerektiren semver-major değişiklik Node.js 27\'de yayınlandı.',
+          pr3_sub: "doc: node-config-schema.json yazım hatası düzeltmesi",
+          pr3_desc: '<code class="text-foreground">node-config-schema.json</code> dosyasındaki <code class="text-foreground">experimental-print-required-tla</code> açıklamasındaki yazım hatası düzeltildi. İnceleme sürecinde dosyanın <code class="text-foreground">node_options.cc</code> üzerinden üretildiği ve projenin merge commit kabul etmediği öğrenildi.',
+          pr4_sub: "fs: hızlı yollarda tüm geçerli utf8 yazımlarını kabul et",
+          pr4_desc: 'UTF-8 hızlı yollarının yalnızca küçük harfli <code class="text-foreground">utf8</code> ve <code class="text-foreground">utf-8</code> değerlerini eşleştirip <code class="text-foreground">UTF8</code> ve <code class="text-foreground">UTF-8</code> değerlerini sessizce yavaş yola düşürdüğü 3 yıllık hatayı (#49888) çözer. <code class="text-foreground">readFileSync</code>, <code class="text-foreground">writeFileSync</code>, <code class="text-foreground">encodeRealpathResult</code> ve Buffer G/Ç hızlı yollarının tüm geçerli UTF-8 yazımlarında hızlı C++ yolunu kullanması için küçük bir <code class="text-foreground">isUtf8Encoding</code> yardımcısı ekler. İncelemede.',
           pr_merged_1: "Birleştirildi &bull; Eyl 2026",
           pr_merged_2: "Birleştirildi &bull; Eyl 2026",
           pr_merged_3: "Birleştirildi &bull; Eyl 2026",
@@ -1525,14 +1525,14 @@
           icl_date: "آبان ۱۴۰۴ - دی ۱۴۰۴",
           icl_desc: "سیستمی دقیق برای مدیریت حساب‌های چندارزی، انتقال وجه آنی بین کاربران و صدور گزارش‌های ماهانه؛ با ساختاری امن که بروز هرگونه خطای موجودی را به صفر می‌رساند.",
           contrib_title: "مشارکت در توسعه Node.js",
-          pr1_sub: "util: اصلاح خطای فرمت‌بندی تک‌خطی",
-          pr1_desc: "اصلاح خطای نمایش تک‌خطی در توابع پرکاربرد بازرسی اطلاعات در Node.js.",
-          pr2_sub: "fs: دریافت مقادیر صحیح Buffer در mkdtemp",
-          pr2_desc: "اطمینان از دریافت خروجی دقیق داده در ایجاد فایل‌های موقت با Node.js؛ ثبت‌شده در کامیت رسمی <a href=\"https://github.com/nodejs/node/pull/65743\" target=\"_blank\" rel=\"noopener noreferrer\" onclick=\"event.stopPropagation()\" class=\"text-foreground underline underline-offset-4\">#65743</a> با همکاری توسعه‌دهنده رسمی <strong class=\"text-foreground\">@aduh95</strong>.",
-          pr3_sub: "doc: اصلاح مستندات config-schema",
-          pr3_desc: "اصلاح مستندات و نوع‌داده‌های تنظیمات Node.js برای هماهنگی کامل با رفتار واقعی سیستم.",
-          pr4_sub: "fs: افزایش سرعت در خواندن UTF-8",
-          pr4_desc: "بهینه‌سازی مستقیم برای افزایش سرعت خواندن و تبدیل متون UTF-8 در سیستم ذخیره‌سازی Node.js.",
+          pr1_sub: "util: فرمت‌بندی تک‌خطی هنگام بی‌نهایت بودن breakLength",
+          pr1_desc: 'افزودن بازگشت سریع در تابع <code class="text-foreground">isBelowBreakLength</code> در <code class="text-foreground">util.inspect</code> زمانی که <code class="text-foreground">breakLength</code> برابر <code class="text-foreground">Infinity</code> است تا محاسبات اضافی عرض خط حذف شوند. خروجی تغییری نمی‌کند و یک بهینه‌سازی تمیز عملکردی است که پس از بازخورد نگهدارندگان روی تست‌ها و قوانین lint ادغام شد.',
+          pr2_sub: "fs: بازگرداندن Buffer از mkdtemp هنگام ارسال پیشوند Buffer",
+          pr2_desc: 'رفع باگی که در آن <code class="text-foreground">fs.mkdtemp</code>، <code class="text-foreground">mkdtempSync</code>، <code class="text-foreground">fs.promises.mkdtemp</code> و نسخه‌های disposable برای پیشوند Buffer رشته برمی‌گرداندند و می‌توانست مسیرهای غیر UTF-8 را خراب کند (#58795). اکنون در تمام APIها برای پیشوند Buffer مقدار <code class="text-foreground">encoding: \'buffer\'</code> اعمال می‌شود و همراه با تست‌های رگرسیون و مستندات پس از تایید TSC در Node.js 27 منتشر شد.',
+          pr3_sub: "doc: اصلاح غلط املایی در node-config-schema.json",
+          pr3_desc: 'اصلاح غلط املایی در توضیحات <code class="text-foreground">experimental-print-required-tla</code> در فایل <code class="text-foreground">node-config-schema.json</code>. در جریان بررسی متوجه شدم این فایل از <code class="text-foreground">node_options.cc</code> تولید می‌شود و پروژه merge commit نمی‌پذیرد.',
+          pr4_sub: "fs: پذیرش تمام املاهای معتبر utf8 در مسیرهای سریع",
+          pr4_desc: 'رفع مشکل ۳ ساله (#49888) که در آن مسیرهای سریع UTF-8 فقط <code class="text-foreground">utf8</code> و <code class="text-foreground">utf-8</code> با حروف کوچک را تشخیص می‌دادند و <code class="text-foreground">UTF8</code> یا <code class="text-foreground">UTF-8</code> بی‌صدا از مسیر کندتر عبور می‌کردند. یک تابع کمکی <code class="text-foreground">isUtf8Encoding</code> اضافه می‌کند تا <code class="text-foreground">readFileSync</code>، <code class="text-foreground">writeFileSync</code>، <code class="text-foreground">encodeRealpathResult</code> و مسیرهای سریع Buffer I/O همگی از مسیر سریع C++ استفاده کنند. در حال بررسی.',
           pr_merged_1: "تایید شده &bull; شهریور ۱۴۰۵",
           pr_merged_2: "تایید شده &bull; شهریور ۱۴۰۵",
           pr_merged_3: "تایید شده &bull; شهریور ۱۴۰۵",
@@ -1621,14 +1621,14 @@
           icl_date: "جمادى الأولى 1447 - رجب 1447 هـ",
           icl_desc: "نظام لمعالجة الحسابات متعددة العملات والتحويلات المالية بين المستخدمين والتقارير الشهرية، بهندسة تضمن ثبات البيانات واستحالة حدوث أي خطأ في الأرصدة.",
           contrib_title: "المساهمات في مشروع Node.js",
-          pr1_sub: "util: إصلاح تنسيق السطر الواحد",
-          pr1_desc: "إصلاح خطأ في تنسيق وعرض البيانات بالسطر الواحد في الدوال الشائعة لـ Node.js.",
-          pr2_sub: "fs: قيم الإرجاع Buffer في mkdtemp",
-          pr2_desc: "ضمان صحة مخرجات البيانات عند إنشاء الملفات المؤقتة في Node.js؛ مدمج في الالتزام الرسمي <a href=\"https://github.com/nodejs/node/pull/65743\" target=\"_blank\" rel=\"noopener noreferrer\" onclick=\"event.stopPropagation()\" class=\"text-foreground underline underline-offset-4\">#65743</a> بالتعاون مع المطور الرسمي <strong class=\"text-foreground\">@aduh95</strong>.",
-          pr3_sub: "doc: تصحيح التوثيق في config-schema",
-          pr3_desc: "تصحيح توثيق أنواع البيانات في إعدادات Node.js لتطابق بدقة سلوك النظام الفعلي.",
-          pr4_sub: "fs: تسريع قراءة UTF-8",
-          pr4_desc: "تحسين مباشر لتسريع قراءة وترميز نصوص UTF-8 في نظام ملفات Node.js.",
+          pr1_sub: "util: السماح بالتنسيق بسطر واحد عند breakLength لانهائي",
+          pr1_desc: 'إضافة عودة مبكرة في دالة <code class="text-foreground">isBelowBreakLength</code> داخل <code class="text-foreground">util.inspect</code> عندما تكون قيمة <code class="text-foreground">breakLength</code> هي <code class="text-foreground">Infinity</code>، لتخطي حسابات عرض الأسطر غير المؤثرة. المخرجات ثابتة وهو تحسين أداء بسيط أُنجز بعد مراجعة المشرفين لقواعد الاختبارات وlint.',
+          pr2_sub: "fs: إرجاع Buffer من mkdtemp عندما تكون البادئة Buffer",
+          pr2_desc: 'إصلاح خطأ كانت فيه دوال <code class="text-foreground">fs.mkdtemp</code> و<code class="text-foreground">mkdtempSync</code> و<code class="text-foreground">fs.promises.mkdtemp</code> والنسخ القابلة للتخلص تُرجع نصاً عند تمرير بادئة Buffer مما قد يفسد المسارات غير UTF-8 (#58795). أصبح يفرض <code class="text-foreground">encoding: \'buffer\'</code> عبر جميع الواجهات مع اختبارات وتوثيق جديدين؛ تغيير semver-major تطلب موافقة TSC وصدر في Node.js 27.',
+          pr3_sub: "doc: إصلاح خطأ إملائي في node-config-schema.json",
+          pr3_desc: 'إصلاح خطأ إملائي في وصف <code class="text-foreground">experimental-print-required-tla</code> في ملف <code class="text-foreground">node-config-schema.json</code>. تعلّمت خلال المراجعة أن الملف يُولَّد من <code class="text-foreground">node_options.cc</code> وأن المشروع لا يقبل merge commits.',
+          pr4_sub: "fs: قبول جميع صيغ utf8 الصالحة في المسارات السريعة",
+          pr4_desc: 'يصلح مشكلة عمرها 3 سنوات (#49888) حيث كانت المسارات السريعة لـ UTF-8 تطابق فقط <code class="text-foreground">utf8</code> و<code class="text-foreground">utf-8</code> بحروف صغيرة بينما تسلك <code class="text-foreground">UTF8</code> و<code class="text-foreground">UTF-8</code> المسار الأبطأ بصمت. يضيف دالة مساعدة <code class="text-foreground">isUtf8Encoding</code> لتشغيل المسار السريع بلغة C++ في <code class="text-foreground">readFileSync</code> و<code class="text-foreground">writeFileSync</code> و<code class="text-foreground">encodeRealpathResult</code> ومسارات Buffer I/O. قيد المراجعة.',
           pr_merged_1: "تم الاعتماد &bull; ربيع الأول 1448 هـ",
           pr_merged_2: "تم الاعتماد &bull; ربيع الأول 1448 هـ",
           pr_merged_3: "تم الاعتماد &bull; ربيع الأول 1448 هـ",
